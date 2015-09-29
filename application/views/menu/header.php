@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta charset="utf-8" />
-<title>Webarch - Responsive Admin Dashboard</title>
+<title>HELPDESK | PT PLN (Persero) | Distribusi Jawa Barat dan Banten</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta content="" name="description" />
 <meta content="" name="author" />
@@ -66,6 +66,7 @@
       <div class="pull-right">
         <div class="chat-toggler" style="margin-right:-50px;"> <a href="#" class="dropdown-toggle" id="user-options" data-toggle="dropdown">
           <div class="user-details">
+			<!-- Username nya nanti berubah sesuai pemilik akun -->
             <div class="username"> John <span class="bold">Smith</span> </div>
           </div>
           <div class="iconset top-down-arrow"></div>
