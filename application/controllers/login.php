@@ -46,9 +46,7 @@ class Login extends CI_Controller {
 			// var_dump($data);
 //            redirect ke halaman sukses
             // $this->load->view('user', $data);
-			$this->load->view('menu/header',$data);
-			$this->load->view('menu/tes_login',$data);
-			$this->load->view('menu/footer',$data);
+			redirect('/user/index');
         } else {
 //            tampilkan pesan error
             $error = 'username / password salah';
