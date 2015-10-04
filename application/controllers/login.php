@@ -40,7 +40,8 @@ class Login extends CI_Controller {
             $data = array(
                 'logged' => TRUE,
                 'username' => $row->username,
-                'level' => $row->level
+                'nama_pegawai' => $row->nama_pegawai,
+                'level' => $row->jabatan
             );
             $this->session->set_userdata($data);
 			// var_dump($data);

@@ -12,7 +12,7 @@ class Auth_model extends CI_Model {
     function login($username,$password) {
         $this->db->where('username', $username);
         $this->db->where('password', $password);
-        $query =  $this->db->get('user');
+        $query =  $this->db->get('pegawai');
         return $query->num_rows();
     }
     
@@ -20,7 +20,7 @@ class Auth_model extends CI_Model {
     function data_login($username,$password) {
         $this->db->where('username', $username);
         $this->db->where('password', $password);
-        return $this->db->get('user')->row();
+        return $this->db->get('pegawai')->row();
     }
 }
  

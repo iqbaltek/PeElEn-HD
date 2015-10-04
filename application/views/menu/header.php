@@ -64,10 +64,10 @@
       <!-- END TOP NAVIGATION MENU -->
       <!-- BEGIN CHAT TOGGLER -->
       <div class="pull-right">
-        <div class="chat-toggler" style="margin-right:-50px;"> <a href="#" class="dropdown-toggle" id="user-options" data-toggle="dropdown">
+        <div class="chat-toggler"> <a href="#" class="dropdown-toggle" id="user-options" data-toggle="dropdown">
           <div class="user-details">
 			<!-- Username nya nanti berubah sesuai pemilik akun -->
-            <div class="username"> John <span class="bold">Smith</span> </div>
+            <div class="username"> <?php echo $nama_pegawai; ?> </div>
           </div>
           <div class="iconset top-down-arrow"></div>
 		  </a>
@@ -110,23 +110,24 @@
       <!-- BEGIN SIDEBAR MENU -->
 		<?php 
 			// var_dump($level);
-			
-			if($level == 1)
+			// Menu Helpdesk
+			if($level == 6)
 			{
 			?>
 				<ul>
-					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Menu Admin</span> <span class="selected"></span></a></li>
+					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
 					<li class=""> <a href="widgets.html"> <i class="fa fa-th"></i> <span class="title">Widgets</span></a> </li>
 				</ul>
 			<?php
 			}
 		 
-			elseif($level == 2)
+			// Menu Teknisi
+			elseif($level == 7)
 			{
 			?>
 				<ul>
-					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Menu Manager</span> <span class="selected"></span></a></li>
-					<li class=""> <a href="widgets.html"> <i class="fa fa-th"></i> <span class="title">Widgets</span></a> </li>
+					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
+					<li class=""> <a href="<?php echo base_url('index.php/teknisi/tugas_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tugas Baru</span></a> </li>
 				</ul>
 			<?php
 			}
