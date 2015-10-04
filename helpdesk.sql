@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50508
 File Encoding         : 65001
 
-Date: 2015-10-02 19:32:03
+Date: 2015-10-04 22:31:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -19,7 +19,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `attachment`;
 CREATE TABLE `attachment` (
-  `id_attachment` int(11) NOT NULL,
+  `id_attachment` int(11) NOT NULL AUTO_INCREMENT,
   `file_name` varchar(255) NOT NULL,
   `file_size` bigint(20) NOT NULL,
   `upload_date` datetime NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `attachment` (
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
-  `id_customer` int(11) NOT NULL,
+  `id_customer` int(11) NOT NULL AUTO_INCREMENT,
   `nama_customer` varchar(255) NOT NULL,
   `no_hp_customer` varchar(255) NOT NULL,
   `email_customer` varchar(255) NOT NULL,
@@ -52,29 +52,37 @@ CREATE TABLE `customer` (
 -- ----------------------------
 DROP TABLE IF EXISTS `dampak`;
 CREATE TABLE `dampak` (
-  `id_dampak` int(11) NOT NULL,
+  `id_dampak` int(11) NOT NULL AUTO_INCREMENT,
   `nama_dampak` varchar(255) NOT NULL,
   `deskripsi_dampak` text,
   PRIMARY KEY (`id_dampak`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of dampak
 -- ----------------------------
+INSERT INTO `dampak` VALUES ('1', 'Kritis', 'Berkaitan dengan Proses Bisnis perusahaan, bila kritis tidak dikerjakan makan perusahaan akan mengalami dampak seperti kerugian');
+INSERT INTO `dampak` VALUES ('2', 'Standar', 'Tidak begitu berpengaruh pada proses bisnis perusahaan');
+INSERT INTO `dampak` VALUES ('3', 'None', 'Tidak berpengaruh sama sekali pada proses bisnis perusahaan');
 
 -- ----------------------------
 -- Table structure for `divisi`
 -- ----------------------------
 DROP TABLE IF EXISTS `divisi`;
 CREATE TABLE `divisi` (
-  `id_divisi` int(11) NOT NULL,
+  `id_divisi` int(11) NOT NULL AUTO_INCREMENT,
   `nama_divisi` varchar(255) NOT NULL,
   PRIMARY KEY (`id_divisi`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of divisi
 -- ----------------------------
+INSERT INTO `divisi` VALUES ('1', 'Gardu Induk');
+INSERT INTO `divisi` VALUES ('2', 'Sumber Daya Manusia');
+INSERT INTO `divisi` VALUES ('3', 'Keuangan');
+INSERT INTO `divisi` VALUES ('4', 'Operasi Sistem Distribusi');
+INSERT INTO `divisi` VALUES ('5', 'Scada dan Teknologi Informasi');
 
 -- ----------------------------
 -- Table structure for `jabatan`
@@ -90,13 +98,20 @@ CREATE TABLE `jabatan` (
 -- ----------------------------
 -- Records of jabatan
 -- ----------------------------
+INSERT INTO `jabatan` VALUES ('0', 'General Manager', '1');
+INSERT INTO `jabatan` VALUES ('2', 'Asisten Manajer', '2');
+INSERT INTO `jabatan` VALUES ('3', 'Supervisor', '3');
+INSERT INTO `jabatan` VALUES ('4', 'Kepala Deputi', '4');
+INSERT INTO `jabatan` VALUES ('5', 'Karyawan', '5');
+INSERT INTO `jabatan` VALUES ('6', 'Staf Helpdesk', '11');
+INSERT INTO `jabatan` VALUES ('7', 'Staf Technical Support', '12');
 
 -- ----------------------------
 -- Table structure for `kantor`
 -- ----------------------------
 DROP TABLE IF EXISTS `kantor`;
 CREATE TABLE `kantor` (
-  `id_kantor` int(11) NOT NULL,
+  `id_kantor` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kantor` varchar(255) NOT NULL,
   `alamat_kantor` text NOT NULL,
   `no_telp_kantor` varchar(255) NOT NULL,
@@ -112,45 +127,62 @@ CREATE TABLE `kantor` (
 -- ----------------------------
 DROP TABLE IF EXISTS `kategori`;
 CREATE TABLE `kategori` (
-  `id_kategori` int(11) NOT NULL,
+  `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(255) NOT NULL,
   `deskripsi_kategori` text,
   PRIMARY KEY (`id_kategori`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of kategori
 -- ----------------------------
+INSERT INTO `kategori` VALUES ('1', 'AMS', 'Aplikasi Manajemen Surat');
+INSERT INTO `kategori` VALUES ('2', 'Dashboard', null);
+INSERT INTO `kategori` VALUES ('3', 'Email', 'Permasalahan seputar email corporate');
+INSERT INTO `kategori` VALUES ('4', 'Eproc dan ABG', null);
+INSERT INTO `kategori` VALUES ('5', 'Graphon', null);
+INSERT INTO `kategori` VALUES ('6', 'Hardware', 'Permasalahan seputar perangkat keras');
+INSERT INTO `kategori` VALUES ('7', 'Network', 'Permasalahan seputar jaringan komuter');
+INSERT INTO `kategori` VALUES ('8', 'QCC', 'Permasalah mengenai Quality Control Circle');
+INSERT INTO `kategori` VALUES ('9', 'Revas', 'Reavenue Assurance, suatu program pengamanan pendapatan perusahaan dari kebocoran-kebocoran');
+INSERT INTO `kategori` VALUES ('10', 'SAP', 'System Application and Product');
+INSERT INTO `kategori` VALUES ('11', 'Smart One', null);
 
 -- ----------------------------
 -- Table structure for `kode_status`
 -- ----------------------------
 DROP TABLE IF EXISTS `kode_status`;
 CREATE TABLE `kode_status` (
-  `id_status` int(11) NOT NULL,
+  `id_status` int(11) NOT NULL AUTO_INCREMENT,
   `nama_status` varchar(255) NOT NULL,
   `deskripsi_status` text,
   PRIMARY KEY (`id_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of kode_status
 -- ----------------------------
+INSERT INTO `kode_status` VALUES ('1', 'New', 'Kondisi dimana Tiket baru di buat dan akan dikirimkan ke Technical Support atau Tim Teknisi');
+INSERT INTO `kode_status` VALUES ('2', 'Open', 'Kondisi dimana Tiket telah dibuka dan dibaca oleh Technical Support atau Tim Teknisi');
+INSERT INTO `kode_status` VALUES ('3', 'Close', 'Kondisi dimana Tiket telah diselesaikan');
 
 -- ----------------------------
 -- Table structure for `level_prioritas`
 -- ----------------------------
 DROP TABLE IF EXISTS `level_prioritas`;
 CREATE TABLE `level_prioritas` (
-  `id_level` int(11) NOT NULL,
+  `id_level` int(11) NOT NULL AUTO_INCREMENT,
   `nama_level` varchar(255) NOT NULL,
   `deskripsi_level` text,
   PRIMARY KEY (`id_level`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of level_prioritas
 -- ----------------------------
+INSERT INTO `level_prioritas` VALUES ('1', 'Top', 'Seperti Top Level Management');
+INSERT INTO `level_prioritas` VALUES ('2', 'Middle', 'Seperti Supervisor');
+INSERT INTO `level_prioritas` VALUES ('3', 'Lower', 'Seperti Karyawan');
 
 -- ----------------------------
 -- Table structure for `pegawai`
@@ -173,9 +205,9 @@ CREATE TABLE `pegawai` (
   KEY `fk_kantor` (`kantor`),
   KEY `fk_jabatan` (`jabatan`),
   KEY `fk_divisi` (`divisi`),
-  CONSTRAINT `fk_kantor` FOREIGN KEY (`kantor`) REFERENCES `kantor` (`id_kantor`),
+  CONSTRAINT `fk_divisi` FOREIGN KEY (`divisi`) REFERENCES `divisi` (`id_divisi`),
   CONSTRAINT `fk_jabatan` FOREIGN KEY (`jabatan`) REFERENCES `jabatan` (`id_jabatan`),
-  CONSTRAINT `fk_divisi` FOREIGN KEY (`divisi`) REFERENCES `divisi` (`id_divisi`)
+  CONSTRAINT `fk_kantor` FOREIGN KEY (`kantor`) REFERENCES `kantor` (`id_kantor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -183,11 +215,45 @@ CREATE TABLE `pegawai` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `sub_divisi`
+-- ----------------------------
+DROP TABLE IF EXISTS `sub_divisi`;
+CREATE TABLE `sub_divisi` (
+  `id_sub_divisi` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_sub_divisi` varchar(255) NOT NULL,
+  `divisi` int(11) NOT NULL,
+  PRIMARY KEY (`id_sub_divisi`),
+  KEY `fk_divisi2` (`divisi`),
+  CONSTRAINT `fk_divisi2` FOREIGN KEY (`divisi`) REFERENCES `divisi` (`id_divisi`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of sub_divisi
+-- ----------------------------
+INSERT INTO `sub_divisi` VALUES ('1', 'Gardu Induk', '1');
+INSERT INTO `sub_divisi` VALUES ('2', 'Pengukuran dan Transaksi Energi', '1');
+INSERT INTO `sub_divisi` VALUES ('3', 'Sumber Daya Manusia', '2');
+INSERT INTO `sub_divisi` VALUES ('4', 'Sekretariat', '2');
+INSERT INTO `sub_divisi` VALUES ('6', 'Logistik', '2');
+INSERT INTO `sub_divisi` VALUES ('7', 'Pengelolaan Anggaran dan Keuangan', '3');
+INSERT INTO `sub_divisi` VALUES ('8', 'Akutansi', '3');
+INSERT INTO `sub_divisi` VALUES ('9', 'Perencanaan Operasi', '4');
+INSERT INTO `sub_divisi` VALUES ('10', 'Operasi', '4');
+INSERT INTO `sub_divisi` VALUES ('11', 'Perencanaan dan Pemeliharaan', '4');
+INSERT INTO `sub_divisi` VALUES ('12', 'Pemeliharaan Gardu Induk', '4');
+INSERT INTO `sub_divisi` VALUES ('13', 'Pengusahaan data dan Gambar', '4');
+INSERT INTO `sub_divisi` VALUES ('15', 'Remote Terminal Unit (RTU)', '5');
+INSERT INTO `sub_divisi` VALUES ('16', 'Perencanaan SCADA', '5');
+INSERT INTO `sub_divisi` VALUES ('17', 'Teknologi Informasi', '5');
+INSERT INTO `sub_divisi` VALUES ('18', 'Telekomunikasi', '5');
+INSERT INTO `sub_divisi` VALUES ('19', 'Peripheral', '5');
+
+-- ----------------------------
 -- Table structure for `team`
 -- ----------------------------
 DROP TABLE IF EXISTS `team`;
 CREATE TABLE `team` (
-  `id_team` int(11) NOT NULL,
+  `id_team` int(11) NOT NULL AUTO_INCREMENT,
   `nama_team` varchar(255) NOT NULL,
   PRIMARY KEY (`id_team`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
