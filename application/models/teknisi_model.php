@@ -8,13 +8,24 @@ class Teknisi_model extends CI_Model {
 			// $this->load->helper("back_handler");
 		}
     
-//    untuk mengambil data hasil login
-    function tugas_baru() {
+//    untuk mengambil data tugas baru
+    function tugas_baru($teknisi) {
         $this->db->select('*');
+        $this->db->order_by('dampak', 'asc');
         $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
+		$this->db->where('staf_teknisi', $teknisi);
+        return $this->db->get('tiket');
+    }
+	
+    function getData() {
+        $this->db->select('*');
+        $this->db->order_by('dampak', 'asc');
+        $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
         return $this->db->get('tiket');
     }
 }
  
-/* End of file Auth_model.php */
-/* Location: ./application/models/Auth_model.php */
+/* End of file teknisi_model.php */
+/* Location: ./application/models/teknisi_model.php */

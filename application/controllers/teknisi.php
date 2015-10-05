@@ -11,8 +11,9 @@ class Teknisi extends CI_Controller {
  
  
 	 public function tugas_baru() {
+		$nip = $this->session->userdata('nip');
         $this->load->model('teknisi_model');
-        $tugas_baru = $this->teknisi_model->tugas_baru()->result();
+        $tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
 		
 		// echo "<pre>";
 		// var_dump($tugas_baru);
@@ -47,4 +48,8 @@ class Teknisi extends CI_Controller {
 		}
     }
 	
+	public function getData($id_tiket){
+		$this->load->model('teknisi_model');
+        $tugas_baru = $this->teknisi_model->getData();
+	}
 }

@@ -39,6 +39,7 @@ class Login extends CI_Controller {
 //          daftarkan session
             $data = array(
                 'logged' => TRUE,
+                'nip' => $row->nip,
                 'username' => $row->username,
                 'nama_pegawai' => $row->nama_pegawai,
                 'level' => $row->jabatan

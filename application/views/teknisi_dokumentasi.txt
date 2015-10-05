@@ -1,0 +1,5 @@
+DOKUMENTASI
+
+detail table TUGAS BARU
+	ada di js datatable -> #example2
+	nanti ada format detail

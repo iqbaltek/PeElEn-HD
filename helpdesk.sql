@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : koneksi
-Source Server Version : 50508
+Source Server Version : 50516
 Source Host           : localhost:3306
 Source Database       : helpdesk
 
 Target Server Type    : MYSQL
-Target Server Version : 50508
+Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2015-10-04 22:31:24
+Date: 2015-10-05 08:53:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,7 +35,7 @@ CREATE TABLE `attachment` (
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
-  `id_customer` int(11) NOT NULL AUTO_INCREMENT,
+  `id_customer` int(11) NOT NULL,
   `nama_customer` varchar(255) NOT NULL,
   `no_hp_customer` varchar(255) NOT NULL,
   `email_customer` varchar(255) NOT NULL,
@@ -46,6 +46,7 @@ CREATE TABLE `customer` (
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
+INSERT INTO `customer` VALUES ('1', 'dummy', '0', 'dummy@dummy.com', null);
 
 -- ----------------------------
 -- Table structure for `dampak`
@@ -73,7 +74,7 @@ CREATE TABLE `divisi` (
   `id_divisi` int(11) NOT NULL AUTO_INCREMENT,
   `nama_divisi` varchar(255) NOT NULL,
   PRIMARY KEY (`id_divisi`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of divisi
@@ -116,11 +117,13 @@ CREATE TABLE `kantor` (
   `alamat_kantor` text NOT NULL,
   `no_telp_kantor` varchar(255) NOT NULL,
   PRIMARY KEY (`id_kantor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of kantor
 -- ----------------------------
+INSERT INTO `kantor` VALUES ('1', 'APJ Tasikmalaya', 'Jl. Mayor Utarya No. 28', '0265331686');
+INSERT INTO `kantor` VALUES ('2', 'Distribusi Jawa Barat dan Banten', 'Jl. Asia Afrika No. 63, Kota Bandung', '0224230747');
 
 -- ----------------------------
 -- Table structure for `kategori`
@@ -199,20 +202,22 @@ CREATE TABLE `pegawai` (
   `last_login_date` datetime DEFAULT NULL,
   `kantor` int(11) NOT NULL,
   `jabatan` int(11) NOT NULL,
-  `divisi` int(11) NOT NULL,
+  `sub_divisi` int(11) NOT NULL,
   `team` int(11) DEFAULT NULL,
   PRIMARY KEY (`nip`),
   KEY `fk_kantor` (`kantor`),
   KEY `fk_jabatan` (`jabatan`),
-  KEY `fk_divisi` (`divisi`),
-  CONSTRAINT `fk_divisi` FOREIGN KEY (`divisi`) REFERENCES `divisi` (`id_divisi`),
+  KEY `fk_sub_divisi` (`sub_divisi`),
   CONSTRAINT `fk_jabatan` FOREIGN KEY (`jabatan`) REFERENCES `jabatan` (`id_jabatan`),
-  CONSTRAINT `fk_kantor` FOREIGN KEY (`kantor`) REFERENCES `kantor` (`id_kantor`)
+  CONSTRAINT `fk_kantor` FOREIGN KEY (`kantor`) REFERENCES `kantor` (`id_kantor`),
+  CONSTRAINT `fk_sub_divisi` FOREIGN KEY (`sub_divisi`) REFERENCES `sub_divisi` (`id_sub_divisi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of pegawai
 -- ----------------------------
+INSERT INTO `pegawai` VALUES ('HD', 'Helpdesk Dummy', '0', 'dummy@dummy.com', 'helpdesk', '288682ec5f2450588bb37a4523d11616', '2015-10-04 23:35:04', null, '2', '6', '17', null);
+INSERT INTO `pegawai` VALUES ('TS', 'Teknisi Dummy', '0', 'dummy@dummy.com', 'teknisi', 'e21394aaeee10f917f581054d24b031f', '2015-10-04 23:32:41', null, '2', '7', '17', null);
 
 -- ----------------------------
 -- Table structure for `sub_divisi`
@@ -298,6 +303,10 @@ CREATE TABLE `tiket` (
 -- ----------------------------
 -- Records of tiket
 -- ----------------------------
+INSERT INTO `tiket` VALUES ('TIK-1', 'dummy biasa', '2015-10-05 00:05:25', null, null, null, 'tes dummy biasa aja', 'HD', 'TS', '1', '2', '3', '1', '1', null);
+INSERT INTO `tiket` VALUES ('TIK-2', 'dummy mid', '2015-10-05 00:09:38', null, null, null, 'tes mid', 'HD', 'TS', '1', '1', '2', '1', '1', null);
+INSERT INTO `tiket` VALUES ('TIK-3', 'dummy top', '2015-10-05 00:10:10', null, null, null, 'tes top', 'HD', 'TS', '1', '4', '1', '1', '3', null);
+INSERT INTO `tiket` VALUES ('TIK-4', 'dummy kritis mid', '2015-10-05 06:29:53', null, null, null, 'tes kritis mid', 'HD', 'TS', '1', '5', '1', '1', '2', null);
 
 -- ----------------------------
 -- Table structure for `user`
