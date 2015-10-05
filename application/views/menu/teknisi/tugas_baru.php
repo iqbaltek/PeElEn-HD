@@ -1,3 +1,7 @@
+<script>
+	var siteURL = "<?php echo site_url('teknisi/getData');?>";
+</script>
+
 <!-- BEGIN PAGE CONTAINER-->
 <div class="page-content">
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -31,7 +35,7 @@
         <div class="span12">
           <div class="grid simple ">
             <div class="grid-title">
-              <h4>Table <span class="semi-bold">Styles</span></h4>
+              <h4><span class="semi-bold">Tugas</span> Baru untuk <span class="semi-bold">Anda</span></h4>
               <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
             </div>
             <div class="grid-body ">
@@ -52,8 +56,8 @@
                     <td><?php echo $row->id_tiket; ?></td>
                     <td><?php echo $row->judul_tiket; ?></td>
                     <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->tgl_awal_tiket))); ?></td>
-                    <td class="center"><?php echo $row->level_prioritas; ?></td>
-                    <td class="center"><?php echo $row->dampak; ?></td>
+                    <td class="center"><?php echo $row->nama_level; ?></td>
+                    <td class="center"><?php echo $row->nama_dampak; ?></td>
                     <td class="center">TINDAKAN</td>
                   </tr>
 				<?php } ?>

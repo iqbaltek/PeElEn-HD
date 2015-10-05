@@ -3,3 +3,7 @@ DOKUMENTASI
 detail table TUGAS BARU
 	ada di js datatable -> #example2
 	nanti ada format detail
+	
+	function fnFormatDetails(
+	
+	untuk lokasi site URL ada di tugas_baru.php
