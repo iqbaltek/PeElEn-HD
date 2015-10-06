@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2015-10-05 08:53:16
+Date: 2015-10-06 13:09:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -278,7 +278,7 @@ CREATE TABLE `tiket` (
   `date_open` datetime DEFAULT NULL,
   `date_close` datetime DEFAULT NULL,
   `durasi` datetime DEFAULT NULL,
-  `daskripsi_masalah` text NOT NULL,
+  `deskripsi_masalah` text NOT NULL,
   `staf_helpdesk` varchar(255) NOT NULL,
   `staf_teknisi` varchar(255) DEFAULT NULL,
   `customer` varchar(255) DEFAULT NULL,
@@ -307,6 +307,7 @@ INSERT INTO `tiket` VALUES ('TIK-1', 'dummy biasa', '2015-10-05 00:05:25', null,
 INSERT INTO `tiket` VALUES ('TIK-2', 'dummy mid', '2015-10-05 00:09:38', null, null, null, 'tes mid', 'HD', 'TS', '1', '1', '2', '1', '1', null);
 INSERT INTO `tiket` VALUES ('TIK-3', 'dummy top', '2015-10-05 00:10:10', null, null, null, 'tes top', 'HD', 'TS', '1', '4', '1', '1', '3', null);
 INSERT INTO `tiket` VALUES ('TIK-4', 'dummy kritis mid', '2015-10-05 06:29:53', null, null, null, 'tes kritis mid', 'HD', 'TS', '1', '5', '1', '1', '2', null);
+INSERT INTO `tiket` VALUES ('TIK-5', 'dummy refresh', '2015-10-05 15:33:53', null, null, null, 'tes refresh', 'HD', 'TS', '1', '3', '1', '1', '2', null);
 
 -- ----------------------------
 -- Table structure for `user`
