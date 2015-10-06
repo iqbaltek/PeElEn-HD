@@ -116,7 +116,7 @@
 			?>
 				<ul>
 					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
-					<li class=""> <a href="widgets.html"> <i class="fa fa-th"></i> <span class="title">Widgets</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('index.php/helpdesk/tiket_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tiket Baru</span></a> </li>
 				</ul>
 			<?php
 			}
