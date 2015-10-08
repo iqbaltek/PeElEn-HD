@@ -10,15 +10,17 @@ class Helpdesk_model extends CI_Model {
 		}
     
 //    untuk mengambil data tugas baru
-    function tugas_baru($teknisi) {
+    function getId($time) {
         $this->db->select('*');
-        $this->db->from('tiket');
-        $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
-        $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
-        $this->db->order_by('dampak', 'asc');
-        $this->db->order_by('level_prioritas', 'asc');
-        $this->db->order_by('tgl_awal_tiket', 'asc');
-		$this->db->where('staf_teknisi', $teknisi);
+        $this->db->from('customer');
+        $this->db->where('time', $time);
+        return $this->db->get();
+    }
+	
+	function getTeknisi($j) {
+        $this->db->select('*');
+        $this->db->from('pegawai');
+        $this->db->where('jabatan', $j);
         return $this->db->get();
     }
 	

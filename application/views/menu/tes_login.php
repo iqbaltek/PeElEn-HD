@@ -19,13 +19,13 @@
 	
 	if($level == 6)
 	{
-		echo "<p>Anda login sebagai <b>". $username . "</b> .Level <b>Admin</b></p>";
+		echo "<p>Anda login sebagai <b>". $username . "</b> .Level <b>Helpdesk</b></p>";
  
 	}
  
 	elseif($level == 7)
 	{
-		echo "<p>Anda login sebagai <b>". $username . "</b> .Level <b>Manager</b></p>";
+		echo "<p>Anda login sebagai <b>". $username . "</b> .Level <b>Teknisi</b></p>";
 	}
  
 	elseif($level == 3)

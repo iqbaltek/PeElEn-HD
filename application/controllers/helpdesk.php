@@ -14,35 +14,83 @@ class Helpdesk extends CI_Controller {
 		$nip = $this->session->userdata('nip');
         $this->load->model('teknisi_model');
         $tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
-		
-		// echo "<pre>";
-		// var_dump($tugas_baru);
-		// print_r($tugas_baru);
-		// echo $tugas_baru->result_id;
-		// foreach ($tugas_baru->result() as $row)
-		// {
-		   // echo $row->id_tiket;
-		// }
-		// echo "</pre>";
+
+// teknisi
+		$this->load->model('helpdesk_model');
+		$x = 7;
+        $Teknisi = $this->helpdesk_model->getTeknisi($x)->result();
 		
 //          daftarkan session
-            $data = array(
-                'tugas_baru' => $tugas_baru
-            );
-            $this->session->set_userdata($data);
-			
-			// $this->load->view('tampil_tugas_baru', $teknisi);
-			$data = $this->session->userdata();
-			if($data['logged'] == TRUE){
-				$this->load->view('menu/header',$data);
-				$this->load->view('menu/helpdesk/tiket_baru');
-				$this->load->view('menu/footer');
-				$this->load->view('menu/teknisi/plugin');
-			}
-			else {
-				redirect('login/index');
-			}
+		$data = array(
+			'tugas_baru' => $tugas_baru,
+			'teknisi' => $Teknisi
+		);
+		// $data2 = array(
+		// );
+		$this->session->set_userdata($data);
+		// $this->session->set_userdata($data);
+		
+		// $this->load->view('tampil_tugas_baru', $teknisi);
+		$data = $this->session->userdata();
+		if($data['logged'] == TRUE){
+			$this->load->view('menu/header',$data);
+			$this->load->view('menu/helpdesk/tiket_baru', $data);
+			$this->load->view('menu/footer');
+			$this->load->view('menu/teknisi/plugin');
+		}
+		else {
+			redirect('login/index');
+		}
     }
+	
+	public function addTiket(){		
+		$this->load->model('helpdesk_model');
+
+		$nama = $_POST['nama'];
+		$nomor_hp = $_POST['nomor_hp'];
+		$email = $_POST['email'];
+		$other = $_POST['other'];
+		
+		$date = time();
+		echo $date . "--";
+		
+		$data1 = array(
+			'nama_customer' => $nama,
+			'no_hp_customer' => $nomor_hp,
+			'email_customer' => $email,
+			'other' => $other,
+			'time' => $date,
+		);
+		
+		//	insert to DB
+		// $this->db->insert('customer', $data1);
+		
+		
+		$get_id = $this->helpdesk_model->getId($date)->result();
+		
+		foreach ($get_id as $row){
+		   echo $row->id_customer;
+		}
+		
+		$judul_tiket = $_POST['judul_tiket'];
+		$detail_masalah = $_POST['detail_masalah'];
+		$staf_helpdesk = $this->session->userdata('nip');
+		$teknisi = $_POST['teknisi'];
+		echo $nama;
+		
+		$data = array(
+			'id_tiket' => '1',
+			'judul_tiket' => $judul_tiket,
+			'deskripsi_masalah' => $detail_masalah,
+			'staf_helpdesk' => $staf_helpdesk,
+		);
+
+		//	insert to DB
+		// $this->db->insert('tiket', $data);
+		// redirect('helpdesk/tiket_baru');
+		
+		
+	}
 	
 	public function getData(){
 		$id_tiket = $this->input->post('id_tiket');

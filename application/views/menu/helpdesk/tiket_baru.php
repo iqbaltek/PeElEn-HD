@@ -31,43 +31,108 @@
 		// echo "</pre>";
 ?>
 
-<div class="row-fluid">
-        <div class="span12">
-          <div class="grid simple ">
-            <div class="grid-title">
-              <h4><span class="semi-bold">Tugas</span> Baru untuk <span class="semi-bold">Anda</span></h4>
-              <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
-            </div>
-            <div class="grid-body ">
-              <table class="table table-striped" id="example2" >
-                <thead>
-                  <tr>
-                    <th>ID TIKET</th>
-                    <th>JUDUL</th>
-                    <th>TANGGAL DIBUAT</th>
-                    <th>PRIORITAS</th>
-                    <th>DAMPAK</th>
-                    <th>TINDAKAN</th>
-                  </tr>
-                </thead>
-                <tbody>
-				<?php foreach($tugas_baru as $row) { ?>
-                  <tr class="odd gradeX">
-                    <td><?php echo $row->id_tiket; ?></td>
-                    <td><?php echo $row->judul_tiket; ?></td>
-                    <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->tgl_awal_tiket))); ?></td>
-                    <td class="center"><?php echo $row->nama_level; ?></td>
-                    <td class="center"><?php echo $row->nama_dampak; ?></td>
-                    <td class="center">TINDAKAN</td>
-                  </tr>
-				<?php } ?>
-				</tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
+	<div class="row">
+	  <div class="grid simple">
+		<div class="grid-title no-border">
+		  <h4>Data <span class="semi-bold">Pelapor</span></h4>
+		  <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+		</div>
+		<div class="grid-body no-border">
+		<form method="POST" id="form_traditional_validation" action="<?php echo base_url('index.php/helpdesk/addTiket')?>">
+				   
+			  <div class="form-group">
+				<label class="form-label">Nama</label>
+				<div class="input-with-icon  right">                                       
+					<i class=""></i>
+					<input type="text" name="nama" id="form1CardHolderName" class="form-control">                                 
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label class="form-label">Nomor HP</label>
+				<div class="input-with-icon  right">                                       
+					<i class=""></i>
+					<input type="number" name="nomor_hp" id="form1CardNumber" class="form-control">                                 
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label class="form-label">Email</label>
+				<div class="input-with-icon  right">                                       
+					<i class=""></i>
+					<input type="email" name="email" id="form1CardNumber" class="form-control">                                 
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label class="form-label">Other</label>
+				<div class="input-with-icon  right">                                       
+					<i class=""></i>
+					<input type="text" name="other" id="form1CardNumber" class="form-control">                                 
+				</div>
+			  </div>
+				
+		
+		</div>
+	  </div>		
+	  
+     
+	</div>
+	 
+	<div class="row">
+              <div class="grid simple">
+                <div class="grid-title no-border">
+                  <h4>Detail <span class="semi-bold">Laporan</span></h4>
+                  <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                </div>
+                <div class="grid-body no-border">
+				           
+                      <div class="form-group">
+                        <label class="form-label">Judul Tiket</label>
+						<div class="input-with-icon  right">                                       
+							<i class=""></i>
+							<input type="text" name="judul_tiket" id="form1CardHolderName" class="form-control">                                 
+						</div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Detail Masalah</label>
+						<div class="input-with-icon  right">                                       
+							<i class=""></i>
+							<input type="text" name="detail_masalah" id="form1CardNumber" class="form-control">                                 
+						</div>
+                      </div>
+         	  
+					<div class="form-group">
+						<label class="form-label">Pilih Teknisi</label>
+						<div class="  right">                                       
+							<i class=""></i>
+							<select name="teknisi" id="cardType" class="select2 form-control"  >
+								<option value="">-- pilih --</option>
+							<?php 
+								foreach ($teknisi as $row){
+									echo $row->nip;
+							?>
+								<option value="<?php echo $row->nip ?>"><?php echo $row->nama_pegawai ?></option>
+							<?php 						
+								}
+							?>
+								
+							</select>
+						</div>
+					</div>
+				
+					
+					<input type="hidden" name="customer" id="form1CardNumber" class="form-control" value="">                                 
+					<input type="hidden" name="kategori" id="form1CardNumber" class="form-control" value="">                                 
+						
+                        
+				  <div class="form-actions">  
+					<div class="pull-right">
+					  <button type="submit" class="btn btn-success btn-cons"><i class="icon-ok"></i> Save</button>
+					  <button type="button" class="btn btn-white btn-cons">Cancel</button>
+					</div>
+					</div>
+				</form>
+                </div>
+              </div>		
+     
 	 </div>
 	  <!-- END DASHBOARD TILES -->
           
