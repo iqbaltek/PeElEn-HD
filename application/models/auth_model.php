@@ -22,6 +22,15 @@ class Auth_model extends CI_Model {
         $this->db->where('password', $password);
         return $this->db->get('pegawai')->row();
     }
+	
+    function last_login($nip,$date) {
+        $data = array(
+               'last_login_date' => $date,
+            );
+
+		$this->db->where('nip', $nip);
+		$this->db->update('pegawai', $data); 
+    }
 }
  
 /* End of file Auth_model.php */

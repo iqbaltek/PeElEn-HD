@@ -23,4 +23,3 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/plugins/datatables-responsive/js/lodash.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <script src="<?php echo base_url();?>assets/js/datatables.js" type="text/javascript"></script>
-

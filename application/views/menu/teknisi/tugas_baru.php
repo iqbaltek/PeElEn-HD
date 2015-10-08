@@ -41,7 +41,7 @@
             <div class="grid-body ">
               <table class="table table-striped" id="example2" >
                 <thead>
-                  <tr>
+                  <tr align="center">
                     <th>ID TIKET</th>
                     <th>JUDUL</th>
                     <th>TANGGAL DIBUAT</th>
@@ -52,13 +52,17 @@
                 </thead>
                 <tbody>
 				<?php foreach($tugas_baru as $row) { ?>
-                  <tr class="odd gradeX">
+                  <tr class="odd gradeX" >
                     <td><?php echo $row->id_tiket; ?></td>
                     <td><?php echo $row->judul_tiket; ?></td>
                     <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->tgl_awal_tiket))); ?></td>
                     <td class="center"><?php echo $row->nama_level; ?></td>
                     <td class="center"><?php echo $row->nama_dampak; ?></td>
-                    <td class="center">TINDAKAN</td>
+                    <td class="center"><form name="tindakan" id="tindakan" method="POST" action="<?php echo base_url('index.php/teknisi/update_tiket')?>">
+										<input type="hidden" name="kerjakan" id="kerjakan" value="2">
+										<input type="hidden" name="id_tiket" id="id_tiket" value="<?php echo $row->id_tiket?>">
+										<input type="submit" value="Kerjakan" class="btn btn-primary">
+										</form></td>
                   </tr>
 				<?php } ?>
 				</tbody>

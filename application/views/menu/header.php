@@ -23,6 +23,7 @@
 <link href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css"/>
+
 <!-- END CORE CSS FRAMEWORK -->
 
 <!-- BEGIN CSS TEMPLATE -->

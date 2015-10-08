@@ -35,7 +35,11 @@ class Login extends CI_Controller {
         if ($login == 1) {
 //          ambil detail data
             $row = $this->auth_model->data_login($this->input->post('username'), md5($this->input->post('password')));
- 
+			
+			//update last login update dari user
+			$datetime_now = date("Y-m-d H:i:s", strtotime('+5 hours'));
+			$last_login = $this->auth_model->last_login($row->nip,$datetime_now);
+			
 //          daftarkan session
             $data = array(
                 'logged' => TRUE,

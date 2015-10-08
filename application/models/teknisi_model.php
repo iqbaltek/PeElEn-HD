@@ -19,9 +19,11 @@ class Teknisi_model extends CI_Model {
         $this->db->order_by('level_prioritas', 'asc');
         $this->db->order_by('tgl_awal_tiket', 'asc');
 		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '1');
         return $this->db->get();
     }
 	
+	//untuk mengambil 1 row data tiket
     function getData($id_tiket) {
         $this->db->select('*');
         $this->db->from('tiket');
@@ -30,6 +32,25 @@ class Teknisi_model extends CI_Model {
         // $this->db->join('attachment','tiket.attachment=attachment.id_attachment');
 		$this->db->where('tiket.id_tiket', $id_tiket);
         return $this->db->get();
+    }
+	
+	//untuk mengambil attachment
+    function getAttachment($id_tiket) {
+        $this->db->select('*');
+        $this->db->from('attachment');
+        $this->db->join('tiket','attachment.id_tiket=tiket.id_tiket');
+		$this->db->where('tiket.id_tiket', $id_tiket);
+        return $this->db->get();
+    }
+	
+	function update_tiket($id_tiket,$status) {
+        // echo "helo";
+		$data = array(
+			   'status' => $status,
+			);
+
+		$this->db->where('id_tiket', $id_tiket);
+		$this->db->update('tiket', $data); 
     }
 	
 }
