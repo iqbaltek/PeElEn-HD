@@ -36,7 +36,6 @@
           <div class="grid simple ">
             <div class="grid-title">
               <h4><span class="semi-bold">Tugas</span> Baru untuk <span class="semi-bold">Anda</span></h4>
-              <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
             </div>
             <div class="grid-body ">
               <table class="table table-striped" id="example2" >
@@ -44,6 +43,7 @@
                   <tr align="center">
                     <th>ID TIKET</th>
                     <th>JUDUL</th>
+                    <th>LOKASI</th>
                     <th>TANGGAL DIBUAT</th>
                     <th>PRIORITAS</th>
                     <th>DAMPAK</th>
@@ -55,6 +55,7 @@
                   <tr class="odd gradeX" >
                     <td><?php echo $row->id_tiket; ?></td>
                     <td><?php echo $row->judul_tiket; ?></td>
+                    <td><?php echo $row->nama_kantor; ?></td>
                     <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->tgl_awal_tiket))); ?></td>
                     <td class="center"><?php echo $row->nama_level; ?></td>
                     <td class="center"><?php echo $row->nama_dampak; ?></td>

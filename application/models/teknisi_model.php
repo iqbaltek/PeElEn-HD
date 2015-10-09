@@ -15,6 +15,7 @@ class Teknisi_model extends CI_Model {
         $this->db->from('tiket');
         $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
         $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
+        $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
         $this->db->order_by('dampak', 'asc');
         $this->db->order_by('level_prioritas', 'asc');
         $this->db->order_by('tgl_awal_tiket', 'asc');
