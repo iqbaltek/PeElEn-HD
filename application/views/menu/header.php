@@ -8,29 +8,29 @@
 <meta content="" name="description" />
 <meta content="" name="author" />
     
-<link href="<?php echo base_url();?>assets/plugins/jquery-metrojs/MetroJs.min.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/shape-hover/css/demo.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/shape-hover/css/component.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/owl-carousel/owl.carousel.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/plugins/owl-carousel/owl.theme.css" />
-<link href="<?php echo base_url();?>assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
-<link href="<?php echo base_url();?>assets/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen"/>
-<link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/jquery-ricksaw-chart/css/rickshaw.css" type="text/css" media="screen" >
-<link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/Mapplic/mapplic/mapplic.css" type="text/css" media="screen" >
+<link href="<?php echo base_url();?>assets/menu/plugins/jquery-metrojs/MetroJs.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/shape-hover/css/demo.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/shape-hover/css/component.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/owl-carousel/owl.carousel.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/owl-carousel/owl.theme.css" />
+<link href="<?php echo base_url();?>assets/menu/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen"/>
+<link rel="stylesheet" href="<?php echo base_url();?>assets/menu/plugins/jquery-ricksaw-chart/css/rickshaw.css" type="text/css" media="screen" >
+<link rel="stylesheet" href="<?php echo base_url();?>assets/menu/plugins/Mapplic/mapplic/mapplic.css" type="text/css" media="screen" >
 <!-- BEGIN CORE CSS FRAMEWORK -->
-<link href="<?php echo base_url();?>assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url();?>assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url();?>assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url();?>assets/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/css/animate.min.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css"/>
 
 <!-- END CORE CSS FRAMEWORK -->
 
 <!-- BEGIN CSS TEMPLATE -->
-<link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url();?>assets/css/responsive.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url();?>assets/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url();?>assets/css/magic_space.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/css/responsive.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/css/magic_space.css" rel="stylesheet" type="text/css"/>
 <!-- END CSS TEMPLATE -->
 
 </head>
@@ -48,7 +48,7 @@
           </a> </li>
       </ul>
       <!-- BEGIN LOGO -->
-      <a href="index.html"><img src="<?php echo base_url();?>assets/img/logo.png" class="logo" alt=""  data-src="<?php echo base_url();?>assets/img/logo.png" data-src-retina="<?php echo base_url();?>assets/img/logo2x.png" width="216" height="51" style="margin-top:3px;margin-bottom:0px;"/></a>
+      <a href="index.html"><img src="<?php echo base_url();?>assets/menu/img/logo.png" class="logo" alt=""  data-src="<?php echo base_url();?>assets/menu/img/logo.png" data-src-retina="<?php echo base_url();?>assets/menu/img/logo2x.png" width="216" height="51" style="margin-top:3px;margin-bottom:0px;"/></a>
       <!-- END LOGO -->
       
     </div>
@@ -77,7 +77,7 @@
               <li><a href="#"><div class="fa fa-edit "></div>&nbsp;&nbsp;&nbsp;&nbsp; Edit Account</a> </li>
             </ul>
           
-          <div class="profile-pic"> <img src="<?php echo base_url();?>assets/img/profiles/avatar_small.jpg"  alt="" data-src="<?php echo base_url();?>assets/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url();?>assets/img/profiles/avatar_small2x.jpg" width="35" height="35" /> </div>
+          <div class="profile-pic"> <img src="<?php echo base_url();?>assets/menu/img/profiles/avatar_small.jpg"  alt="" data-src="<?php echo base_url();?>assets/menu/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url();?>assets/menu/img/profiles/avatar_small2x.jpg" width="35" height="35" /> </div>
         </div>
         <ul class="nav quick-section ">
           <li class="quicklinks"> <span class="h-seperate"></span></li>
@@ -98,7 +98,7 @@
     <!-- BEGIN MINI-PROFILE -->
     <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper">
       <div class="user-info-wrapper">
-        <div class="profile-wrapper"> <img src="<?php echo base_url();?>assets/img/profiles/avatar.jpg"  alt="" data-src="<?php echo base_url();?>assets/img/profiles/avatar.jpg" data-src-retina="<?php echo base_url();?>assets/img/profiles/avatar2x.jpg" width="69" height="69" /> </div>
+        <div class="profile-wrapper"> <img src="<?php echo base_url();?>assets/menu/img/profiles/avatar.jpg"  alt="" data-src="<?php echo base_url();?>assets/menu/img/profiles/avatar.jpg" data-src-retina="<?php echo base_url();?>assets/menu/img/profiles/avatar2x.jpg" width="69" height="69" /> </div>
         <div class="user-info">
           <div class="greeting">Welcome</div>
           <div class="username"><span class="bold"><?php echo $username;?></span></div>
