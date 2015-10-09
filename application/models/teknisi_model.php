@@ -44,10 +44,11 @@ class Teknisi_model extends CI_Model {
         return $this->db->get();
     }
 	
-	function update_tiket($id_tiket,$status) {
+	function update_tiket($id_tiket,$status,$tgl_mulai) {
         // echo "helo";
 		$data = array(
 			   'status' => $status,
+			   'date_open' => $tgl_mulai,
 			);
 
 		$this->db->where('id_tiket', $id_tiket);

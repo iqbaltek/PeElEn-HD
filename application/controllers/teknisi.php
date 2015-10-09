@@ -73,14 +73,16 @@ class Teknisi extends CI_Controller {
 	public function update_tiket(){		
 		// $id_tiket = $this->input->post('id_tiket');
 		// Echo $id_tiket;
+		$tanggal_mulai = date("Y-m-d H:i:s", strtotime('+5 hours'));
+		
 		$this->load->model('teknisi_model');
-		$this->teknisi_model->update_tiket($this->input->post('id_tiket'),$this->input->post('kerjakan'));
+		$this->teknisi_model->update_tiket($this->input->post('id_tiket'),$this->input->post('kerjakan'), $tanggal_mulai);
 		
 		
 		// var_dump($update);
 		$data = $this->session->userdata();
 		if($data['logged'] == TRUE){
-			// redirect('teknisi/tugas_baru');
+			redirect('teknisi/tugas_baru');
 		}
 		else {
 			redirect('login/index');
