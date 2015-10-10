@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : koneksi
-Source Server Version : 50516
+Source Server         : konseksi
+Source Server Version : 50626
 Source Host           : localhost:3306
 Source Database       : helpdesk
 
 Target Server Type    : MYSQL
-Target Server Version : 50516
+Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2015-10-09 14:40:49
+Date: 2015-10-10 09:36:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,34 +25,35 @@ CREATE TABLE `attachment` (
   `file_size` bigint(20) NOT NULL,
   `upload_date` datetime NOT NULL,
   PRIMARY KEY (`id_attachment`),
-  KEY `fk_id_tiket` (`id_tiket`),
-  CONSTRAINT `fk_id_tiket` FOREIGN KEY (`id_tiket`) REFERENCES `tiket` (`id_tiket`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  KEY `fk_id_tiket` (`id_tiket`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of attachment
 -- ----------------------------
-INSERT INTO `attachment` VALUES ('1', 'TIK-4', 'a', '1', '2015-10-06 20:06:36');
-INSERT INTO `attachment` VALUES ('2', 'TIK-2', 'b', '2', '2015-10-07 11:16:40');
 
 -- ----------------------------
 -- Table structure for `customer`
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
-  `id_customer` int(11) NOT NULL,
+  `id_customer` int(11) NOT NULL AUTO_INCREMENT,
   `nama_customer` varchar(255) NOT NULL,
   `no_hp_customer` varchar(255) NOT NULL,
   `kantor_customer` int(11) NOT NULL,
   `email_customer` varchar(255) NOT NULL,
+  `time` varchar(255) DEFAULT NULL,
   `other` text,
   PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES ('1', 'dummy', '0', '1', 'dummy@dummy.com', null);
+INSERT INTO `customer` VALUES ('1', 'bambang', '0909', '0', 'eggyryana@yahoo.com', '1444404401', 'ada aja');
+INSERT INTO `customer` VALUES ('2', 'bambang', '0909', '0', 'eggyryana@yahoo.com', '1444404494', 'ada aja');
+INSERT INTO `customer` VALUES ('3', 'bambang', '0909', '0', 'eggyryana@yahoo.com', '1444404521', 'ada aja');
+INSERT INTO `customer` VALUES ('4', '', '', '0', '', '1444413059', '');
 
 -- ----------------------------
 -- Table structure for `dampak`
@@ -222,7 +223,7 @@ CREATE TABLE `pegawai` (
 -- ----------------------------
 -- Records of pegawai
 -- ----------------------------
-INSERT INTO `pegawai` VALUES ('HD', 'Helpdesk Dummy', '0', 'dummy@dummy.com', 'helpdesk', '288682ec5f2450588bb37a4523d11616', '2015-10-04 23:35:04', '2015-10-08 15:10:32', '2', '6', '17', null);
+INSERT INTO `pegawai` VALUES ('HD', 'Helpdesk Dummy', '0', 'dummy@dummy.com', 'helpdesk', '288682ec5f2450588bb37a4523d11616', '2015-10-04 23:35:04', '2015-10-10 00:17:11', '2', '6', '17', null);
 INSERT INTO `pegawai` VALUES ('TS', 'Teknisi Dummy', '0', 'dummy@dummy.com', 'teknisi', 'e21394aaeee10f917f581054d24b031f', '2015-10-04 23:32:41', '2015-10-08 20:31:33', '2', '7', '17', null);
 
 -- ----------------------------
@@ -278,7 +279,7 @@ CREATE TABLE `team` (
 -- ----------------------------
 DROP TABLE IF EXISTS `tiket`;
 CREATE TABLE `tiket` (
-  `id_tiket` varchar(255) NOT NULL,
+  `id_tiket` int(255) NOT NULL,
   `judul_tiket` text NOT NULL,
   `tgl_awal_tiket` datetime NOT NULL,
   `date_open` datetime DEFAULT NULL,
@@ -311,11 +312,6 @@ CREATE TABLE `tiket` (
 -- ----------------------------
 -- Records of tiket
 -- ----------------------------
-INSERT INTO `tiket` VALUES ('TIK-1', 'dummy biasa', '2015-10-05 00:05:25', null, null, null, 'tes dummy biasa aja', 'HD', 'TS', '1', '1', '2', '3', '1', '1');
-INSERT INTO `tiket` VALUES ('TIK-2', 'Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya', '2015-10-05 00:09:38', null, null, null, 'Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin yaIman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya, Iman kasep pisan aduh teu katulungan, cik tolong bantuin ya', 'HD', 'TS', '1', '1', '1', '2', '1', '1');
-INSERT INTO `tiket` VALUES ('TIK-3', 'dummy top', '2015-10-05 00:10:10', null, null, null, 'tes top', 'HD', 'TS', '1', '1', '4', '1', '1', '3');
-INSERT INTO `tiket` VALUES ('TIK-4', 'dummy kritis mid', '2015-10-05 06:29:53', null, null, null, 'tes kritis mid', 'HD', 'TS', '1', '2', '5', '1', '1', '2');
-INSERT INTO `tiket` VALUES ('TIK-5', 'dummy refresh', '2015-10-05 15:33:53', null, null, null, 'tes refresh', 'HD', 'TS', '1', '2', '3', '1', '1', '2');
 
 -- ----------------------------
 -- Table structure for `user`
