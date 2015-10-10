@@ -50,9 +50,13 @@ class Login extends CI_Controller {
             );
             $this->session->set_userdata($data);
 			// var_dump($data);
-//            redirect ke halaman sukses
-            // $this->load->view('user', $data);
-			redirect('/user/index');
+			//redirect ke halaman sukses
+			//7 untuk pegawai teknisi
+			if($row->jabatan == 7) {
+				redirect('/teknisi/dashboard');
+			}else{
+				redirect('/user/index');
+			}
         } else {
 //            tampilkan pesan error
             $error = 'username / password salah';

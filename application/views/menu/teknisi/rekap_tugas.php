@@ -39,26 +39,25 @@
                     <th>JUDUL</th>
                     <th>KATEGORI</th>
                     <th>LOKASI</th>
-                    <th>TANGGAL DIBUAT</th>
+                    <th>TANGGAL MULAI KERJA</th>
+                    <th>TANGGAL SELESAI KERJA</th>
+                    <th>DURASI</th>
                     <th>PRIORITAS</th>
                     <th>DAMPAK</th>
-                    <th>TINDAKAN</th>
                   </tr>
                 </thead>
                 <tbody>
-				<?php foreach($tugas_baru as $row) { ?>
+				<?php foreach($rekap_tugas as $row) { ?>
                   <tr class="odd gradeX" >
                     <td><?php echo $row->id_tiket; ?></td>
                     <td><?php echo $row->judul_tiket; ?></td>
-                    <td><?php echo $row->nama_kategori; ?></td>
+					<td><?php echo $row->nama_kategori; ?></td>
                     <td><?php echo $row->nama_kantor; ?></td>
-                    <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->tgl_awal_tiket))); ?></td>
+                    <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->date_open))); ?></td>
+                    <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->date_close))); ?></td>
+                    <td><?php echo $row->durasi; ?></td>
                     <td class="center"><?php echo $row->nama_level; ?></td>
                     <td class="center"><?php echo $row->nama_dampak; ?></td>
-                    <td class="center"><form name="tindakan" id="tindakan" method="POST" action="<?php echo base_url('index.php/teknisi/update_tiket')?>">
-										<input type="hidden" name="id_tiket" id="id_tiket" value="<?php echo $row->id_tiket?>">
-										<input type="submit" value="Kerjakan" class="btn btn-success">
-										</form></td>
                   </tr>
 				<?php } ?>
 				</tbody>

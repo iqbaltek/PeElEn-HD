@@ -9,13 +9,47 @@ class Teknisi_model extends CI_Model {
 			// $this->load->helper("back_handler");
 		}
     
-//    untuk mengambil data tugas baru
+	
+	//untuk menghitung semua tiket bulan ini
+    function new_bulan_ini($month, $year,$teknisi) {
+		$this->db->select('*');
+		$this->db->from('tiket');
+		$this->db->where("YEAR(tgl_awal_tiket)",$year);
+		$this->db->where("MONTH(tgl_awal_tiket)",$month);
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '1');
+		return $this->db->count_all_results();
+	}
+	
+	//untuk menghitung semua tiket bulan ini
+    function open_bulan_ini($month, $year,$teknisi) {
+		$this->db->select('*');
+		$this->db->from('tiket');
+		$this->db->where("YEAR(tgl_awal_tiket)",$year);
+		$this->db->where("MONTH(tgl_awal_tiket)",$month);
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '2');
+		return $this->db->count_all_results();
+	}
+	//untuk menghitung semua tiket bulan ini
+    function close_bulan_ini($month, $year,$teknisi) {
+		$this->db->select('*');
+		$this->db->from('tiket');
+		$this->db->where("YEAR(tgl_awal_tiket)",$year);
+		$this->db->where("MONTH(tgl_awal_tiket)",$month);
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '3');
+		return $this->db->count_all_results();
+	}
+		
+	//untuk mengambil data tugas baru
     function tugas_baru($teknisi) {
         $this->db->select('*');
         $this->db->from('tiket');
         $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
         $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
         $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+        $this->db->join('kategori','tiket.kategori=kategori.id_kategori');
         $this->db->order_by('dampak', 'asc');
         $this->db->order_by('level_prioritas', 'asc');
         $this->db->order_by('tgl_awal_tiket', 'asc');
@@ -44,10 +78,10 @@ class Teknisi_model extends CI_Model {
         return $this->db->get();
     }
 	
+	//fungsi untuk update 1 table pada tiket setelah teknisi mengambil tugasnya dan status di ubah jadi open
 	function update_tiket($id_tiket,$tgl_mulai) {
-        // echo "helo";
 		$data = array(
-			   'status' => '2',
+			   'status' => '2', // 2 = status open
 			   'date_open' => $tgl_mulai,
 			);
 
@@ -55,12 +89,14 @@ class Teknisi_model extends CI_Model {
 		$this->db->update('tiket', $data); 
     }
 	
+	//fungsi untuk mengambil seluruh data yang telah diambil untuk dilaporkan bahwa tugas tersebut telah selesai
 	function lapor_selesai($teknisi) {
         $this->db->select('*');
         $this->db->from('tiket');
         $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
         $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
         $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+		$this->db->join('kategori','tiket.kategori=kategori.id_kategori');
         $this->db->order_by('dampak', 'asc');
         $this->db->order_by('level_prioritas', 'asc');
         $this->db->order_by('tgl_awal_tiket', 'asc');
@@ -69,8 +105,8 @@ class Teknisi_model extends CI_Model {
         return $this->db->get();
     }
 	
+	//fungsi untuk update 1 table pada tiket setelai teknisi melaporkan bahwa tugasnya telah selesai dan status di ubah menjadi close
 	function update_selesai($id_tiket,$tgl_selesai,$durasi) {
-        // echo "helo";
 		$data = array(
 			   'status' => '3',
 			   'date_close' => $tgl_selesai,
@@ -79,6 +115,22 @@ class Teknisi_model extends CI_Model {
 
 		$this->db->where('id_tiket', $id_tiket);
 		$this->db->update('tiket', $data); 
+    }
+	
+	
+	function rekap_tugas($teknisi) {
+        $this->db->select('*');
+        $this->db->from('tiket');
+        $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
+        $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
+        $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+		$this->db->join('kategori','tiket.kategori=kategori.id_kategori');
+        $this->db->order_by('dampak', 'asc');
+        $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '3');
+        return $this->db->get();
     }
 	
 }

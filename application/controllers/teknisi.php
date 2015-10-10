@@ -10,54 +10,101 @@ class Teknisi extends CI_Controller {
 		// $this->load->database('tiket');
 	}
  
- 
-	 public function tugas_baru() {
+	 public function dashboard() {
 		//ambil data NIP dari Session
 		$nip = $this->session->userdata('nip');
         
+		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$this->load->model('teknisi_model');
+		$this->load->model('general_model');
+		//variabel untuk filter banyak tiket
+		$year = date("Y");
+		$month = date("m");
+		$date = date("Y-m-d");
+		// echo $date;
+		
+		//menghitung semua tiket tahun ini
+		$tahun_ini =  $this->general_model->tahun_ini($year);
+		
+		//menghitung semua tiket bulan ini
+		$bulan_ini = $this->general_model->bulan_ini($month, $year);
+		
+		//menghitung semua tiket bulan ini
+		$hari_ini = $this->general_model->hari_ini($date);
+
+		//menghitung semua tugas milik sendiri
+		$new_bulan_ini = $this->teknisi_model->new_bulan_ini($month, $year, $nip);
+		
+		//menghitung semua tugas milik sendiri yang belum terselesaikan
+		$open_bulan_ini = $this->teknisi_model->open_bulan_ini($month, $year, $nip);
+		
+		//menghitung semua tugas milik sendiri yang sudah terselesaikan
+		$close_bulan_ini = $this->teknisi_model->close_bulan_ini($month, $year, $nip);
+
+		//daftarkan session
+		$data = array(
+			'tahun_ini' => $tahun_ini,
+			'bulan_ini' => $bulan_ini,
+			'hari_ini' => $hari_ini,
+			'new_bulan_ini' => $new_bulan_ini,
+			'open_bulan_ini' => $open_bulan_ini,
+			'close_bulan_ini' => $close_bulan_ini,
+		);
+		$this->session->set_userdata($data);
+		
+		//mengecek previlage pegawai, 7 untuk teknisi
+		$data = $this->session->userdata();
+		if($data['logged'] == TRUE && $data['level'] == 7){
+			$this->load->view('menu/header',$data);
+			$this->load->view('menu/teknisi/dashboard');
+			$this->load->view('menu/footer');
+			$this->load->view('menu/teknisi/plugin');
+		}
+		else {
+			redirect('login/index');
+		}
+    }
+	 
+	public function tugas_baru() {
+		//ambil data NIP dari Session
+		$nip = $this->session->userdata('nip');
         
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
+		$this->load->model('teknisi_model');
 		$tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
 		
 		//memanggil model untuk mendapatkan semua attachment sesuai dengan id_tiket
 		
-		// echo "<pre>";
-		// var_dump($tugas_baru);
-		// print_r($tugas_baru);
-		// echo $tugas_baru->result_id;
-		// foreach ($tugas_baru->result() as $row)
-		// {
-		   // echo $row->id_tiket;
-		// }
-		// echo "</pre>";
 		
-			//daftarkan session
-            $data = array(
-                'tugas_baru' => $tugas_baru
-            );
-            $this->session->set_userdata($data);
-			
-			// $this->load->view('tampil_tugas_baru', $teknisi);
-			$data = $this->session->userdata();
-			if($data['logged'] == TRUE && $data['level'] == 7){
-				$this->load->view('menu/header',$data);
-				$this->load->view('menu/teknisi/tugas_baru');
-				$this->load->view('menu/footer');
-				$this->load->view('menu/teknisi/plugin');
-			}
-			else {
-				redirect('login/index');
-			}
+		//daftarkan session
+		$data = array(
+			'tugas_baru' => $tugas_baru
+		);
+		$this->session->set_userdata($data);
+		
+		//mengecek previlage pegawai, 7 untuk teknisi
+		$data = $this->session->userdata();
+		if($data['logged'] == TRUE && $data['level'] == 7){
+			$this->load->view('menu/header',$data);
+			$this->load->view('menu/teknisi/tugas_baru');
+			$this->load->view('menu/footer');
+			$this->load->view('menu/teknisi/plugin');
+		}
+		else {
+			redirect('login/index');
+		}
     }
 	
 	public function getData(){
+		//mengambil id_tiket dari form
 		$id_tiket = $this->input->post('id_tiket');
-		// $id_tiket = 'TIK-1';
+		
+		//memanggil model untuk mengambil data tiket dan attachmet
 		$this->load->model('teknisi_model');
         $getData = $this->teknisi_model->getData($id_tiket)->row();
 		$getAttachment = $this->teknisi_model->getAttachment($id_tiket)->row();
 		
+		//bagian ini akan dilemparkan ke datatables.js
 		$sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;" class="inner-table">';
 		$sOut .= '<tr><td>Customer</td><td>:</td><td>'.$getData->nama_customer.'</td></tr>';
 		$sOut .= '<tr><td>Status Tiket</td><td>:</td><td>'.$getData->nama_status.'</td></tr>';
@@ -70,18 +117,17 @@ class Teknisi extends CI_Controller {
 		echo $sOut;
 	}
 	
-	public function update_tiket(){		
-		// $id_tiket = $this->input->post('id_tiket');
-		// Echo $id_tiket;
+	public function update_tiket(){	
+		//menentukan tanggal saat pegawai mengklik 'kerjakan'
 		$tanggal_mulai = date("Y-m-d H:i:s", strtotime('+5 hours'));
 		
+		//memanggil model untuk melakukan update pada fungsi update_tiket di model
 		$this->load->model('teknisi_model');
 		$this->teknisi_model->update_tiket($this->input->post('id_tiket'), $tanggal_mulai);
 		
-		
-		// var_dump($update);
+		//mengecek previlage dari pegawai, 7 untuk teknisi
 		$data = $this->session->userdata();
-		if($data['logged'] == TRUE){
+		if($data['logged'] == TRUE && $data['level'] == 7){
 			redirect('teknisi/tugas_baru');
 		}
 		else {
@@ -90,26 +136,51 @@ class Teknisi extends CI_Controller {
 		
 	}
 	
+	//fungsi untuk menentukan durasi waktu
+	function durasi($diff){
+		$durasi = '';
+		if($diff->i >=1){
+			$durasi =  $diff->i." menit ".$durasi;
+		}
+		if($diff->h >=1){
+			$durasi =  $diff->h." jam ".$durasi;
+		}
+		if($diff->d >=1){
+			$durasi =  $diff->d." hari ".$durasi;
+		}
+		if($diff->m >=1){
+			$durasi =  $diff->m." bulan ".$durasi;
+		}
+		if($diff->y >=1){
+			$durasi = $diff->y." tahun ".$durasi ;
+		}
+		
+		return $durasi;
+			
+	}
+	
 	public function update_selesai(){		
-		// $id_tiket = $this->input->post('id_tiket');
-		// Echo $id_tiket;
-		// $tanggal_selesai = date("Y-m-d H:i:s", strtotime('+5 hours'));
-		// $tgl_mulai = date('Y-m-d H:i:s',strtotime($this->input->post('date_open')))
-		// $tanggal_selesai = date("2015-10-5 12:12:12");
-		// $tgl_mulai = date("2015-10-5 12:12:12");
-		// $durasi = date_diff($tgl_mulai,$tanggal_selesai);
-		// var_dump($durasi);
+		$id_tiket = $this->input->post('id_tiket');
 		
-		echo (date_diff('2010-3-9', '2011-4-10')." days <br \>");
+		//mencari durasi antara open tiket hingga close tiket
+		$tgl_open   = new DateTime( $this->input->post('date_open'));
+		$tgl_close  = new DateTime( date("Y-m-d H:i:s", strtotime('+5 hours')) );
+		$diff  = $tgl_open->diff( $tgl_close );
 		
+		
+		//variable untuk masuk ke update selesai
+		$date_close = date("Y-m-d H:i:s", strtotime('+5 hours'));
+		//memanggil fungsi durasi waktu
+		$durasi = $this->durasi($diff);
+				
+		//memasukkan ke dalam database
 		$this->load->model('teknisi_model');
-		// $this->teknisi_model->update_selesai($this->input->post('id_tiket'), $tanggal_selesai, $durasi);
+		$this->teknisi_model->update_selesai($this->input->post('id_tiket'), $date_close, $durasi);
 		
-		
-		// var_dump($update);
+		//mengecek previlage pengguna
 		$data = $this->session->userdata();
-		if($data['logged'] == TRUE){
-			// redirect('teknisi/tugas_baru');
+		if($data['logged'] == TRUE && $data['level'] == 7){
+			redirect('teknisi/tugas_selesai');
 		}
 		else {
 			redirect('login/index');
@@ -123,12 +194,12 @@ class Teknisi extends CI_Controller {
 		$this->load->model('teknisi_model');
         
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
-		$tugas_baru = $this->teknisi_model->lapor_selesai($nip)->result();
+		$lapor_tugas = $this->teknisi_model->lapor_selesai($nip)->result();
 		
 		
 			//daftarkan session
             $data = array(
-                'tugas_baru' => $tugas_baru
+                'lapor_tugas' => $lapor_tugas
             );
             $this->session->set_userdata($data);
 			
@@ -137,6 +208,33 @@ class Teknisi extends CI_Controller {
 			if($data['logged'] == TRUE && $data['level'] == 7){
 				$this->load->view('menu/header',$data);
 				$this->load->view('menu/teknisi/lapor_tugas');
+				$this->load->view('menu/footer');
+				$this->load->view('menu/teknisi/plugin');
+			}
+			else {
+				redirect('login/index');
+			}
+	}
+	
+	public function rekap_tugas(){
+		$nip = $this->session->userdata('nip');
+        
+		$this->load->model('teknisi_model');
+        
+		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
+		$rekap_tugas = $this->teknisi_model->rekap_tugas($nip)->result();
+		
+			//daftarkan session
+            $data = array(
+                'rekap_tugas' => $rekap_tugas
+            );
+            $this->session->set_userdata($data);
+			
+			// $this->load->view('tampil_tugas_baru', $teknisi);
+			$data = $this->session->userdata();
+			if($data['logged'] == TRUE && $data['level'] == 7){
+				$this->load->view('menu/header',$data);
+				$this->load->view('menu/teknisi/rekap_tugas');
 				$this->load->view('menu/footer');
 				$this->load->view('menu/teknisi/plugin');
 			}

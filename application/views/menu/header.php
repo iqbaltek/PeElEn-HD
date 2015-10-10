@@ -65,21 +65,8 @@
       <!-- END TOP NAVIGATION MENU -->
       <!-- BEGIN CHAT TOGGLER -->
       <div class="pull-right">
-        <div class="chat-toggler"> <a href="#" class="dropdown-toggle" id="user-options" data-toggle="dropdown">
-          <div class="user-details">
-			<!-- Username nya nanti berubah sesuai pemilik akun -->
-            <div class="username"> <?php echo $nama_pegawai; ?> </div>
-          </div>
-          <div class="iconset top-down-arrow"></div>
-		  </a>
-		    <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
-              <li><a href="#"><div class="fa fa-user "></div>&nbsp;&nbsp;&nbsp;&nbsp; My Account</a> </li>
-              <li><a href="#"><div class="fa fa-edit "></div>&nbsp;&nbsp;&nbsp;&nbsp; Edit Account</a> </li>
-            </ul>
-          
-          <div class="profile-pic"> <img src="<?php echo base_url();?>assets/menu/img/profiles/avatar_small.jpg"  alt="" data-src="<?php echo base_url();?>assets/menu/img/profiles/avatar_small.jpg" data-src-retina="<?php echo base_url();?>assets/menu/img/profiles/avatar_small2x.jpg" width="35" height="35" /> </div>
-        </div>
         <ul class="nav quick-section ">
+          <li class="quicklinks"> <span class="username"><?php echo $nama_pegawai; ?></span></li>
           <li class="quicklinks"> <span class="h-seperate"></span></li>
           <li class="quicklinks"><a href="<?php echo base_url('index.php/login/logout')?>"> <div class="fa fa-power-off "></div> Log Out</a></li>
         </ul>
@@ -98,8 +85,7 @@
     <!-- BEGIN MINI-PROFILE -->
     <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper">
       <div class="user-info-wrapper">
-        <div class="profile-wrapper"> <img src="<?php echo base_url();?>assets/menu/img/profiles/avatar.jpg"  alt="" data-src="<?php echo base_url();?>assets/menu/img/profiles/avatar.jpg" data-src-retina="<?php echo base_url();?>assets/menu/img/profiles/avatar2x.jpg" width="69" height="69" /> </div>
-        <div class="user-info">
+		<div class="user-info">
           <div class="greeting">Welcome</div>
           <div class="username"><span class="bold"><?php echo $username;?></span></div>
           <div class="status">Status<a href="#">
@@ -127,9 +113,25 @@
 			{
 			?>
 				<ul>
-					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
+					<li class="start "> <a href="<?php echo base_url('index.php/teknisi/dashboard')?>" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
 					<li class=""> <a href="<?php echo base_url('index.php/teknisi/tugas_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tugas Baru</span></a> </li>
 					<li class=""> <a href="<?php echo base_url('index.php/teknisi/tugas_selesai')?>"> <i class="fa fa-check-square-o"></i> <span class="title">Lapor Tugas Selesai</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('index.php/teknisi/rekap_tugas')?>"> <i class="fa fa-book"></i> <span class="title">Rekap Tugas</span></a> </li>
+				</ul>
+			<?php
+			}
+			// Menu Admin
+			elseif($level == 8)
+			{
+			?>
+				<ul>
+					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
+					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Staf Baru</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Edit Jabatan Pegawai</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Tim Baru</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Kategori Baru</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Divisi Baru</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Sub Divisi Baru</span></a> </li>
 				</ul>
 			<?php
 			}
