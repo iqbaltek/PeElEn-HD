@@ -44,11 +44,37 @@ class Teknisi_model extends CI_Model {
         return $this->db->get();
     }
 	
-	function update_tiket($id_tiket,$status,$tgl_mulai) {
+	function update_tiket($id_tiket,$tgl_mulai) {
         // echo "helo";
 		$data = array(
-			   'status' => $status,
+			   'status' => '2',
 			   'date_open' => $tgl_mulai,
+			);
+
+		$this->db->where('id_tiket', $id_tiket);
+		$this->db->update('tiket', $data); 
+    }
+	
+	function lapor_selesai($teknisi) {
+        $this->db->select('*');
+        $this->db->from('tiket');
+        $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
+        $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
+        $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+        $this->db->order_by('dampak', 'asc');
+        $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '2');
+        return $this->db->get();
+    }
+	
+	function update_selesai($id_tiket,$tgl_selesai,$durasi) {
+        // echo "helo";
+		$data = array(
+			   'status' => '3',
+			   'date_close' => $tgl_selesai,
+			   'durasi' => $durasi,
 			);
 
 		$this->db->where('id_tiket', $id_tiket);

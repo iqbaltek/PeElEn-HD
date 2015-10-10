@@ -76,7 +76,7 @@ class Teknisi extends CI_Controller {
 		$tanggal_mulai = date("Y-m-d H:i:s", strtotime('+5 hours'));
 		
 		$this->load->model('teknisi_model');
-		$this->teknisi_model->update_tiket($this->input->post('id_tiket'),$this->input->post('kerjakan'), $tanggal_mulai);
+		$this->teknisi_model->update_tiket($this->input->post('id_tiket'), $tanggal_mulai);
 		
 		
 		// var_dump($update);
@@ -89,5 +89,61 @@ class Teknisi extends CI_Controller {
 		}
 		
 	}
+	
+	public function update_selesai(){		
+		// $id_tiket = $this->input->post('id_tiket');
+		// Echo $id_tiket;
+		// $tanggal_selesai = date("Y-m-d H:i:s", strtotime('+5 hours'));
+		// $tgl_mulai = date('Y-m-d H:i:s',strtotime($this->input->post('date_open')))
+		// $tanggal_selesai = date("2015-10-5 12:12:12");
+		// $tgl_mulai = date("2015-10-5 12:12:12");
+		// $durasi = date_diff($tgl_mulai,$tanggal_selesai);
+		// var_dump($durasi);
+		
+		echo (date_diff('2010-3-9', '2011-4-10')." days <br \>");
+		
+		$this->load->model('teknisi_model');
+		// $this->teknisi_model->update_selesai($this->input->post('id_tiket'), $tanggal_selesai, $durasi);
+		
+		
+		// var_dump($update);
+		$data = $this->session->userdata();
+		if($data['logged'] == TRUE){
+			// redirect('teknisi/tugas_baru');
+		}
+		else {
+			redirect('login/index');
+		}
+		
+	}
+	
+	public function tugas_selesai(){
+		$nip = $this->session->userdata('nip');
+        
+		$this->load->model('teknisi_model');
+        
+		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
+		$tugas_baru = $this->teknisi_model->lapor_selesai($nip)->result();
+		
+		
+			//daftarkan session
+            $data = array(
+                'tugas_baru' => $tugas_baru
+            );
+            $this->session->set_userdata($data);
+			
+			// $this->load->view('tampil_tugas_baru', $teknisi);
+			$data = $this->session->userdata();
+			if($data['logged'] == TRUE && $data['level'] == 7){
+				$this->load->view('menu/header',$data);
+				$this->load->view('menu/teknisi/lapor_tugas');
+				$this->load->view('menu/footer');
+				$this->load->view('menu/teknisi/plugin');
+			}
+			else {
+				redirect('login/index');
+			}
+	}
+	
 	
 }

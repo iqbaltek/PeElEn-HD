@@ -9,7 +9,7 @@
 <meta content="" name="author" />
     
 <link href="<?php echo base_url();?>assets/menu/plugins/jquery-metrojs/MetroJs.min.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/shape-hover/css/demo.css" />
+
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/shape-hover/css/component.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/owl-carousel/owl.carousel.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/owl-carousel/owl.theme.css" />
@@ -129,6 +129,7 @@
 				<ul>
 					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
 					<li class=""> <a href="<?php echo base_url('index.php/teknisi/tugas_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tugas Baru</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('index.php/teknisi/tugas_selesai')?>"> <i class="fa fa-check-square-o"></i> <span class="title">Lapor Tugas Selesai</span></a> </li>
 				</ul>
 			<?php
 			}
