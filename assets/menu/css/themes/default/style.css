@@ -167,6 +167,7 @@ body.modal-open .chat-window-wrapper {
   z-index: 999;
   min-height: 60px;
   left: 0;
+  -webkit-backface-visibility: hidden;
 }
 .header .navbar-inner {
   background-image: none !important;
@@ -3941,14 +3942,7 @@ form legend,
 .select2-container .select2-choice .select2-arrow b {
   background: none;
 }
-.select2-container .select2-choice .select2-arrow b:before {
-  font-family: 'FontAwesome';
-  content: "\f0d7";
-  position: relative;
-  top: 2px;
-  right: 5px;
-  font-size: 12px;
-}
+
 .select2-container.select2-drop-above .select2-choice {
   -webkit-border-bottom-right-radius: 2px;
   -webkit-border-bottom-left-radius: 2px;

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2015-10-10 09:36:43
+Date: 2015-10-10 10:00:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `attachment`;
 CREATE TABLE `attachment` (
   `id_attachment` int(11) NOT NULL AUTO_INCREMENT,
-  `id_tiket` varchar(255) NOT NULL,
+  `id_tiket` int(255) NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `file_size` bigint(20) NOT NULL,
   `upload_date` datetime NOT NULL,
@@ -279,7 +279,7 @@ CREATE TABLE `team` (
 -- ----------------------------
 DROP TABLE IF EXISTS `tiket`;
 CREATE TABLE `tiket` (
-  `id_tiket` int(255) NOT NULL,
+  `id_tiket` int(255) NOT NULL AUTO_INCREMENT,
   `judul_tiket` text NOT NULL,
   `tgl_awal_tiket` datetime NOT NULL,
   `date_open` datetime DEFAULT NULL,

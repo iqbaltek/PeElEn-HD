@@ -14,13 +14,13 @@
 <?php 
 	// var_dump($level);
 	
-	if($level == 1)
+	if($level == 6)
 	{
-		echo "<p>Anda login sebagai <b>". $username . "</b> .Level <b>Admin</b></p>";
+		echo "<p>Anda login sebagai <b>". $username . "</b> .Level <b>Helpdesk</b></p>";
  
 	}
  
-	elseif($level == 2)
+	elseif($level == 7)
 	{
 		echo "<p>Anda login sebagai <b>". $username . "</b> .Level <b>Manager</b></p>";
 	}

@@ -34,6 +34,30 @@ class Helpdesk_model extends CI_Model {
         return $this->db->get();
     }
 	
+	function getKategori() {
+        $this->db->select('*');
+        $this->db->from('kategori');
+        return $this->db->get();
+    }
+	
+	function getLevel() {
+        $this->db->select('*');
+        $this->db->from('level_prioritas');
+        return $this->db->get();
+    }
+	
+	function getDampak() {
+        $this->db->select('*');
+        $this->db->from('dampak');
+        return $this->db->get();
+    }
+	
+	function getKantor() {
+        $this->db->select('*');
+        $this->db->from('kantor');
+        return $this->db->get();
+    }
+	
 }
  
 /* End of file teknisi_model.php */
