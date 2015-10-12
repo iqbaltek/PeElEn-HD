@@ -141,6 +141,16 @@ class Teknisi_model extends CI_Model {
         return $this->db->get();
     }
 	
+	function update_tiket_tutorial($id_tiket) {
+		$data = array(
+			   'tutorial' => '2', // 2 = status open
+			);
+
+		$this->db->where('id_tiket', $id_tiket);
+		$this->db->update('tiket', $data); 
+    }
+	
+	
 	function rekap_tugas($teknisi) {
         $this->db->select('*');
         $this->db->from('tiket');

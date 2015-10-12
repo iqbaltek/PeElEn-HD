@@ -29,7 +29,7 @@
         <div class="span12">
           <div class="grid simple ">
             <div class="grid-title">
-              <h4><span class="semi-bold">Tugas</span> Baru untuk <span class="semi-bold">Anda</span></h4>
+              <h4><span class="semi-bold">Laporkan Tugas</span> telah <span class="semi-bold">Selesai</span></h4>
             </div>
             <div class="grid-body ">
               <table class="table table-striped" id="example2" >
