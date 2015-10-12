@@ -95,6 +95,13 @@ class Teknisi extends CI_Controller {
 		}
     }
 	
+		function download_file(){
+		$this->load->helper('download');
+		$data = file_get_contents('file/attachment/'.$this->uri->segment(3)); // Read the file's contents
+		$name = $this->uri->segment(3);
+		force_download($name, $data);
+	}
+	
 	public function getData(){
 		//mengambil id_tiket dari form
 		$id_tiket = $this->input->post('id_tiket');
@@ -110,7 +117,7 @@ class Teknisi extends CI_Controller {
 		$sOut .= '<tr><td>Status Tiket</td><td>:</td><td>'.$getData->nama_status.'</td></tr>';
 		$sOut .= '<tr><td>Deskripsi Tiket</td><td>:</td><td>'.$getData->deskripsi_masalah.'</td></tr>';
 		if($getAttachment != NULL){
-			$sOut .= '<tr><td>Attachment</td><td>:</td><td>'.$getAttachment->file_name.'</td></tr>';
+			$sOut .= '<tr><td>Attachment</td><td>:</td><td><a href="'.base_url().'teknisi/download_file/'.$getAttachment->file_name.'" target="_blank">'.$getAttachment->file_name.'</td></tr>';
 		}
 		$sOut .= '</table>';
 		
@@ -161,7 +168,12 @@ class Teknisi extends CI_Controller {
 	
 	public function update_selesai(){		
 		$id_tiket = $this->input->post('id_tiket');
-		$solusi = $this->input->post('solusi');
+		
+		if($this->input->post('tutorial') != NULL){
+			$tutorial = $this->input->post('tutorial');
+		}else{
+			$tutorial = '0';
+		}
 		
 		//mencari durasi antara open tiket hingga close tiket
 		$tgl_open   = new DateTime( $this->input->post('date_open'));
@@ -173,10 +185,10 @@ class Teknisi extends CI_Controller {
 		$date_close = date("Y-m-d H:i:s", strtotime('+5 hours'));
 		//memanggil fungsi durasi waktu
 		$durasi = $this->durasi($diff);
-				
+		echo $durasi;		
 		//memasukkan ke dalam database
 		$this->load->model('teknisi_model');
-		$this->teknisi_model->update_selesai($this->input->post('id_tiket'),$solusi, $date_close, $durasi);
+		$this->teknisi_model->update_selesai($this->input->post('id_tiket'),$tutorial, $date_close, $durasi);
 		
 		//mengecek previlage pengguna
 		$data = $this->session->userdata();
@@ -219,12 +231,11 @@ class Teknisi extends CI_Controller {
 	
 	public function buat_solusi(){
 		$nip = $this->session->userdata('nip');
-        
+		
 		$this->load->model('teknisi_model');
         
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$buat_solusi = $this->teknisi_model->buat_solusi($nip)->result();
-		
 		
 			//daftarkan session
             $data = array(
@@ -254,7 +265,6 @@ class Teknisi extends CI_Controller {
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$form_solusi = $this->teknisi_model->form_solusi($id_tiket)->result();
 		
-		
 			//daftarkan session
             $data = array(
                 'form_solusi' => $form_solusi
@@ -272,6 +282,34 @@ class Teknisi extends CI_Controller {
 			else {
 				redirect('login/index');
 			}
+	}
+	
+	public function terbitkan_solusi(){
+		$this->load->model('teknisi_model');
+		
+		$id_tiket = $this->input->post('id_tiket');
+		$judul = $this->input->post('judul');
+		$deskripsi = $this->input->post('deskripsi');
+		$nip = $this->session->userdata('nip');
+		
+		$data = array(
+			'judul_solusi' => $judul,
+			'id_tiket' => $id_tiket,
+			'nip' => $nip,
+			'deskripsi_solusi' => $deskripsi
+		);
+		
+		$this->db->insert('solusi',$data);
+		
+		$this->teknisi_model->update_tiket_tutorial($this->input->post('id_tiket'));
+		
+		$data = $this->session->userdata();
+		if($data['logged'] == TRUE && $data['level'] == 7){
+			redirect('teknisi/buat_solusi');
+		}
+		else {
+			redirect('login/index');
+		}
 	}
 	
 	public function rekap_tugas(){
