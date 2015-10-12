@@ -60,8 +60,8 @@ class Helpdesk extends CI_Controller {
 		$email = $_POST['email'];
 		$other = $_POST['other'];
 		
-		$date = time();
-		// echo $date . "--";
+		$date = time("Y-m-d H:i:s");
+		// echo "-----" . $date . "-----";
 		
 		$data1 = array(
 			'nama_customer' => $nama,
@@ -99,6 +99,7 @@ class Helpdesk extends CI_Controller {
 		$data = array(
 			'judul_tiket' => $judul_tiket,
 			'deskripsi_masalah' => $detail_masalah,
+			// 'tgl_awal_tiket' => $date,
 			'staf_helpdesk' => $staf_helpdesk,
 			'staf_teknisi' => $teknisi,
 			'customer' => $customer,
@@ -107,7 +108,6 @@ class Helpdesk extends CI_Controller {
 			'level_prioritas' => $level_prioritas,
 			'status' => $status,
 			'dampak' => $dampak,
-			'lampiran' => $dampak,
 		);
 		
 		// insert DB
@@ -116,11 +116,13 @@ class Helpdesk extends CI_Controller {
 		$this->helpdesk_model->update_lampiran($namafilenew,$namafilenew);
 		// attackment
 		
+		$nama_file = basename( $_FILES["namafile"]["name"]);
+		$extension = pathinfo($nama_file, PATHINFO_EXTENSION);
 		$folder_name = $namafilenew;
 		$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/";
 		$new_folder=mkdir($target_dir."/".$folder_name, 0777, true);
-		$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/". $folder_name ."/" . $namafilenew . "____";
-		$target_file = $target_dir . basename($_FILES["namafile"]["name"]);
+		$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/". $folder_name ."/";
+		$target_file = $target_dir . $namafilenew . "." . $extension;
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		
@@ -137,11 +139,14 @@ class Helpdesk extends CI_Controller {
 			}
 		}
 		
-		echo basename($_FILES["namafile"]["name"]);
-			echo $new_folder;
+		// Check file size
+		if ($_FILES["namafile"]["size"] > 200000) {
+			echo "Sorry, your file is too large.";
+			$uploadOk = 0;
+		}
+		
 		
 		// Check if $uploadOk is set to 0 by an error
-		
 		if ($uploadOk == 0) {
 			echo "Sorry, your file was not uploaded.";
 		
@@ -149,13 +154,24 @@ class Helpdesk extends CI_Controller {
 		
 		} else {
 			if (move_uploaded_file($_FILES["namafile"]["tmp_name"], $target_file)) {
-				echo "The file ". basename( $_FILES["namafile"]["name"]). " has been uploaded.";
+				// echo "The file ". basename( $_FILES["namafile"]["name"]). " has been uploaded.";
+				
 			} else {
 				echo "Sorry, there was an error uploading your file.";
 			}
 		}
 		
+		echo "ini-----" . $nama_file;
+		echo "itu-----" . $extension;
 		
-		// redirect('helpdesk/tiket_baru');
+		// data buat attachment
+		$data3 = array(
+			'id_tiket' => $namafilenew,
+			'file_name' => $namafilenew.".".$extension,
+			'file_size' => $_FILES["namafile"]["size"],
+		);
+		$this->db->insert('attachment', $data3);
+		
+		redirect('helpdesk/tiket_baru');
 	}
 }
