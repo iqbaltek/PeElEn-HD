@@ -64,29 +64,26 @@
 			</div>	
 		</div>
 		<div class="col-md-4 col-vlg-3 col-sm-6">
-			<div class="tiles purple m-b-10">
+			<div class="tiles red m-b-10">
               <div class="tiles-body">
 			  <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
-                <div class="tiles-title text-black">SERVER LOAD </div>
+                <div class="tiles-title">
+                    <h6 class="bold text-white">LEGENDA</h6>
+                  </div>
 			         <div class="widget-stats">
                       <div class="wrapper transparent"> 
-						<span class="item-title">Overall Load</span> <span class="item-count animate-number semi-bold" data-value="5695" data-animation-duration="700">0</span>
+						<span class="item-title">Level Prioritas</span></br>
+						<span>1. Top Level Management</span></br>
+						<span>2. Supervisor</span></br>
+						<span>3. Karyawan</span>
 					  </div>
                     </div>
                     <div class="widget-stats">
-                      <div class="wrapper transparent">
-						<span class="item-title">Today's</span> <span class="item-count animate-number semi-bold" data-value="568" data-animation-duration="700">0</span> 
-					  </div>
+						<span class="item-title">Dampak Ke Perusahaan</span> </br>
+						<span>1. Kritis</span></br>
+						<span>2. Standar</span></br>
+						<span>3. None</span>
                     </div>
-                    <div class="widget-stats ">
-                      <div class="wrapper last"> 
-						<span class="item-title">Monthly</span> <span class="item-count animate-number semi-bold" data-value="12459" data-animation-duration="700">0</span> 
-					 </div>
-                    </div>
-                    <div class="progress transparent progress-small no-radius m-t-20" style="width:90%">
-                      <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="90%" ></div>
-                    </div>
-                    <div class="description"> <span class="text-white mini-description ">4% higher <span class="blend">than last month</span></span></div>
 			  </div>			
 			</div>	
 		</div>	

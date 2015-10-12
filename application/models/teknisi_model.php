@@ -106,17 +106,40 @@ class Teknisi_model extends CI_Model {
     }
 	
 	//fungsi untuk update 1 table pada tiket setelai teknisi melaporkan bahwa tugasnya telah selesai dan status di ubah menjadi close
-	function update_selesai($id_tiket,$tgl_selesai,$durasi) {
+	function update_selesai($id_tiket,$tutorial,$tgl_selesai,$durasi) {
 		$data = array(
-			   'status' => '3',
-			   'date_close' => $tgl_selesai,
-			   'durasi' => $durasi,
+				'status' => '3',
+				'tutorial' => $tutorial,
+				'date_close' => $tgl_selesai,
+				'durasi' => $durasi,
 			);
 
 		$this->db->where('id_tiket', $id_tiket);
 		$this->db->update('tiket', $data); 
     }
 	
+	function buat_solusi($teknisi){
+        $this->db->select('*');
+        $this->db->from('tiket');
+        $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
+        $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
+        $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+		$this->db->join('kategori','tiket.kategori=kategori.id_kategori');
+        $this->db->order_by('dampak', 'asc');
+        $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '3');
+		$this->db->where('tutorial', '1');
+        return $this->db->get();
+    }
+	
+	function form_solusi($id_tiket){
+        $this->db->select('*');
+        $this->db->from('tiket');
+		$this->db->where('id_tiket', $id_tiket);
+        return $this->db->get();
+    }
 	
 	function rekap_tugas($teknisi) {
         $this->db->select('*');

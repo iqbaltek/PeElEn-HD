@@ -161,6 +161,7 @@ class Teknisi extends CI_Controller {
 	
 	public function update_selesai(){		
 		$id_tiket = $this->input->post('id_tiket');
+		$solusi = $this->input->post('solusi');
 		
 		//mencari durasi antara open tiket hingga close tiket
 		$tgl_open   = new DateTime( $this->input->post('date_open'));
@@ -175,7 +176,7 @@ class Teknisi extends CI_Controller {
 				
 		//memasukkan ke dalam database
 		$this->load->model('teknisi_model');
-		$this->teknisi_model->update_selesai($this->input->post('id_tiket'), $date_close, $durasi);
+		$this->teknisi_model->update_selesai($this->input->post('id_tiket'),$solusi, $date_close, $durasi);
 		
 		//mengecek previlage pengguna
 		$data = $this->session->userdata();
@@ -208,6 +209,63 @@ class Teknisi extends CI_Controller {
 			if($data['logged'] == TRUE && $data['level'] == 7){
 				$this->load->view('menu/header',$data);
 				$this->load->view('menu/teknisi/lapor_tugas');
+				$this->load->view('menu/footer');
+				$this->load->view('menu/teknisi/plugin');
+			}
+			else {
+				redirect('login/index');
+			}
+	}
+	
+	public function buat_solusi(){
+		$nip = $this->session->userdata('nip');
+        
+		$this->load->model('teknisi_model');
+        
+		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
+		$buat_solusi = $this->teknisi_model->buat_solusi($nip)->result();
+		
+		
+			//daftarkan session
+            $data = array(
+                'buat_solusi' => $buat_solusi
+            );
+            $this->session->set_userdata($data);
+			
+			// $this->load->view('tampil_tugas_baru', $teknisi);
+			$data = $this->session->userdata();
+			if($data['logged'] == TRUE && $data['level'] == 7){
+				$this->load->view('menu/header',$data);
+				$this->load->view('menu/teknisi/buat_solusi');
+				$this->load->view('menu/footer');
+				$this->load->view('menu/teknisi/plugin');
+			}
+			else {
+				redirect('login/index');
+			}
+	}
+	
+	public function form_solusi(){
+		$nip = $this->session->userdata('nip');
+        $id_tiket = $this->input->post('id_tiket');
+		
+		$this->load->model('teknisi_model');
+        
+		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
+		$form_solusi = $this->teknisi_model->form_solusi($id_tiket)->result();
+		
+		
+			//daftarkan session
+            $data = array(
+                'form_solusi' => $form_solusi
+            );
+            $this->session->set_userdata($data);
+			
+			// $this->load->view('tampil_tugas_baru', $teknisi);
+			$data = $this->session->userdata();
+			if($data['logged'] == TRUE && $data['level'] == 7){
+				$this->load->view('menu/header',$data);
+				$this->load->view('menu/teknisi/form_solusi');
 				$this->load->view('menu/footer');
 				$this->load->view('menu/teknisi/plugin');
 			}

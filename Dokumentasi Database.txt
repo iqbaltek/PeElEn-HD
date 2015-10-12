@@ -1,0 +1,114 @@
+Dokumentasi Database
+dibuat untuk menerangkan isi database agar Database dapat dimengerti
+
+1.Pegawai
+	NIP (varchar)
+	Nama_pegawai
+	No_tlp_pegawai
+	email_pegawai
+	username
+	password (di-HASH menggunakan MD5)
+	create_date (tanggal dibuatnya akun)
+	last_login_date (tanggal akun terakhir login ke dalam sistem)
+	kantor (adalah id_kantor forigen key ke tabel kantor)
+	jabatan (adalah id_jabatan forigen key ke tabel jabatan)
+	sub_divisi (adalah id_sub_divisi forigen key ke tabel sub_divisi)
+	team (adalah id_team forigen key ke tabel team)
+
+2. Jabatan (jabatan umum, dan beberapa jabatan khusus untuk digunakan pada sistem saja)
+	contoh jabatan khusus : Staf Helpdesk, Staf Technical Support, Admin Helpdesk
+	id_jabatan (int auto increment)
+	nama_jabatan
+	level_jabatan (untuk memberikan previlage pada sistem nantinya)
+	
+3. Team (tim di bentuk apabila ada kategori khusus yang ditangani secara tim)
+	id_team (int auto increment)
+	nama_team
+	deskripsi_team (singkat, penjelasan tim dan pekerjaan tim)
+
+4. Kantor (Diisi oleh data kantor yang tersebar hingga rayon)
+	id_kantor (int auto increment)
+	nama_kantor
+	alamat_kantor
+	no_telp_kantor
+	
+5. Divisi (Diisi oleh data Divisi yang ada dalam perusahaan)
+	id_divisi (int auto increment)
+	nama_divisi
+	
+6. Sub_divisi (Sub divisi merupakan bagian dari Divisi)
+	id_sub_divisi (int auto increment)
+	nama_sub_divisi
+	divisi (adalah id_divisi forigen key ke tabel divisi)
+	
+7. Dampak (dampak adalah kondisi dimana permasalahan akan berpengaruh pada Proses Bisnis perusahaan)
+	Dampak terdiri dari 3 level
+		1. Kritis (Permasalahan Berkaitan dengan Proses Bisnis perusahaan, bila tidak diselesaikan maka perusahaan akan mengalami dampak seperti kerugian)
+		2. Standar (Permasalahan tidak begitu berpengaruh pada proses bisnis perusahaan)
+		3. None	(Permasalahan tidak berpengaruh sama sekali pada proses bisnis perusahaan)
+	Penentuan Dampak dilakukan oleh Helpdesk atau Customer
+	
+	id_dampak
+	nama_dampak
+	deskripsi_dampak (menjelaskan dampak yang terjadi)
+	
+8. Level_prioritas (level_prioritas adalah prioritas yang diadakan sesuai dengan tingkatan pegawai)
+	Level prioritas terdiri dari 3 level
+		1. Top Level Management (General Manager, Asisten Manager, Kepala Deputi)
+		2. Middle (Supervisor)
+		3. Lower (Karyawan, Staf-staf)
+	Penentuan Level dilakukan oleh Helpdesk atau Customer
+
+9. Kategori (Kategori disini adalah kategori dari permasalahan atau tiket)
+	Penentuan Kategori dilakukan oleh Helpdesk
+	id_kategori (int auto increment)
+	nama_kategori
+	deskripsi_kategori
+	
+10. Customer
+	id_customer (int auto increment)
+	nama_customer
+	no_hp_customer
+	kantor_customer (adalah id_kantor forigen key ke tabel kantor)
+	email_customer
+	time (timestamp)(waktu dimana helpdesk menyimpan data customer dipakai untuk mengambil data customer di tabel tiket)
+	other (informasi tambahan/ opsional untuk diisi)
+
+11. Kode_status (kode status dipakai untuk menentukan status dari permasalahan/tiket)
+	Kode_status terdiri dari 3 status :
+		1. New (kondisi dimana tiket baru saja dibuat)
+		2. Open (kondisi dimana tiket telah diambil untuk dikerjakan atau sedang dikerjakan)
+		3. Close (kondisi diman tiket telah selesai dikerjakan)
+	
+12. Tiket (tabel dari permasalah atau pembuatan tiket, inti dari sistem helpdesk)
+	id_tiket (int auto increment)
+	judul_tiket
+	tgl_awal_tiket (tanggal awal tiket dibuat)
+	date_open (tanggal tiket telah diambil untuk dikerjakan/sedang dikerjakan)
+	date_close (tanggal tiket telah selesai dikerjakan)
+	durasi (banyak waktu yang dipakai untuk menyelesaikan tugas [ date_close - date_open ])
+	deskripsi_masalah (deskripsi dari tiket secara mendetail)
+	staf_helfdesk (NIP dari staf helpdesk yang menerbitkan tiket baru)
+	staf_teknisi (NIP/id_team dari staf teknisi yang ditunjuk untuk mengerjakan/menyelesaikan permasalahan/tiket)
+	customer (adalah id_customer forigen key ke tabel customer)
+	kantor (adalah id_kantor forigen key ke tabel kantor)
+	kategori (adalah id_kategori forigen key ke tabel kategori)
+	level_prioritas (adalah id_level forigen key ke tabel level_prioritas)
+	level_prioritas (adalah id_level forigen key ke tabel level_prioritas)
+	status (adalah id_status forigen key ke tabel kode_status)
+	dampak (adalah id_dampak forigen key ke tabel dampak)
+	tutorial 
+		-tutorial ini diisi oleh angka dan akan berhubungan dengan tabel solusi
+		 dimana kondisi yang ada adalah :
+			0 : tidak ada tutorial untuk solusi
+			1 : ada tutorial untuk solusi tapi belum dibuat
+			2 : ada tutorial untuk solusi
+
+13. attachment (dibuat apabila helpdesk mengirimkan lampiran untuk penjelasan pada tabel tiket)
+	id_attachment (int auto increment)
+	id_tiket (adalah id_tiket forigen key ke tabel tiket, agar terhubung)
+	file_name
+	file_size
+	upload_date
+	
+14. Solusi

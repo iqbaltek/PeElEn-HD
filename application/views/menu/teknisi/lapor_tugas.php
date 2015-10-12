@@ -34,30 +34,34 @@
             <div class="grid-body ">
               <table class="table table-striped" id="example2" >
                 <thead>
-                  <tr align="center">
-                    <th>ID TIKET</th>
-                    <th>JUDUL</th>
-                    <th>KATEGORI</th>
-                    <th>LOKASI</th>
-                    <th>TANGGAL DIBUAT</th>
-                    <th>TANGGAL MULAI KERJA</th>
-                    <th>PRIORITAS</th>
-                    <th>DAMPAK</th>
-                    <th>TINDAKAN</th>
+                  <tr>
+                    <th style="center">ID TIKET</th>
+                    <th align="center">JUDUL</th>
+                    <th align="center">KATEGORI</th>
+                    <th align="center">LOKASI</th>
+                    <th align="center">TANGGAL DIBUAT</th>
+                    <th align="center">TANGGAL MULAI KERJA</th>
+                    <th align="center">PRIORITAS</th>
+                    <th align="center">DAMPAK</th>
+                    <th align="center">SOLUSI</th>
+                    <th align="center">TINDAKAN</th>
                   </tr>
                 </thead>
                 <tbody>
 				<?php foreach($lapor_tugas as $row) { ?>
                   <tr class="odd gradeX" >
-                    <td><?php echo $row->id_tiket; ?></td>
+                    <td align="center"><?php echo $row->id_tiket; ?></td>
                     <td><?php echo $row->judul_tiket; ?></td>
-					<td><?php echo $row->nama_kategori; ?></td>
+					<td align="center"><?php echo $row->nama_kategori; ?></td>
                     <td><?php echo $row->nama_kantor; ?></td>
                     <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->tgl_awal_tiket))); ?></td>
                     <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->date_open))); ?></td>
-                    <td class="center"><?php echo $row->nama_level; ?></td>
-                    <td class="center"><?php echo $row->nama_dampak; ?></td>
-                    <td class="center"><form name="tindakan" id="tindakan" method="POST" action="<?php echo base_url('index.php/teknisi/update_selesai')?>">
+                    <td align="center"><?php echo $row->nama_level; ?></td>
+                    <td align="center"><?php echo $row->nama_dampak; ?></td>
+                    <td align="center"><form name="tindakan" id="tindakan" method="POST" action="<?php echo base_url('teknisi/update_selesai')?>">
+							<input type="checkbox" value="1" id="tutorial" name="tutorial">
+					</td>
+                    <td align="center">
 										<input type="hidden" name="id_tiket" id="id_tiket" value="<?php echo $row->id_tiket?>">
 										<input type="hidden" name="date_open" id="date_open" value="<?php echo $row->date_open?>">
 										<input type="submit" value="Selesai" class="btn btn-primary">

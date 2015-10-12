@@ -9,7 +9,7 @@
 <meta content="" name="author" />
     
 <link href="<?php echo base_url();?>assets/menu/plugins/jquery-metrojs/MetroJs.min.css" rel="stylesheet" type="text/css" />
-
+<link href="<?php echo base_url();?>assets/menu/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/shape-hover/css/component.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/owl-carousel/owl.carousel.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/menu/plugins/owl-carousel/owl.theme.css" />
@@ -17,12 +17,23 @@
 <link href="<?php echo base_url();?>assets/menu/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen"/>
 <link rel="stylesheet" href="<?php echo base_url();?>assets/menu/plugins/jquery-ricksaw-chart/css/rickshaw.css" type="text/css" media="screen" >
 <link rel="stylesheet" href="<?php echo base_url();?>assets/menu/plugins/Mapplic/mapplic/mapplic.css" type="text/css" media="screen" >
+<link href="<?php echo base_url();?>assets/menu/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>assets/menu/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>assets/menu/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>assets/menu/plugins/boostrap-checkbox/css/bootstrap-checkbox.css" rel="stylesheet" type="text/css" media="screen"/>
+<link rel="stylesheet" href="<?php echo base_url();?>assets/menu/plugins/ios-switch/ios7-switch.css" type="text/css" media="screen">
 <!-- BEGIN CORE CSS FRAMEWORK -->
 <link href="<?php echo base_url();?>assets/menu/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/menu/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/menu/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/menu/css/animate.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/menu/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css"/>
+
+
+<link href="<?php echo base_url();?>assets/menu/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen"/>
 
 <!-- END CORE CSS FRAMEWORK -->
 
@@ -68,7 +79,7 @@
         <ul class="nav quick-section ">
           <li class="quicklinks"> <span class="username"><?php echo $nama_pegawai; ?></span></li>
           <li class="quicklinks"> <span class="h-seperate"></span></li>
-          <li class="quicklinks"><a href="<?php echo base_url('index.php/login/logout')?>"> <div class="fa fa-power-off "></div> Log Out</a></li>
+          <li class="quicklinks"><a href="<?php echo base_url('login/logout')?>"> <div class="fa fa-power-off "></div> Log Out</a></li>
         </ul>
       </div>
       <!-- END CHAT TOGGLER -->
@@ -87,7 +98,7 @@
       <div class="user-info-wrapper">
 		<div class="user-info">
           <div class="greeting">Welcome</div>
-          <div class="username"><span class="bold"><?php echo $username;?></span></div>
+          <div class="username"><span class="bold"><?php echo $nama_pegawai;?></span></div>
           <div class="status">Status<a href="#">
             <div class="status-icon green"></div>
             Online</a></div>
@@ -113,10 +124,11 @@
 			{
 			?>
 				<ul>
-					<li class="start "> <a href="<?php echo base_url('index.php/teknisi/dashboard')?>" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
-					<li class=""> <a href="<?php echo base_url('index.php/teknisi/tugas_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tugas Baru</span></a> </li>
-					<li class=""> <a href="<?php echo base_url('index.php/teknisi/tugas_selesai')?>"> <i class="fa fa-check-square-o"></i> <span class="title">Lapor Tugas Selesai</span></a> </li>
-					<li class=""> <a href="<?php echo base_url('index.php/teknisi/rekap_tugas')?>"> <i class="fa fa-book"></i> <span class="title">Rekap Tugas</span></a> </li>
+					<li class="start "> <a href="<?php echo base_url('teknisi/dashboard')?>" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
+					<li class=""> <a href="<?php echo base_url('teknisi/tugas_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tugas Baru</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('teknisi/tugas_selesai')?>"> <i class="fa fa-check-square-o"></i> <span class="title">Lapor Tugas Selesai</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('teknisi/buat_solusi')?>"> <i class="fa fa-thumbs-o-up"></i> <span class="title">Buat Tutorial Solusi</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('teknisi/rekap_tugas')?>"> <i class="fa fa-book"></i> <span class="title">Rekap Tugas</span></a> </li>
 				</ul>
 			<?php
 			}
