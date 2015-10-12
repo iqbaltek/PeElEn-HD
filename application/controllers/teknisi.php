@@ -97,8 +97,8 @@ class Teknisi extends CI_Controller {
 	
 		function download_file(){
 		$this->load->helper('download');
-		$data = file_get_contents('file/attachment/'.$this->uri->segment(3)); // Read the file's contents
-		$name = $this->uri->segment(3);
+		$data = file_get_contents('file/'.$this->uri->segment(3).'/'.$this->uri->segment(4)); // Read the file's contents
+		$name = $this->uri->segment(4);
 		force_download($name, $data);
 	}
 	
@@ -117,7 +117,7 @@ class Teknisi extends CI_Controller {
 		$sOut .= '<tr><td>Status Tiket</td><td>:</td><td>'.$getData->nama_status.'</td></tr>';
 		$sOut .= '<tr><td>Deskripsi Tiket</td><td>:</td><td>'.$getData->deskripsi_masalah.'</td></tr>';
 		if($getAttachment != NULL){
-			$sOut .= '<tr><td>Attachment</td><td>:</td><td><a href="'.base_url().'teknisi/download_file/'.$getAttachment->file_name.'" target="_blank">'.$getAttachment->file_name.'</td></tr>';
+			$sOut .= '<tr><td>Attachment</td><td>:</td><td><a href="'.base_url().'teknisi/download_file/'.$getAttachment->id_tiket.'/'.$getAttachment->file_name.'" target="_blank">'.$getAttachment->file_name.'</td></tr>';
 		}
 		$sOut .= '</table>';
 		

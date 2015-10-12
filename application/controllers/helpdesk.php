@@ -171,7 +171,7 @@ class Helpdesk extends CI_Controller {
 			'file_size' => $_FILES["namafile"]["size"],
 		);
 		$this->db->insert('attachment', $data3);
-		
+
 		redirect('helpdesk/tiket_baru');
 	}
 }
