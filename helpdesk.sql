@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2015-10-10 10:00:28
+Date: 2015-10-12 12:26:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,15 +45,41 @@ CREATE TABLE `customer` (
   `time` varchar(255) DEFAULT NULL,
   `other` text,
   PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES ('1', 'bambang', '0909', '0', 'eggyryana@yahoo.com', '1444404401', 'ada aja');
-INSERT INTO `customer` VALUES ('2', 'bambang', '0909', '0', 'eggyryana@yahoo.com', '1444404494', 'ada aja');
-INSERT INTO `customer` VALUES ('3', 'bambang', '0909', '0', 'eggyryana@yahoo.com', '1444404521', 'ada aja');
-INSERT INTO `customer` VALUES ('4', '', '', '0', '', '1444413059', '');
+INSERT INTO `customer` VALUES ('34', 'Eggy Ryana', '087812347767', '0', 'eggyryana@yahoo.com', '1444466029', 'Pliss atuh benerin, ini masalah perasaan hati :(');
+INSERT INTO `customer` VALUES ('35', 'Eggy Ryana', '087812347767', '0', 'eggyryana@yahoo.com', '1444466045', 'Pliss atuh benerin, ini masalah perasaan hati :(');
+INSERT INTO `customer` VALUES ('36', 'Eggy Ryana', '087812347767', '0', 'eggyryana@yahoo.com', '1444466140', 'Pliss atuh benerin, ini masalah perasaan hati :(');
+INSERT INTO `customer` VALUES ('37', 'Eggy Ryana', '087812347767', '0', 'eggyryana@yahoo.com', '1444466166', 'Pliss atuh benerin, ini masalah perasaan hati :(');
+INSERT INTO `customer` VALUES ('38', 'Eggy Ryana', '087812347767', '0', 'eggyryana@yahoo.com', '1444466436', 'Pliss atuh benerin, ini masalah perasaan hati :(');
+INSERT INTO `customer` VALUES ('39', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466562', 'ada aja');
+INSERT INTO `customer` VALUES ('40', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466614', 'ada aja');
+INSERT INTO `customer` VALUES ('41', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466661', 'ada aja');
+INSERT INTO `customer` VALUES ('42', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466719', 'ada aja');
+INSERT INTO `customer` VALUES ('43', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466747', 'ada aja');
+INSERT INTO `customer` VALUES ('44', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466763', 'ada aja');
+INSERT INTO `customer` VALUES ('45', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466772', 'ada aja');
+INSERT INTO `customer` VALUES ('46', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466803', 'ada aja');
+INSERT INTO `customer` VALUES ('47', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466849', 'ada aja');
+INSERT INTO `customer` VALUES ('48', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444466857', 'ada aja');
+INSERT INTO `customer` VALUES ('49', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444467107', 'ada aja');
+INSERT INTO `customer` VALUES ('50', 'bambang', '090909', '0', 'eggyryana@yahoo.com', '1444467167', 'ada aja');
+INSERT INTO `customer` VALUES ('51', 'Eggy Ryana', '98798798', '0', 'eggyryana@yahoo.com', '1444467218', 'no');
+INSERT INTO `customer` VALUES ('52', 'Eggy Ryana', '98798798', '0', 'eggyryana@yahoo.com', '1444467235', 'no');
+INSERT INTO `customer` VALUES ('53', 'Eggy Ryana', '98798798', '0', 'eggyryana@yahoo.com', '1444467255', 'no');
+INSERT INTO `customer` VALUES ('54', 'Eggy Ryana', '98798798', '0', 'eggyryana@yahoo.com', '1444467352', 'no');
+INSERT INTO `customer` VALUES ('55', 'Eggy Ryana', '0886858586', '0', 'eggyryana@yahoo.com', '1444467486', 'pliss benerin :(');
+INSERT INTO `customer` VALUES ('56', 'Eggy Ryana', '0886858586', '0', 'eggyryana@yahoo.com', '1444467513', 'pliss benerin :(');
+INSERT INTO `customer` VALUES ('57', 'Eggy Ryana', '0886858586', '0', 'eggyryana@yahoo.com', '1444467937', 'pliss benerin :(');
+INSERT INTO `customer` VALUES ('58', 'Eggy Ryana', '0886858586', '0', 'eggyryana@yahoo.com', '1444468311', 'pliss benerin :(');
+INSERT INTO `customer` VALUES ('59', 'Eggy Ryana', '0886858586', '0', 'eggyryana@yahoo.com', '1444468340', 'pliss benerin :(');
+INSERT INTO `customer` VALUES ('60', 'Eggy Ryana', '0886858586', '0', 'eggyryana@yahoo.com', '1444469085', 'pliss benerin :(');
+INSERT INTO `customer` VALUES ('61', 'Eggy Ryana', '0886858586', '0', 'eggyryana@yahoo.com', '1444469103', 'pliss benerin :(');
+INSERT INTO `customer` VALUES ('62', 'kzldg', '', '0', '', '1444545502', '');
+INSERT INTO `customer` VALUES ('63', 'ojkk', '', '0', '', '1444545524', '');
 
 -- ----------------------------
 -- Table structure for `dampak`
@@ -223,7 +249,7 @@ CREATE TABLE `pegawai` (
 -- ----------------------------
 -- Records of pegawai
 -- ----------------------------
-INSERT INTO `pegawai` VALUES ('HD', 'Helpdesk Dummy', '0', 'dummy@dummy.com', 'helpdesk', '288682ec5f2450588bb37a4523d11616', '2015-10-04 23:35:04', '2015-10-10 00:17:11', '2', '6', '17', null);
+INSERT INTO `pegawai` VALUES ('HD', 'Helpdesk Dummy', '0', 'dummy@dummy.com', 'helpdesk', '288682ec5f2450588bb37a4523d11616', '2015-10-04 23:35:04', '2015-10-11 12:00:09', '2', '6', '17', null);
 INSERT INTO `pegawai` VALUES ('TS', 'Teknisi Dummy', '0', 'dummy@dummy.com', 'teknisi', 'e21394aaeee10f917f581054d24b031f', '2015-10-04 23:32:41', '2015-10-08 20:31:33', '2', '7', '17', null);
 
 -- ----------------------------
@@ -294,6 +320,8 @@ CREATE TABLE `tiket` (
   `level_prioritas` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `dampak` int(11) NOT NULL,
+  `lampiran` int(11) DEFAULT NULL,
+  `tutorial` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_tiket`),
   KEY `fk_staf_helpdesk` (`staf_helpdesk`),
   KEY `fk_ketegori` (`kategori`),
@@ -307,11 +335,19 @@ CREATE TABLE `tiket` (
   CONSTRAINT `fk_level` FOREIGN KEY (`level_prioritas`) REFERENCES `level_prioritas` (`id_level`),
   CONSTRAINT `fk_staf_helpdesk` FOREIGN KEY (`staf_helpdesk`) REFERENCES `pegawai` (`nip`),
   CONSTRAINT `fk_status` FOREIGN KEY (`status`) REFERENCES `kode_status` (`id_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tiket
 -- ----------------------------
+INSERT INTO `tiket` VALUES ('1', 'aaaaa', '2015-10-10 15:38:21', null, null, null, 'a', 'TS', 'HD', '1', '1', '1', '1', '1', '1', null, null);
+INSERT INTO `tiket` VALUES ('12', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '55', '1', '6', '1', '1', '1', null, null);
+INSERT INTO `tiket` VALUES ('13', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '6', '1', '1', '1', null, null);
+INSERT INTO `tiket` VALUES ('14', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '6', '1', '1', '1', null, null);
+INSERT INTO `tiket` VALUES ('15', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '6', '1', '1', '1', '1', null);
+INSERT INTO `tiket` VALUES ('16', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '6', '1', '1', '1', '1', null);
+INSERT INTO `tiket` VALUES ('17', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '6', '1', '1', '1', '1', null);
+INSERT INTO `tiket` VALUES ('18', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '6', '1', '1', '1', '18', null);
 
 -- ----------------------------
 -- Table structure for `user`
