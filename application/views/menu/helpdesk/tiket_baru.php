@@ -13,10 +13,11 @@
       <div class="modal-body"> Widget settings form goes here </div>
     </div>
     <div class="clearfix"></div>
-	
+	<div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+
 	<!-- content --> 
     <div class="content sm-gutter">
-		<form method="POST" action="<?php echo base_url('index.php/helpdesk/addTiket'); ?>">   
+		<form id="form_traditional_validation" method="POST" action="<?php echo base_url('index.php/helpdesk/addTiket'); ?>" enctype="multipart/form-data">   
 		<div class="page-title">
 		</div>
 		<!-- BEGIN DASHBOARD TILES --> 
@@ -31,27 +32,27 @@
 						<label class="semi-bold">Nama</label>
 						<div class="input-with-icon  right">                                       
 							<i class=""></i>
-							<input type="text" name="nama" id="form1CardHolderName" class="form-control" />                                 
+							<input type="text" name="nama" id="form1CardHolderName" class="form-control" required/>                                 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="semi-bold">Nomor HP</label>
 						<div class="input-with-icon  right">                                       
 							<i class=""></i>
-							<input type="number" name="nomor_hp" id="form1CardNumber" class="form-control" /> 
+							<input type="text" name="nomor_hp" id="form1CardNumber" class="form-control" required/> 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="semi-bold">Email</label>
 						<div class="input-with-icon  right">                                       
 							<i class=""></i>
-							<input type="email" name="email" id="form1CardNumber" class="form-control" />
+							<input type="email" name="email" id="form1CardNumber" class="form-control" required/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="semi-bold">Kantor</label>
-						<div class="  right">                                       
-							<select name="kantor" class="select2 form-control"  >
+						<div class="right">                                       
+							<select name="kantor" class="select2 form-control" required>
 							<option value="">-- pilih --</option>
 							<?php 
 							foreach ($kantor as $row){
@@ -70,7 +71,7 @@
 						<label class="semi-bold">Other</label>
 						<div class="input-with-icon  right">                                       
 							<i class=""></i>
-							<input type="text" name="other" id="form1CardNumber" class="form-control">                                 
+							<input type="text" name="other" id="form1CardNumber" class="form-control" required>                                 
 						</div>
 					</div>
 				</div>
@@ -88,14 +89,15 @@
 						<label class="semi-bold">Judul Tiket</label>
 						<div class="input-with-icon  right">                                       
 							<i class=""></i>
-							<input type="text" name="judul_tiket" id="form1CardHolderName" class="form-control">                                 
+							<input type="text" name="judul_tiket" id="form1CardHolderName" class="form-control" required>                                 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="semi-bold">Detail Masalah</label>
 						<div class="input-with-icon  right">                                       
 							<i class=""></i>
-							<input type="text" name="detail_masalah" id="form1CardNumber" class="form-control">                                 
+							<textarea rows="3" name="detail_masalah" id="form1CardNumber" class="form-control" required></textarea>
+					
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -103,7 +105,7 @@
 							<label class="semi-bold">Pilih Teknisi</label>
 							<div class="  right">                                       
 								<i class=""></i>
-								<select name="teknisi" id="cardType" class="select2 form-control"  >
+								<select name="teknisi" id="cardType" class="select2 form-control" required>
 									<option value="">-- pilih --</option>
 								<?php 
 								foreach ($teknisi as $row){
@@ -123,7 +125,7 @@
 							<label class="semi-bold">Kategori</label>
 							<div class="  right">                                       
 								<i class=""></i>
-								<select name="kategori" id="cardType" class="select2 form-control"  >
+								<select name="kategori" id="cardType" class="select2 form-control" required>
 									<option value="">-- pilih --</option>
 								<?php 
 								foreach ($kategori as $row){
@@ -144,7 +146,7 @@
 							<label class="semi-bold">Level Prioritas</label>
 							<div class="  right">                                       
 								<i class=""></i>
-								<select name="level_prioritas" id="cardType" class="select2 form-control"  >
+								<select name="level_prioritas" id="cardType" class="select2 form-control" required>
 									<option value="">-- pilih --</option>
 								<?php 
 								foreach ($level_prioritas as $row){
@@ -165,7 +167,7 @@
 							<label class="semi-bold">Dampak</label>
 							<div class="  right">                                       
 								<i class=""></i>
-								<select name="dampak" id="cardType" class="select2 form-control"  >
+								<select name="dampak" id="cardType" class="select2 form-control" required>
 									<option value="">-- pilih --</option>
 								<?php 
 								foreach ($dampak as $row){
@@ -182,12 +184,11 @@
 					</div>
 
 					<input type="hidden" name="status" id="form1CardNumber" class="form-control" value="1">                                 
-					<input type="hidden" name="kategori" id="form1CardNumber" class="form-control" value="">                                 
 
 					<div class="form-group">
 						<label class="semi-bold">Lampirkan File (max 2mb, <i>file lebih dari satu di rar / zip) </i></label>
 						<div class="input-with-icon  right">                                       
-						<input type="file" name="filename" />
+						<input type="file" name="namafile" required/>
 						</div>
 					</div>	
 					

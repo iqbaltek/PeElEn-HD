@@ -91,78 +91,71 @@ class Helpdesk extends CI_Controller {
 		$status = 1;
 		$dampak = $_POST['dampak'];
 		
-		echo $customer;
+		// echo "lalalalalal->" . $kategori;
 		
 
-		// attackment
-		// $errors= array();
-		// $file_name = $_FILES['image']['name'];
-		// $file_size =$_FILES['image']['size'];
-		// $file_tmp =$_FILES['image']['tmp_name'];
-		// $file_type=$_FILES['image']['type'];
-		// $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-
-		// $expensions= array("jpeg","jpg","png");
-
-		// if(in_array($file_ext,$expensions)=== false){
-			// $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-		// }
-
-		// if($file_size > 2097152){
-			// $errors[]='File size must be excately 2 MB';
-		// }
-
-		// if(empty($errors)==true){
-		// move_uploaded_file($file_tmp,"images/".$file_name);
-			// echo "Success";
-		// }
-		// else{
-			// print_r($errors);
-		// }
+		// echo base_url();
 		
-		$file_name = 1111;
+		$data = array(
+			'judul_tiket' => $judul_tiket,
+			'deskripsi_masalah' => $detail_masalah,
+			'staf_helpdesk' => $staf_helpdesk,
+			'staf_teknisi' => $teknisi,
+			'customer' => $customer,
+			'kantor' => $kantor,
+			'kategori' => $kategori,
+			'level_prioritas' => $level_prioritas,
+			'status' => $status,
+			'dampak' => $dampak,
+			'lampiran' => $dampak,
+		);
 		
-		// == tes echo ==
-		
-		
-		// $data = array(
-			// 'id_tiket' => $file_name,
-			// 'judul_tiket' => $judul_tiket,
-			// 'deskripsi_masalah' => $detail_masalah,
-			// 'staf_helpdesk' => $staf_helpdesk,
-			// 'customer' => $customer,
-		// );
 		// insert DB
-		// $this->db->insert('tiket', $data);
-		// redirect('helpdesk/tiket_baru');
-	}
-	
-	function upload(){
-		if(isset($_FILES['image'])){
-			$errors= array();
-			$file_name = $_FILES['image']['name'];
-			$file_size =$_FILES['image']['size'];
-			$file_tmp =$_FILES['image']['tmp_name'];
-			$file_type=$_FILES['image']['type'];
-			$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-
-			$expensions= array("jpeg","jpg","png");
-
-			if(in_array($file_ext,$expensions)=== false){
-			$errors[]="extension not allowed, please choose a JPEG or PNG file.";
-			}
-
-			if($file_size > 2097152){
-			$errors[]='File size must be excately 2 MB';
-			}
-
-			if(empty($errors)==true){
-			move_uploaded_file($file_tmp,"images/".$file_name);
-			echo "Success";
-			}
-			else{
-			print_r($errors);
+		$this->db->insert('tiket', $data);
+		$namafilenew = $this->db->insert_id();
+		$this->helpdesk_model->update_lampiran($namafilenew,$namafilenew);
+		// attackment
+		
+		$folder_name = $namafilenew;
+		$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/";
+		$new_folder=mkdir($target_dir."/".$folder_name, 0777, true);
+		$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/". $folder_name ."/" . $namafilenew . "____";
+		$target_file = $target_dir . basename($_FILES["namafile"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		
+		// Check if image file is a actual image or fake image
+		
+		if(isset($_POST["submit"])) {
+			$check = getimagesize($_FILES["namafile"]["tmp_name"]);
+			if($check !== false) {
+				echo "File is an image - " . $check["mime"] . ".";
+				$uploadOk = 1;
+			} else {
+				echo "File is not an image.";
+				$uploadOk = 0;
 			}
 		}
+		
+		echo basename($_FILES["namafile"]["name"]);
+			echo $new_folder;
+		
+		// Check if $uploadOk is set to 0 by an error
+		
+		if ($uploadOk == 0) {
+			echo "Sorry, your file was not uploaded.";
+		
+		// if everything is ok, try to upload file
+		
+		} else {
+			if (move_uploaded_file($_FILES["namafile"]["tmp_name"], $target_file)) {
+				echo "The file ". basename( $_FILES["namafile"]["name"]). " has been uploaded.";
+			} else {
+				echo "Sorry, there was an error uploading your file.";
+			}
+		}
+		
+		
+		// redirect('helpdesk/tiket_baru');
 	}
 }

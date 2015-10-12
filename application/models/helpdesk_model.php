@@ -58,6 +58,15 @@ class Helpdesk_model extends CI_Model {
         return $this->db->get();
     }
 	
+	function update_lampiran($id,$lampiran) {
+        $data = array(
+               'lampiran' => $lampiran,
+            );
+
+		$this->db->where('id_tiket', $id);
+		$this->db->update('tiket', $data); 
+    }
+	
 }
  
 /* End of file teknisi_model.php */
