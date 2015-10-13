@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : konseksi
-Source Server Version : 50626
+Source Server         : koneksi
+Source Server Version : 50516
 Source Host           : localhost:3306
 Source Database       : helpdesk
 
 Target Server Type    : MYSQL
-Target Server Version : 50626
+Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2015-10-12 12:26:15
+Date: 2015-10-13 14:05:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,11 +26,12 @@ CREATE TABLE `attachment` (
   `upload_date` datetime NOT NULL,
   PRIMARY KEY (`id_attachment`),
   KEY `fk_id_tiket` (`id_tiket`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of attachment
 -- ----------------------------
+INSERT INTO `attachment` VALUES ('1', '12', '12.pdf', '0', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for `customer`
@@ -250,7 +251,29 @@ CREATE TABLE `pegawai` (
 -- Records of pegawai
 -- ----------------------------
 INSERT INTO `pegawai` VALUES ('HD', 'Helpdesk Dummy', '0', 'dummy@dummy.com', 'helpdesk', '288682ec5f2450588bb37a4523d11616', '2015-10-04 23:35:04', '2015-10-11 12:00:09', '2', '6', '17', null);
-INSERT INTO `pegawai` VALUES ('TS', 'Teknisi Dummy', '0', 'dummy@dummy.com', 'teknisi', 'e21394aaeee10f917f581054d24b031f', '2015-10-04 23:32:41', '2015-10-08 20:31:33', '2', '7', '17', null);
+INSERT INTO `pegawai` VALUES ('TS', 'Teknisi Dummy', '0', 'dummy@dummy.com', 'teknisi', 'e21394aaeee10f917f581054d24b031f', '2015-10-04 23:32:41', '2015-10-13 09:54:07', '2', '7', '17', null);
+
+-- ----------------------------
+-- Table structure for `solusi`
+-- ----------------------------
+DROP TABLE IF EXISTS `solusi`;
+CREATE TABLE `solusi` (
+  `id_solusi` int(11) NOT NULL AUTO_INCREMENT,
+  `judul_solusi` text NOT NULL,
+  `dilihat_sebanyak` int(11) DEFAULT NULL,
+  `deskripsi_solusi` mediumtext NOT NULL,
+  `id_tiket` int(11) NOT NULL,
+  `nip` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_solusi`),
+  KEY `fk_tiket_solusi` (`id_tiket`),
+  KEY `fk_pegawai_solusi` (`nip`),
+  CONSTRAINT `fk_pegawai_solusi` FOREIGN KEY (`nip`) REFERENCES `pegawai` (`nip`),
+  CONSTRAINT `fk_tiket_solusi` FOREIGN KEY (`id_tiket`) REFERENCES `tiket` (`id_tiket`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of solusi
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `sub_divisi`
@@ -310,7 +333,7 @@ CREATE TABLE `tiket` (
   `tgl_awal_tiket` datetime NOT NULL,
   `date_open` datetime DEFAULT NULL,
   `date_close` datetime DEFAULT NULL,
-  `durasi` datetime DEFAULT NULL,
+  `durasi` int(255) DEFAULT NULL,
   `deskripsi_masalah` text NOT NULL,
   `staf_helpdesk` varchar(255) NOT NULL,
   `staf_teknisi` varchar(255) DEFAULT NULL,
@@ -340,14 +363,14 @@ CREATE TABLE `tiket` (
 -- ----------------------------
 -- Records of tiket
 -- ----------------------------
-INSERT INTO `tiket` VALUES ('1', 'aaaaa', '2015-10-10 15:38:21', null, null, null, 'a', 'TS', 'HD', '1', '1', '1', '1', '1', '1', null, null);
-INSERT INTO `tiket` VALUES ('12', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '55', '1', '6', '1', '1', '1', null, null);
-INSERT INTO `tiket` VALUES ('13', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '6', '1', '1', '1', null, null);
-INSERT INTO `tiket` VALUES ('14', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '6', '1', '1', '1', null, null);
-INSERT INTO `tiket` VALUES ('15', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '6', '1', '1', '1', '1', null);
-INSERT INTO `tiket` VALUES ('16', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '6', '1', '1', '1', '1', null);
-INSERT INTO `tiket` VALUES ('17', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '6', '1', '1', '1', '1', null);
-INSERT INTO `tiket` VALUES ('18', 'Hardisk error', '0000-00-00 00:00:00', null, null, null, 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '6', '1', '1', '1', '18', null);
+INSERT INTO `tiket` VALUES ('1', 'aaaaa', '2015-10-10 15:38:21', '0000-00-00 00:00:00', null, null, 'a', 'TS', 'HD', '1', '1', '1', '1', '1', '1', null, null);
+INSERT INTO `tiket` VALUES ('12', 'Implementasi algoritma kriptografi AES dan OTP untuk membangkitkan kode otentikasi pada aktivasi member baru yang dikirim melalui SMS', '0000-00-00 00:00:00', '2015-10-13 12:52:26', '2015-10-13 12:52:35', '9', 'tidak bisa membuka file', 'HD', 'TS', '55', '1', '6', '1', '3', '1', '18', '0');
+INSERT INTO `tiket` VALUES ('13', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 08:51:18', '2015-10-13 11:17:45', null, 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '6', '1', '1', '1', null, '1');
+INSERT INTO `tiket` VALUES ('14', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 08:51:29', '2015-10-12 16:07:32', null, 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '6', '1', '1', '1', null, '1');
+INSERT INTO `tiket` VALUES ('15', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 09:54:25', null, null, 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '6', '1', '1', '1', '1', null);
+INSERT INTO `tiket` VALUES ('16', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 11:17:31', null, null, 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '6', '1', '1', '1', '1', null);
+INSERT INTO `tiket` VALUES ('17', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 11:17:36', null, null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '6', '1', '1', '1', '1', null);
+INSERT INTO `tiket` VALUES ('18', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 08:42:45', null, null, 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '6', '1', '1', '1', '18', null);
 
 -- ----------------------------
 -- Table structure for `user`
