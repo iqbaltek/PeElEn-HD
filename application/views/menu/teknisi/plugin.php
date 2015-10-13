@@ -41,3 +41,20 @@
 			$("#quick-access").css("bottom","0px");				
 		});		
 	</script>
+
+<!-- PLUGINS Notifikasi --> 	
+<link href="<?php echo base_url();?>assets/menu/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/css/messenger.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/css/messenger-theme-flat.css" rel="stylesheet" type="text/css" media="screen"/>
+<!-- BELOW CSS FILE IS NOT REQUIRED -->
+<link href="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/css/location-sel.css" rel="stylesheet" type="text/css" media="screen"/>
+<script src="<?php echo base_url();?>assets/menu/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu/plugins/pace/pace.min.js" type="text/javascript"></script>  
+<script src="<?php echo base_url();?>assets/menu/js/notifications.js" type="text/javascript"></script>  
+<script src="<?php echo base_url();?>assets/menu/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/js/messenger.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/js/messenger-theme-future.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/js/demo/location-sel.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/js/demo/theme-sel.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/js/demo/demo.js"></script>

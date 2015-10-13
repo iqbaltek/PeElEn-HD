@@ -23,12 +23,12 @@
     };
 
     LocationSelector.prototype.draw = function() {
-      this._addBit('top left');
+      return this._addBit('top left');
       this._addBit('top right');
       this._addBit('top');
       this._addBit('bottom left');
       this._addBit('bottom right');
-      return this._addBit('bottom');
+      this._addBit('bottom');
     };
 
     LocationSelector.prototype._addBit = function(classes) {

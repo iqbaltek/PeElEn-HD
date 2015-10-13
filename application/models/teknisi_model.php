@@ -166,6 +166,11 @@ class Teknisi_model extends CI_Model {
         return $this->db->get();
     }
 	
+	function second_diff(){
+		$this->db->query("SELECT TIMESTAMPDIFF(SECOND, '2012-06-06 13:13:55', '2012-06-06 15:20:18')");
+		return $this->db->get();
+	}
+	
 }
  
 /* End of file teknisi_model.php */

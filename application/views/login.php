@@ -7,26 +7,14 @@
     </style>
     <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-<title> Login page 4 </title>
+<title> Helpdesk | PLN Distribusi Jawa Barat Banten </title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<!-- Favicons -->
-
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url();?>assets/login/images/icons/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url();?>assets/login/images/icons/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url();?>assets/login/images/icons/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="<?php echo base_url();?>assets/login/images/icons/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="<?php echo base_url();?>assets/login/images/icons/favicon.png">
-
-
-
-    <!-- HELPERS -->
+<!-- HELPERS -->
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/helpers/animate.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/helpers/backgrounds.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/helpers/boilerplate.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/helpers/border-radius.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/helpers/grid.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/helpers/page-transitions.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/helpers/spacing.css">
@@ -36,24 +24,9 @@
 
 <!-- ELEMENTS -->
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/badges.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/buttons.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/content-box.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/dashboard-box.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/forms.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/images.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/info-box.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/invoice.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/loading-indicators.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/menus.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/panel-box.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/response-messages.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/responsive-tables.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/ribbon.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/social-box.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/tables.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/tile-box.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/elements/timeline.css">
 
 <!-- ICONS -->
 
@@ -61,72 +34,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/icons/linecons/linecons.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/icons/spinnericon/spinnericon.css">
 
-
-<!-- WIDGETS -->
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/accordion-ui/accordion.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/calendar/calendar.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/carousel/carousel.css">
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/charts/justgage/justgage.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/charts/morris/morris.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/charts/piegage/piegage.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/charts/xcharts/xcharts.css">
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/chosen/chosen.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/colorpicker/colorpicker.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/datatable/datatable.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/datepicker/datepicker.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/datepicker-ui/datepicker.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/daterangepicker/daterangepicker.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/dialog/dialog.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/dropdown/dropdown.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/dropzone/dropzone.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/file-input/fileinput.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/input-switch/inputswitch.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/input-switch/inputswitch-alt.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/ionrangeslider/ionrangeslider.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/jcrop/jcrop.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/jgrowl-notifications/jgrowl.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/loading-bar/loadingbar.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/maps/vector-maps/vectormaps.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/markdown/markdown.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/modal/modal.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/multi-select/multiselect.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/multi-upload/fileupload.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/nestable/nestable.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/noty-notifications/noty.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/popover/popover.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/pretty-photo/prettyphoto.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/progressbar/progressbar.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/range-slider/rangeslider.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/slidebars/slidebars.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/slider-ui/slider.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/summernote-wysiwyg/summernote-wysiwyg.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/tabs-ui/tabs.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/theme-switcher/themeswitcher.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/timepicker/timepicker.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/tocify/tocify.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/tooltip/tooltip.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/touchspin/touchspin.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/uniform/uniform.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/wizard/wizard.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/widgets/xeditable/xeditable.css">
-
 <!-- SNIPPETS -->
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/snippets/chat.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/snippets/files-box.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/snippets/login-box.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/snippets/notification-box.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/snippets/progress-box.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/snippets/todo.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/snippets/user-profile.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/snippets/mobile-navigation.css">
-
-<!-- APPLICATIONS -->
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/applications/mailbox.css">
 
 <!-- Admin theme -->
 
@@ -222,7 +132,7 @@
                     <div class="content-box-wrapper">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                                 <span class="input-group-addon bg-blue">
                                     <i class="glyph-icon icon-user"></i>
                                 </span>
@@ -230,7 +140,7 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                 <span class="input-group-addon bg-blue">
                                     <i class="glyph-icon icon-unlock-alt"></i>
                                 </span>

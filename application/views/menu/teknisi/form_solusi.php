@@ -46,7 +46,7 @@
 				<?php } ?>
 			</div>
 				<div class="pull-right">
-					<button type="submit" class="btn btn-success btn-cons">Save</button>
+					<button type="submit" class="btn btn-success btn-cons" onclick="showSuccess('Tutorial Solusi untuk Kode <?php echo $row->id_tiket?> telah diterbitkan')">Save</button>
 				</div>
 		</div>
 	</form>

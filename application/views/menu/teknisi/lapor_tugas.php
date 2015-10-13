@@ -64,7 +64,7 @@
                     <td align="center">
 										<input type="hidden" name="id_tiket" id="id_tiket" value="<?php echo $row->id_tiket?>">
 										<input type="hidden" name="date_open" id="date_open" value="<?php echo $row->date_open?>">
-										<input type="submit" value="Selesai" class="btn btn-primary">
+										<input type="submit" value="Selesai" class="btn btn-primary" onclick="showSuccess('Tugas dengan Kode <?php echo $row->id_tiket?> telah selesai')">
 										</form></td>
                   </tr>
 				<?php } ?>

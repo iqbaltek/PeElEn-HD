@@ -175,17 +175,15 @@ class Teknisi extends CI_Controller {
 			$tutorial = '0';
 		}
 		
-		//mencari durasi antara open tiket hingga close tiket
-		$tgl_open   = new DateTime( $this->input->post('date_open'));
-		$tgl_close  = new DateTime( date("Y-m-d H:i:s", strtotime('+5 hours')) );
-		$diff  = $tgl_open->diff( $tgl_close );
-		
-		
 		//variable untuk masuk ke update selesai
 		$date_close = date("Y-m-d H:i:s", strtotime('+5 hours'));
+		
 		//memanggil fungsi durasi waktu
-		$durasi = $this->durasi($diff);
-		echo $durasi;		
+		$open = strtotime($this->input->post('date_open'));
+		$close = strtotime(date("Y-m-d H:i:s", strtotime('+5 hours')));
+		
+		$durasi = $close - $open;
+		
 		//memasukkan ke dalam database
 		$this->load->model('teknisi_model');
 		$this->teknisi_model->update_selesai($this->input->post('id_tiket'),$tutorial, $date_close, $durasi);
@@ -319,6 +317,7 @@ class Teknisi extends CI_Controller {
         
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$rekap_tugas = $this->teknisi_model->rekap_tugas($nip)->result();
+		
 		
 			//daftarkan session
             $data = array(

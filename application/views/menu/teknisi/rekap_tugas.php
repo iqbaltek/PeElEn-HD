@@ -54,7 +54,28 @@
 					<td><?php echo $row->nama_kategori; ?></td>
                     <td><?php echo $row->nama_kantor; ?></td>
                     <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->date_close))); ?></td>
-                    <td><?php echo $row->durasi; ?></td>
+                    <td><?php 
+						$durasi = $row->durasi; 
+										
+						$second = 1;
+						$minute = 60*$second;
+						$hour   = 60*$minute;
+						$day    = 24*$hour;
+
+						$ans["day"]    = floor($durasi/$day);
+						$ans["hour"]   = floor(($durasi%$day)/$hour);
+						$ans["minute"] = floor((($durasi%$day)%$hour)/$minute);
+						$ans["second"] = floor(((($durasi%$day)%$hour)%$minute)/$second);
+						if($ans["day"] != 0){
+							echo $ans["day"] . " hari, " . $ans["hour"] . " jam, "  . $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] != 0){
+							echo $ans["hour"] . " jam, "  . $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] == 0 && $ans["minute"] != 0){
+							echo $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] == 0 && $ans["minute"] == 0 && $ans["second"] != 0){
+							echo $ans["second"] . " detik";
+						}
+					?></td>
                     <td class="center"><?php echo $row->nama_level; ?></td>
                     <td class="center"><?php echo $row->nama_dampak; ?></td>
                     <td class="center">

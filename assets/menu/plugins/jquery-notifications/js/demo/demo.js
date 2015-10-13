@@ -1,7 +1,6 @@
 $(function(){
-  Messenger().post("Thanks for checking out Messenger!");
 
-  var loc = ['bottom', 'right'];
+  var loc = ['top', 'left'];
   var style = 'flat';
 
   var $output = $('.controls output');

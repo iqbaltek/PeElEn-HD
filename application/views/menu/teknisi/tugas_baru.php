@@ -44,7 +44,7 @@
                     <td class="center"><?php echo $row->nama_dampak; ?></td>
                     <td class="center"><form name="tindakan" id="tindakan" method="POST" action="<?php echo base_url('teknisi/update_tiket')?>">
 										<input type="hidden" name="id_tiket" id="id_tiket" value="<?php echo $row->id_tiket?>">
-										<input type="submit" value="Kerjakan" class="btn btn-success">
+										<input type="submit" value="Kerjakan" class="btn btn-success" onclick="showSuccess('Tugas dengan Kode <?php echo $row->id_tiket?> telah dipilih')" />
 										</form></td>
                   </tr>
 				<?php } ?>

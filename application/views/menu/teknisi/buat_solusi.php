@@ -45,7 +45,7 @@
                     <td align="center"><?php echo $row->nama_dampak; ?></td>
                     <td align="center"><form name="tindakan" id="tindakan" method="POST" action="<?php echo base_url('teknisi/form_solusi')?>">
 										<input type="hidden" name="id_tiket" id="id_tiket" value="<?php echo $row->id_tiket?>">
-										<input type="submit" value="Buat Solusi" class="btn btn-primary">
+										<input type="submit" value="Buat Solusi" class="btn btn-primary" onclick="showSuccess('Kode <?php echo $row->id_tiket?> akan dibuatkan tutorial solusi')">
 										</form></td>
                   </tr>
 				<?php } ?>
