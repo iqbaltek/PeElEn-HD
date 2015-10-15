@@ -17,7 +17,7 @@
 
 	<!-- content --> 
     <div class="content sm-gutter">
-	<form  method="POST" action="<?php echo base_url('index.php/helpdesk/addTiket'); ?>" enctype="multipart/form-data">   
+	<form  method="POST" action="<?php echo base_url('helpdesk/addTiket'); ?>" enctype="multipart/form-data">   
 		<div class="page-title">
 		</div>
 		<!-- BEGIN DASHBOARD TILES --> 
@@ -71,7 +71,7 @@
 						<label class="semi-bold">Other</label>
 						<div class="input-with-icon  right">                                       
 							<i class=""></i>
-							<input type="text" name="other" id="form1CardNumber" class="form-control" required>                                 
+							<input type="text" name="other" id="form1CardNumber" class="form-control" />                                 
 						</div>
 					</div>
 				</div>
@@ -182,11 +182,25 @@
 						</div>
 					</div>
 
+					<div class="form-group">
+						<div class="col-md-6">
+							<label class="semi-bold">Status Tiket</label>
+							<div class="radio radio-success">
+								<input id="yes" type="radio" name="status_tiket" value="1" required />
+								<label for="yes">New</label>
+								<input id="no" type="radio" name="status_tiket" value="2" required />
+								<label for="no">Close</label>
+							</div>
+						</div>
+					</div>
+
 
 					<div class="form-group">
+						<div class="col-md-6">
 						<label class="semi-bold">Lampirkan File (max 2mb, <i>file lebih dari satu di rar / zip) </i></label>
 						<div class=" right">                                       
 							<input type="file" name="namafile" required />
+						</div>
 						</div>
 					</div>	
 					
@@ -200,6 +214,5 @@
 		</div>
 	</form>
 	</div>
-	
 	  <!-- END DASHBOARD TILES -->
 </div>

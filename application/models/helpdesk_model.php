@@ -67,6 +67,24 @@ class Helpdesk_model extends CI_Model {
 		$this->db->update('tiket', $data); 
     }
 	
+	
+	function getTanggal($id){
+        $this->db->select('*');
+		$this->db->where('id_tiket', $id);
+        $this->db->from('tiket');
+        return $this->db->get();
+    }
+	
+	function update_date($id, $date){
+		$data = array(
+				'date_open' => $date,
+				'date_close' => $date,
+				'durasi' => 0,
+				'tutorial' => 0,
+			);
+		$this->db->where('id_tiket', $id);
+		$this->db->update('tiket', $data);
+	}
 }
  
 /* End of file teknisi_model.php */

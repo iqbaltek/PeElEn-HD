@@ -114,8 +114,11 @@
 			?>
 				<ul>
 					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
-					<li class=""> <a href="<?php echo base_url('index.php/helpdesk/tiket_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tiket Baru</span></a> </li>
-					<li class=""> <a href="<?php echo base_url('index.php/helpdesk/knowledge_base')?>" target="_blank"> <i class="fa fa-lightbulb-o"></i> <span class="title">Knowledge Base</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('helpdesk/tiket_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tiket Baru</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('helpdesk/#')?>" target="_blank"> <i class="fa fa-lightbulb-o"></i> <span class="title">Tracking Tiket</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('helpdesk/knowledge_base')?>" target="_blank"> <i class="fa fa-lightbulb-o"></i> <span class="title">Knowledge Base</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('helpdesk/#')?>" target="_blank"> <i class="fa fa-lightbulb-o"></i> <span class="title">Tugas Baru</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('helpdesk/#')?>" target="_blank"> <i class="fa fa-lightbulb-o"></i> <span class="title">Tugas Belum Dikerjakan</span></a> </li>
 				</ul>
 			<?php
 			}

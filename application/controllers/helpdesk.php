@@ -50,6 +50,7 @@ class Helpdesk extends CI_Controller {
 		else {
 			redirect('login/index');
 		}
+		
     }
 	
 	public function addTiket(){		
@@ -90,6 +91,7 @@ class Helpdesk extends CI_Controller {
 		$level_prioritas = $_POST['level_prioritas'];
 		$status = 1;
 		$dampak = $_POST['dampak'];
+		$status_tiket = $_POST['status_tiket'];
 		
 		// echo "lalalalalal->" . $kategori;
 		
@@ -106,16 +108,25 @@ class Helpdesk extends CI_Controller {
 			'kantor' => $kantor,
 			'kategori' => $kategori,
 			'level_prioritas' => $level_prioritas,
-			'status' => $status,
+			'status' => $status_tiket,
 			'dampak' => $dampak,
-		);
+		);			
+				
 		
 		// insert DB
 		$this->db->insert('tiket', $data);
 		$namafilenew = $this->db->insert_id();
 		$this->helpdesk_model->update_lampiran($namafilenew,$namafilenew);
-		// attackment
 		
+		// isi date_open dkk jika status 2 / close
+		$tgl = $this->helpdesk_model->getTanggal($namafilenew)->result();
+		foreach ($tgl as $row){
+		   $get_tgl = $row->tgl_awal_tiket;
+		}
+		$this->helpdesk_model->update_date($namafilenew,$get_tgl);
+		
+		
+		// attackment
 		$nama_file = basename( $_FILES["namafile"]["name"]);
 		$extension = pathinfo($nama_file, PATHINFO_EXTENSION);
 		$folder_name = $namafilenew;
@@ -172,6 +183,7 @@ class Helpdesk extends CI_Controller {
 		);
 		$this->db->insert('attachment', $data3);
 
+		echo "<script type='text/javascript'>alert('hey berhasil!');</script>";
 		redirect('helpdesk/tiket_baru');
 	}
 }
