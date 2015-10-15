@@ -25,8 +25,8 @@ class Teknisi_model extends CI_Model {
     function open_bulan_ini($month, $year,$teknisi) {
 		$this->db->select('*');
 		$this->db->from('tiket');
-		$this->db->where("YEAR(tgl_awal_tiket)",$year);
-		$this->db->where("MONTH(tgl_awal_tiket)",$month);
+		$this->db->where("YEAR(date_open)",$year);
+		$this->db->where("MONTH(date_open)",$month);
 		$this->db->where('staf_teknisi', $teknisi);
 		$this->db->where('status', '2');
 		return $this->db->count_all_results();
@@ -35,8 +35,8 @@ class Teknisi_model extends CI_Model {
     function close_bulan_ini($month, $year,$teknisi) {
 		$this->db->select('*');
 		$this->db->from('tiket');
-		$this->db->where("YEAR(tgl_awal_tiket)",$year);
-		$this->db->where("MONTH(tgl_awal_tiket)",$month);
+		$this->db->where("YEAR(date_close)",$year);
+		$this->db->where("MONTH(date_close)",$month);
 		$this->db->where('staf_teknisi', $teknisi);
 		$this->db->where('status', '3');
 		return $this->db->count_all_results();
@@ -56,6 +56,22 @@ class Teknisi_model extends CI_Model {
 		$this->db->where('staf_teknisi', $teknisi);
 		$this->db->where('status', '1');
         return $this->db->get();
+    }
+	
+	//untuk menghitung data tugas baru milik teknisi
+    function count_tugas_baru($teknisi) {
+        $this->db->select('*');
+        $this->db->from('tiket');
+        $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
+        $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
+        $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+        $this->db->join('kategori','tiket.kategori=kategori.id_kategori');
+        $this->db->order_by('dampak', 'asc');
+        $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '1');
+        return $this->db->count_all_results();
     }
 	
 	//untuk mengambil 1 row data tiket
@@ -105,6 +121,22 @@ class Teknisi_model extends CI_Model {
         return $this->db->get();
     }
 	
+	//fungsi untuk menghitung seluruh data yang telah diambil untuk dilaporkan bahwa tugas tersebut telah selesai
+	function count_lapor_selesai($teknisi) {
+        $this->db->select('*');
+        $this->db->from('tiket');
+        $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
+        $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
+        $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+		$this->db->join('kategori','tiket.kategori=kategori.id_kategori');
+        $this->db->order_by('dampak', 'asc');
+        $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '2');
+        return $this->db->count_all_results();
+    }
+	
 	//fungsi untuk update 1 table pada tiket setelai teknisi melaporkan bahwa tugasnya telah selesai dan status di ubah menjadi close
 	function update_selesai($id_tiket,$tutorial,$tgl_selesai,$durasi) {
 		$data = array(
@@ -132,6 +164,23 @@ class Teknisi_model extends CI_Model {
 		$this->db->where('status', '3');
 		$this->db->where('tutorial', '1');
         return $this->db->get();
+    }
+	
+	// fungsi untuk menghitung semua tugas yang perlu di buat solusinya
+	function count_buat_solusi($teknisi){
+        $this->db->select('*');
+        $this->db->from('tiket');
+        $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
+        $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
+        $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+		$this->db->join('kategori','tiket.kategori=kategori.id_kategori');
+        $this->db->order_by('dampak', 'asc');
+        $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
+		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where('status', '3');
+		$this->db->where('tutorial', '1');
+        return $this->db->count_all_results();
     }
 	
 	function form_solusi($id_tiket){
