@@ -40,6 +40,11 @@ class Teknisi extends CI_Controller {
 		
 		//menghitung semua tugas milik sendiri yang sudah terselesaikan
 		$close_bulan_ini = $this->teknisi_model->close_bulan_ini($month, $year, $nip);
+		
+		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
+		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
+		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
 
 		//daftarkan session
 		$data = array(
@@ -49,6 +54,9 @@ class Teknisi extends CI_Controller {
 			'new_bulan_ini' => $new_bulan_ini,
 			'open_bulan_ini' => $open_bulan_ini,
 			'close_bulan_ini' => $close_bulan_ini,
+			'count_tugas_baru' => $count_tugas_baru,
+			'count_lapor_selesai' => $count_lapor_selesai,
+			'count_buat_solusi' => $count_buat_solusi,
 		);
 		$this->session->set_userdata($data);
 		
@@ -72,13 +80,18 @@ class Teknisi extends CI_Controller {
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$this->load->model('teknisi_model');
 		$tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
-		
-		//memanggil model untuk mendapatkan semua attachment sesuai dengan id_tiket
-		
-		
+				
+		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
+		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
+		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
+
 		//daftarkan session
 		$data = array(
-			'tugas_baru' => $tugas_baru
+			'tugas_baru' => $tugas_baru,
+			'count_tugas_baru' => $count_tugas_baru,
+			'count_lapor_selesai' => $count_lapor_selesai,
+			'count_buat_solusi' => $count_buat_solusi,
 		);
 		$this->session->set_userdata($data);
 		
@@ -207,10 +220,17 @@ class Teknisi extends CI_Controller {
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$lapor_tugas = $this->teknisi_model->lapor_selesai($nip)->result();
 		
+		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
+		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
+		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
 		
 			//daftarkan session
             $data = array(
-                'lapor_tugas' => $lapor_tugas
+                'lapor_tugas' => $lapor_tugas,
+				'count_tugas_baru' => $count_tugas_baru,
+				'count_lapor_selesai' => $count_lapor_selesai,
+				'count_buat_solusi' => $count_buat_solusi,
             );
             $this->session->set_userdata($data);
 			
@@ -235,9 +255,18 @@ class Teknisi extends CI_Controller {
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$buat_solusi = $this->teknisi_model->buat_solusi($nip)->result();
 		
+		
+		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
+		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
+		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
+		
 			//daftarkan session
             $data = array(
-                'buat_solusi' => $buat_solusi
+                'buat_solusi' => $buat_solusi,
+				'count_tugas_baru' => $count_tugas_baru,
+				'count_lapor_selesai' => $count_lapor_selesai,
+				'count_buat_solusi' => $count_buat_solusi,
             );
             $this->session->set_userdata($data);
 			

@@ -95,11 +95,12 @@
   <div class="page-sidebar" id="main-menu">
     <!-- BEGIN MINI-PROFILE -->
     <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper">
-      <div class="user-info-wrapper">
+      <div class="user-info-wrapper" align="center">
 		<div class="user-info">
-          <div class="greeting">Welcome</div>
-          <div class="username"><span class="bold"><?php echo $nama_pegawai;?></span></div>
-          <div class="status">Status<a href="#">
+			
+			<div class="greeting">Welcome</div>
+			<div class="username"><span class="bold"><?php echo $nama_pegawai;?></span></div>
+			<div class="status">Status<a href="#">
             <div class="status-icon green"></div>
             Online</a></div>
         </div>
@@ -113,7 +114,7 @@
 			{
 			?>
 				<ul>
-					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
+					<li class="start "> <a href="<?php echo base_url('#')?>" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
 					<li class=""> <a href="<?php echo base_url('index.php/helpdesk/tiket_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tiket Baru</span></a> </li>
 					<li class=""> <a href="<?php echo base_url('index.php/helpdesk/knowledge_base')?>" target="_blank"> <i class="fa fa-lightbulb-o"></i> <span class="title">Knowledge Base</span></a> </li>
 				</ul>
@@ -126,9 +127,9 @@
 			?>
 				<ul>
 					<li class="start "> <a href="<?php echo base_url('teknisi/dashboard')?>" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
-					<li class=""> <a href="<?php echo base_url('teknisi/tugas_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tugas Baru</span></a> </li>
-					<li class=""> <a href="<?php echo base_url('teknisi/tugas_selesai')?>"> <i class="fa fa-check-square-o"></i> <span class="title">Lapor Tugas Selesai</span></a> </li>
-					<li class=""> <a href="<?php echo base_url('teknisi/buat_solusi')?>"> <i class="fa fa-thumbs-o-up"></i> <span class="title">Buat Tutorial Solusi</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('teknisi/tugas_baru')?>"> <i class="fa fa-edit"></i> <span class="title">Tugas Baru</span><span class="<?php if($count_tugas_baru!=0){ echo "badge badge-important pull-right";}else{echo "badge badge-disable pull-right";}?> "><?php echo $count_tugas_baru;?></span></a></li>
+					<li class=""> <a href="<?php echo base_url('teknisi/tugas_selesai')?>"> <i class="fa fa-check-square-o"></i> <span class="title">Laporan Tugas</span><span class="<?php if($count_lapor_selesai!=0){ echo "badge badge-important pull-right";}else{echo "badge badge-disable pull-right";}?>"><?php echo $count_lapor_selesai;?></span></a> </li>
+					<li class=""> <a href="<?php echo base_url('teknisi/buat_solusi')?>"> <i class="fa fa-thumbs-o-up"></i> <span class="title">Buat Tutorial Solusi</span><span class="<?php if($count_buat_solusi!=0){ echo "badge badge-important pull-right";}else{echo "badge badge-disable pull-right";}?>"><?php echo $count_buat_solusi;?></span></a> </li>
 					<li class=""> <a href="<?php echo base_url('teknisi/rekap_tugas')?>"> <i class="fa fa-book"></i> <span class="title">Rekap Tugas</span></a> </li>
 				</ul>
 			<?php
@@ -138,9 +139,8 @@
 			{
 			?>
 				<ul>
-					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
-					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Staf Baru</span></a> </li>
-					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Edit Jabatan Pegawai</span></a> </li>
+					<li class="start "> <a href="<?php echo base_url('admin/dashboard')?>" >  <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
+					<li class=""> <a href="<?php echo base_url('admin/aktivasi')?>"> <i class="fa fa-check-square-o"></i> <span class="title">Aktivasi Pegawai</span></a> </li>
 					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Tim Baru</span></a> </li>
 					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Kategori Baru</span></a> </li>
 					<li class=""> <a href="<?php echo base_url('#')?>"> <i class="fa fa-edit"></i> <span class="title">Divisi Baru</span></a> </li>
@@ -148,13 +148,25 @@
 				</ul>
 			<?php
 			}
-		 
-			elseif($level == 3)
+			
+			// Menu Kepala Deputi / Supervisor
+			elseif($level == 4)
 			{
 				?>
 				<ul>
-					<li class="start "> <a href="index.html" > <i class="icon-custom-home"></i> <span class="title">Menu Supervisor</span> <span class="selected"></span></a></li>
-					<li class=""> <a href="widgets.html"> <i class="fa fa-th"></i> <span class="title">Widgets</span></a> </li>
+					<li class="start "><a href="<?php echo base_url('kepala/dashboard')?>" > <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span></a></li>
+					<li class=""> <a href="javascript:;"> <i class="fa fa-file-text"></i> <span class="title">Laporan Tiket</span> <span class="fa fa-angle-down pull-right"></span> </a>
+						<ul class="sub-menu">
+							<li > <a href="<?php echo base_url('#')?>"> Tiap Kategori </a> </li>
+							<li > <a href="<?php echo base_url('#')?>"> Tiap Kantor </a> </li>
+						</ul>
+					</li> 
+					<li class=""> <a href="javascript:;"> <i class="fa fa-file-text"></i> <span class="title">Laporan Pegawai</span> <span class="fa fa-angle-down pull-right"></span>  </a>
+						<ul class="sub-menu">
+							<li > <a href="<?php echo base_url('#')?>"> Perorangan </a> </li>
+							<li > <a href="<?php echo base_url('#')?>"> Keseluruhan </a> </li>
+						</ul>
+					</li>
 				</ul>
 			<?php		
 			}

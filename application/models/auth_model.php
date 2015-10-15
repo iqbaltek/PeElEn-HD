@@ -15,7 +15,16 @@ class Auth_model extends CI_Model {
         $query =  $this->db->get('pegawai');
         return $query->num_rows();
     }
-    
+	
+//    untuk mengcek aktivasi
+    function aktivasi($username,$password,$aktivasi) {
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+        $this->db->where('aktivasi', $aktivasi);
+        $query =  $this->db->get('pegawai');
+        return $query->num_rows();
+    }
+	    
 //    untuk mengambil data hasil login
     function data_login($username,$password) {
         $this->db->where('username', $username);
