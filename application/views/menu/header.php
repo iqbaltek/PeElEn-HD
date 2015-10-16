@@ -29,12 +29,12 @@
 <link href="<?php echo base_url();?>assets/menu/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/menu/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/menu/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url();?>assets/menu/css/TableTools.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/menu/css/animate.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url();?>assets/menu/plugins/jquery-scrollbar/jquery.scrollbar.css" rel="stylesheet" type="text/css"/>
 
 
-<link href="<?php echo base_url();?>assets/menu/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url();?>assets/menu/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="<?php echo base_url();?>assets/menu/css/datatables/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
 
 <!-- END CORE CSS FRAMEWORK -->
 

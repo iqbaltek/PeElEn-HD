@@ -167,7 +167,8 @@ $(document).ready(function() {
 				{
 					"sExtends":    "collection",
 					"sButtonText": "<i class='fa fa-cloud-download'></i>",
-					"aButtons":    [ "csv", "xls", "pdf", "copy"]
+					"sSwfPath": "../swf/copy_csv_xls.swf",
+					"aButtons":    [ "csv", "xls", "pdf", "copy","print"]
 				}
 			]
 		},

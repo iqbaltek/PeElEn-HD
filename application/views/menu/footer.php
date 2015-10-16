@@ -81,6 +81,11 @@
 <script src="<?php echo base_url();?>assets/menu/js/core.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/menu/js/chat.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/menu/js/demo.js" type="text/javascript"></script>
+
+<script src="<?php echo base_url();?>assets/menu/js/datatables/jquery.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu/js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu/js/ZeroClipboard.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu/js/datatables/TableTools.js" type="text/javascript"></script>
 <!-- END CORE TEMPLATE JS -->
 
 </body>

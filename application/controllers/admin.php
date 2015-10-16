@@ -42,7 +42,7 @@ class Admin extends CI_Controller {
 		$close_bulan_ini = $this->teknisi_model->close_bulan_ini($month, $year, $nip);
 		
 		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
-		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		// $count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
 		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
 		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
 
@@ -54,7 +54,7 @@ class Admin extends CI_Controller {
 			'new_bulan_ini' => $new_bulan_ini,
 			'open_bulan_ini' => $open_bulan_ini,
 			'close_bulan_ini' => $close_bulan_ini,
-			'count_tugas_baru' => $count_tugas_baru,
+			// 'count_tugas_baru' => $count_tugas_baru,
 			'count_lapor_selesai' => $count_lapor_selesai,
 			'count_buat_solusi' => $count_buat_solusi,
 		);

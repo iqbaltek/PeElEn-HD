@@ -86,7 +86,7 @@
 				  <h4><span class="semi-bold">Laporan Tiket tiap Kategori bulan ini</span></h4>
 				</div>
 				<div class="grid-body ">
-				  <table class="table table-striped" id="example2" >
+				 <table id="example" class="table table-striped"  >
 					<thead>
 					  <tr align="center">
 						<th>NO</th>
