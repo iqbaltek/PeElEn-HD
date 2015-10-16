@@ -60,15 +60,9 @@
 <script type="text/javascript" src="<?php echo base_url();?>assets/menu/plugins/jquery-notifications/js/demo/demo.js"></script>
 
 <!-- Chart -->
-<!-- END CONTAINER -->
-<script src="<?php echo base_url();?>assets/menu/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/menu/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/menu/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/menu/plugins/breakpoints.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/menu/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/menu/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script>
-<!-- END CORE JS FRAMEWORK -->
-<!-- BEGIN PAGE LEVEL JS -->
+<link rel="stylesheet" href="<?php echo base_url();?>assets/menu/plugins/jquery-ricksaw-chart/css/rickshaw.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/menu/plugins/jquery-morris-chart/css/morris.css" type="text/css" media="screen">
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="<?php echo base_url();?>assets/menu/plugins/pace/pace.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/menu/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>    
@@ -84,10 +78,10 @@
 <script src="<?php echo base_url();?>assets/menu/plugins/jquery-flot/jquery.flot.orderBars.js"></script>
 <script src="<?php echo base_url();?>assets/menu/plugins/jquery-sparkline/jquery-sparkline.js"></script>
 <script src="<?php echo base_url();?>assets/menu/plugins/jquery-easy-pie-chart/js/jquery.easypiechart.min.js"></script>
+<script src="<?php echo base_url();?>assets/menu/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <script src="<?php echo base_url();?>assets/menu/js/charts.js" type="text/javascript"></script>
-<!-- BEGIN CORE TEMPLATE JS -->
-<script src="<?php echo base_url();?>assets/menu/js/core.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/menu/js/chat.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/menu/js/demo.js" type="text/javascript"></script>
-<!-- END CORE TEMPLATE JS -->
+<script src="<?php echo base_url();?>assets/menu//js/core.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu//js/chat.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/menu//js/demo.js" type="text/javascript"></script>
