@@ -29,6 +29,20 @@ class Kepala_model extends CI_Model {
         return $this->db->get();
     }
 	
+	public function tiket_dampak($year){
+        $query = $this->db->query("SELECT
+								month(tgl_awal_tiket) as bulan,
+							SUM(IF(dampak = 1,1,0)) AS Kritis,
+							SUM(IF(dampak = 2,1,0)) AS Standar,
+							SUM(IF(dampak = 3,1,0)) AS none
+						FROM
+							tiket
+						where year(tgl_awal_tiket) = $year
+						GROUP BY
+							month(tgl_awal_tiket)");
+		return $query->result();
+    }
+	
 	public function rata2durasi($month,$year){
         $this->db->select('round(avg(durasi)) as rata2');
         $this->db->from('tiket');

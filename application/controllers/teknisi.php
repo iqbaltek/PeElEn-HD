@@ -13,6 +13,10 @@ class Teknisi extends CI_Controller {
 	 public function dashboard() {
 		//ambil data NIP dari Session
 		$nip = $this->session->userdata('nip');
+		$team = $this->session->userdata('team');
+		if($team == NULL){
+			$team = "0";
+		}
         
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$this->load->model('teknisi_model');
@@ -42,7 +46,7 @@ class Teknisi extends CI_Controller {
 		$close_bulan_ini = $this->teknisi_model->close_bulan_ini($month, $year, $nip);
 		
 		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
-		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip,$team);
 		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
 		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
 
@@ -76,13 +80,18 @@ class Teknisi extends CI_Controller {
 	public function tugas_baru() {
 		//ambil data NIP dari Session
 		$nip = $this->session->userdata('nip');
+		$team = $this->session->userdata('team');
         
+		if($team == NULL){
+			$team = "0";
+		}
+		
 		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
 		$this->load->model('teknisi_model');
-		$tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
+		$tugas_baru = $this->teknisi_model->tugas_baru($nip,$team)->result();
 				
 		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
-		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip,$team);
 		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
 		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
 

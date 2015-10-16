@@ -66,7 +66,7 @@
             type: 'column'
         },
         title: {
-            text: 'Rangkuman Tiket dikelompokan dengan Dampak<b> BELUM SELESAI</b>'
+            text: 'Rangkuman Tiket dikelompokan dengan Dampak'
         },
         subtitle: {
             text: 'Helpdesk PLN Distribusi Jawa Barat Banten'
@@ -109,16 +109,95 @@
             }
         },
         series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+            name: 'Kritis',
+            data: [<?php
+				$bulan = array();
+				$a = 0;
+				foreach($tiket_dampak as $row){
+					$count = $a;
+					$bulan[$a] = $row->bulan;
+					$kritis[$a] = $row->Kritis;
+					$standar[$a] = $row->Standar;
+					$none[$a] = $row->none;
+					$a++;
+				}
+
+				$b = 0;
+				// echo $bulan[$b];
+				for($i=1;$i<=12;$i++){
+					if($i != $bulan[$b]){
+						echo "0";
+					}else{
+						echo $kritis[$b];
+						if($b < $count){
+							$b++;
+						}
+					}
+					if($i < 12){
+						echo ",";
+					}
+				}
+			?>]
 
         }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+            name: 'Standar',
+            data: [<?php
+				$bulan = array();
+				$a = 0;
+				foreach($tiket_dampak as $row){
+					$count = $a;
+					$bulan[$a] = $row->bulan;
+					$kritis[$a] = $row->Kritis;
+					$standar[$a] = $row->Standar;
+					$none[$a] = $row->none;
+					$a++;
+				}
+
+				$b = 0;
+				for($i=1;$i<=12;$i++){
+					if($i != $bulan[$b]){
+						echo "0";
+					}else{
+						echo $standar[$b];
+						if($b < $count){
+							$b++;
+						}
+					}
+					if($i < 12){
+						echo ",";
+					}
+				}
+			?>]
 
         }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+            name: 'None',
+            data: [<?php
+				$bulan = array();
+				$a = 0;
+				foreach($tiket_dampak as $row){
+					$count = $a;
+					$bulan[$a] = $row->bulan;
+					$kritis[$a] = $row->Kritis;
+					$standar[$a] = $row->Standar;
+					$none[$a] = $row->none;
+					$a++;
+				}
+
+				$b = 0;
+				for($i=1;$i<=12;$i++){
+					if($i != $bulan[$b]){
+						echo "0";
+					}else{
+						echo $none[$b];
+						if($b < $count){
+							$b++;
+						}
+					}
+					if($i < 12){
+						echo ",";
+					}
+				}
+			?>]
 
         }]
     });

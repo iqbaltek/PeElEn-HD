@@ -43,7 +43,8 @@ class Teknisi_model extends CI_Model {
 	}
 		
 	//untuk mengambil data tugas baru
-    function tugas_baru($teknisi) {
+    function tugas_baru($teknisi,$team) {
+		$where = "staf_teknisi = '$teknisi' or staf_teknisi = '$team'";
         $this->db->select('*');
         $this->db->from('tiket');
         $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
@@ -53,13 +54,14 @@ class Teknisi_model extends CI_Model {
         $this->db->order_by('dampak', 'asc');
         $this->db->order_by('level_prioritas', 'asc');
         $this->db->order_by('tgl_awal_tiket', 'asc');
-		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where($where);
 		$this->db->where('status', '1');
         return $this->db->get();
     }
 	
 	//untuk menghitung data tugas baru milik teknisi
-    function count_tugas_baru($teknisi) {
+    function count_tugas_baru($teknisi,$team) {
+        $where = "staf_teknisi = '$teknisi' or staf_teknisi = '$team'";
         $this->db->select('*');
         $this->db->from('tiket');
         $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
@@ -69,7 +71,7 @@ class Teknisi_model extends CI_Model {
         $this->db->order_by('dampak', 'asc');
         $this->db->order_by('level_prioritas', 'asc');
         $this->db->order_by('tgl_awal_tiket', 'asc');
-		$this->db->where('staf_teknisi', $teknisi);
+		$this->db->where($where);
 		$this->db->where('status', '1');
         return $this->db->count_all_results();
     }

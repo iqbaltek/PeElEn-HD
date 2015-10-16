@@ -42,7 +42,7 @@ class Kepala extends CI_Controller {
 		$close_bulan_ini = $this->teknisi_model->close_bulan_ini($month, $year, $nip);
 		
 		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
-		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		$count_tugas_baru = 0;
 		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
 		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
 
@@ -55,10 +55,11 @@ class Kepala extends CI_Controller {
 		$tiket_kategori = $this->kepala_model->tiket_kategori($month,$year)->result();
 		$tiket_prioritas = $this->kepala_model->tiket_prioritas($month,$year)->result();
 		$rata2durasi = $this->kepala_model->rata2durasi($month,$year)->result();
-		// var_dump($rata2durasi);
-		// foreach($rata2durasi as $row){
-			// echo $row->rata2;
-		// }
+		
+		//memanggil model untuk melihat jumlah dampak dalam 1 tahun
+		$tiket_dampak = $this->kepala_model->tiket_dampak($year);
+		
+		
 		//daftarkan session
 		$data = array(
 			'tahun_ini' => $tahun_ini,
@@ -73,6 +74,7 @@ class Kepala extends CI_Controller {
 			'tiket_kategori' => $tiket_kategori,
 			'tiket_prioritas' => $tiket_prioritas,
 			'rata2durasi' => $rata2durasi,
+			'tiket_dampak' => $tiket_dampak,
 		);
 		$this->session->set_userdata($data);
 		
