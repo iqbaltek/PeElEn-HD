@@ -22,6 +22,8 @@
 			<div id="rata2durasi" style="margin: 0 auto"></div>
 		</div>
       </div>
+	  <br>  
+	  <br>  
     </div>
 	</div>
 	

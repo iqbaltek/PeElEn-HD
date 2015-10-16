@@ -217,7 +217,7 @@
 				text: 'Jumlah Tiket Bulan ini : <?php echo $bulan_ini;?>'
 			},
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.y}</b>'
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
             },
             plotOptions: {
                 pie: {
@@ -263,7 +263,7 @@
 				text: 'Jumlah Tiket Bulan ini : <?php echo $bulan_ini;?>'
 			},
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.y}</b>'
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b></b>'
             },
             plotOptions: {
                 pie: {
