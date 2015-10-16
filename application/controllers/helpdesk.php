@@ -41,7 +41,7 @@ class Helpdesk extends CI_Controller {
 		$close_bulan_ini = $this->teknisi_model->close_bulan_ini($month, $year, $nip);
 		
 		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
-		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		// $count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
 		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
 		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
 
@@ -53,7 +53,7 @@ class Helpdesk extends CI_Controller {
 			'new_bulan_ini' => $new_bulan_ini,
 			'open_bulan_ini' => $open_bulan_ini,
 			'close_bulan_ini' => $close_bulan_ini,
-			'count_tugas_baru' => $count_tugas_baru,
+			// 'count_tugas_baru' => $count_tugas_baru,
 			'count_lapor_selesai' => $count_lapor_selesai,
 			'count_buat_solusi' => $count_buat_solusi,
 		);
@@ -78,8 +78,8 @@ class Helpdesk extends CI_Controller {
 		}
 			
 		$nip = $this->session->userdata('nip');
-        $this->load->model('teknisi_model');
-        $tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
+        $this->load->model('helpdesk_model');
+        
 
 // teknisi
 		$this->load->model('helpdesk_model');
@@ -96,7 +96,6 @@ class Helpdesk extends CI_Controller {
 		
 //          daftarkan session
 		$data = array(
-			'tugas_baru' => $tugas_baru,
 			'teknisi' => $Teknisi,
 			'kategori' => $kategori,
 			'level_prioritas' => $level_prioritas,
@@ -260,14 +259,9 @@ class Helpdesk extends CI_Controller {
 		
 		
 		$nip = $this->session->userdata('nip');
-        $this->load->model('teknisi_model');
         $this->load->model('helpdesk_model');
-        $tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
 
-		//  daftarkan session
-		$data = array(
-			'tugas_baru' => $tugas_baru,
-		);
+		
 		
 		$data = $this->session->userdata();
 			
@@ -347,24 +341,25 @@ class Helpdesk extends CI_Controller {
 		$nip = $this->session->userdata('nip');
         $this->load->model('teknisi_model');
         $this->load->model('helpdesk_model');
-        $tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
-
+        $tugas_new = $this->helpdesk_model->tugas_baru()->result();
+		
+		// echo "<pre>";
+			// var_dump($tugas_new);
+		// echo "</pre>";
+		
 		//  daftarkan session
 		$data = array(
-			'tugas_baru' => $tugas_baru,
+			'tugas_new' => $tugas_new,
 		);
-		
-		$data = $this->session->userdata();
-			
-		
-		$data1['track']="";
-		
+		$this->session->set_userdata($data);
+
+		$data = $this->session->userdata();		
 		// $this->load->view('tampil_tugas_baru', $teknisi);
 		if($data['logged'] == TRUE && $data["level"]==6){
 			$this->load->view('menu/header',$data);
-			$this->load->view('menu/helpdesk/tugas_baru',$data1);
+			$this->load->view('menu/helpdesk/tugas_baru');
 			$this->load->view('menu/footer');
-			$this->load->view('menu/helpdesk/plugin');
+			$this->load->view('menu/teknisi/plugin');
 			
 		}
 		else{
