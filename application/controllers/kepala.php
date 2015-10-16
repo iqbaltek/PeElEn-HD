@@ -42,10 +42,24 @@ class Kepala extends CI_Controller {
 		$close_bulan_ini = $this->teknisi_model->close_bulan_ini($month, $year, $nip);
 		
 		//menghitung tugas baru, tugas yang akan dilaporkan dan tugas yang perlu dibuatkan tutorial solusi
-		$count_tugas_baru = $this->teknisi_model->count_tugas_baru($nip);
+		$count_tugas_baru = 0;
 		$count_lapor_selesai = $this->teknisi_model->count_lapor_selesai($nip);
 		$count_buat_solusi = $this->teknisi_model->count_buat_solusi($nip);
 
+		
+		$year = date("Y");
+		$month = date("m");
+        
+		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
+		$this->load->model('kepala_model');
+		$tiket_kategori = $this->kepala_model->tiket_kategori($month,$year)->result();
+		$tiket_prioritas = $this->kepala_model->tiket_prioritas($month,$year)->result();
+		$rata2durasi = $this->kepala_model->rata2durasi($month,$year)->result();
+		
+		//memanggil model untuk melihat jumlah dampak dalam 1 tahun
+		$tiket_dampak = $this->kepala_model->tiket_dampak($year);
+		
+		
 		//daftarkan session
 		$data = array(
 			'tahun_ini' => $tahun_ini,
@@ -57,20 +71,59 @@ class Kepala extends CI_Controller {
 			'count_tugas_baru' => $count_tugas_baru,
 			'count_lapor_selesai' => $count_lapor_selesai,
 			'count_buat_solusi' => $count_buat_solusi,
+			'tiket_kategori' => $tiket_kategori,
+			'tiket_prioritas' => $tiket_prioritas,
+			'rata2durasi' => $rata2durasi,
+			'tiket_dampak' => $tiket_dampak,
 		);
 		$this->session->set_userdata($data);
 		
-		//mengecek previlage pegawai, 7 untuk teknisi
+		//mengecek previlage pegawai, 4 untuk kepala
+		$data = $this->session->userdata();
+		if($data['logged'] == TRUE && $data['level'] == 4){
+			$this->load->view('menu/kepala/header',$data);
+			$this->load->view('menu/kepala/dashboard');
+			$this->load->view('menu/kepala/footer',$data);
+		}
+		else {
+			redirect('login/index');
+		}
+    }	
+	
+	public function tiket_kategori(){
+		//ambil data NIP dari Session
+		$nip = $this->session->userdata('nip');
+
+		$year = date("Y");
+		$month = date("m");
+        
+		//memanggil model untuk mendapatkan data tiket yang ditugaskan padanya
+		$this->load->model('kepala_model');
+		$tiket_kategori = $this->kepala_model->tiket_kategori($month,$year)->result();
+		
+		
+		// echo "<pre>";
+		// var_dump($tiket_kategori);
+		// echo "</pre>";
+		
+		$data = array(
+			'tiket_kategori' => $tiket_kategori,
+		);
+		
+		$this->session->set_userdata($data);
+		
+		//mengecek previlage pegawai, 4 untuk kepala
 		$data = $this->session->userdata();
 		if($data['logged'] == TRUE && $data['level'] == 4){
 			$this->load->view('menu/header',$data);
-			$this->load->view('menu/kepala/dashboard');
+			$this->load->view('menu/kepala/tiket_kategori');
 			$this->load->view('menu/footer');
 			$this->load->view('menu/teknisi/plugin');
 		}
 		else {
 			redirect('login/index');
 		}
-    }	
+		
+	}
 	
 }

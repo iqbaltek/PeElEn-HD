@@ -51,7 +51,9 @@ class Login extends CI_Controller {
 					'nip' => $row->nip,
 					'username' => $row->username,
 					'nama_pegawai' => $row->nama_pegawai,
-					'level' => $row->jabatan
+					'level' => $row->jabatan,
+					'team' => $row->team,
+					
 				);
 				$this->session->set_userdata($data);
 				// var_dump($data);

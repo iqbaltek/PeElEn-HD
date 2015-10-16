@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2015-10-15 11:49:26
+Date: 2015-10-16 11:11:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -252,11 +252,11 @@ CREATE TABLE `pegawai` (
 -- ----------------------------
 -- Records of pegawai
 -- ----------------------------
-INSERT INTO `pegawai` VALUES ('AD', 'admin', '0', 'dummy@dymm.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-15 08:06:59', '2015-10-15 11:37:24', '2', '8', '17', null, '21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `pegawai` VALUES ('AD', 'admin', '0', 'dummy@dymm.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-10-15 08:06:59', '2015-10-16 08:43:37', '2', '8', '17', null, '21232f297a57a5a743894a0e4a801fc3');
 INSERT INTO `pegawai` VALUES ('HD', 'Helpdesk Dummy', '0', 'dummy@dummy.com', 'helpdesk', '288682ec5f2450588bb37a4523d11616', '2015-10-04 23:35:04', '2015-10-15 11:37:02', '2', '6', '17', null, '288682ec5f2450588bb37a4523d11616');
-INSERT INTO `pegawai` VALUES ('KD', 'Kepala Deputi', '0', 'dummy@dummy.com', 'kepala', '870f669e4bbbfa8a6fde65549826d1c4', '2015-10-14 08:19:45', '2015-10-15 11:16:45', '2', '4', '17', null, '870f669e4bbbfa8a6fde65549826d1c4');
-INSERT INTO `pegawai` VALUES ('TS', 'Teknisi Dummy', '0', 'dummy@dummy.com', 'teknisi', 'e21394aaeee10f917f581054d24b031f', '2015-10-04 23:32:41', '2015-10-15 10:45:05', '2', '7', '17', null, 'e21394aaeee10f917f581054d24b031f');
-INSERT INTO `pegawai` VALUES ('TS1', 'Teknisi 1', '0', 'dummy@dummy.com', 'teknisi1', '491b4c7ab9757487389b0fbea6a1d2ea', '2015-10-15 06:52:35', null, '2', '7', '17', '1', '0');
+INSERT INTO `pegawai` VALUES ('KD', 'Kepala Deputi', '0', 'dummy@dummy.com', 'kepala', '870f669e4bbbfa8a6fde65549826d1c4', '2015-10-14 08:19:45', '2015-10-16 10:40:18', '2', '4', '17', null, '870f669e4bbbfa8a6fde65549826d1c4');
+INSERT INTO `pegawai` VALUES ('TS', 'Teknisi Dummy', '0', 'dummy@dummy.com', 'teknisi', 'e21394aaeee10f917f581054d24b031f', '2015-10-04 23:32:41', '2015-10-16 08:49:48', '2', '7', '17', null, 'e21394aaeee10f917f581054d24b031f');
+INSERT INTO `pegawai` VALUES ('TS1', 'Teknisi 1', '0', 'dummy@dummy.com', 'teknisi1', '491b4c7ab9757487389b0fbea6a1d2ea', '2015-10-15 06:52:35', '2015-10-16 08:57:31', '2', '7', '17', '1', '491b4c7ab9757487389b0fbea6a1d2ea');
 INSERT INTO `pegawai` VALUES ('TS2', 'Teknisi 2', '0', 'dummy@dymmy.com', 'teknisi2', '', '2015-10-15 06:53:14', null, '2', '7', '17', '1', '0');
 
 -- ----------------------------
@@ -368,37 +368,37 @@ CREATE TABLE `tiket` (
   CONSTRAINT `fk_level` FOREIGN KEY (`level_prioritas`) REFERENCES `level_prioritas` (`id_level`),
   CONSTRAINT `fk_staf_helpdesk` FOREIGN KEY (`staf_helpdesk`) REFERENCES `pegawai` (`nip`),
   CONSTRAINT `fk_status` FOREIGN KEY (`status`) REFERENCES `kode_status` (`id_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tiket
 -- ----------------------------
-INSERT INTO `tiket` VALUES ('1', 'aaaaa', '2015-10-10 15:38:21', '0000-00-00 00:00:00', null, null, 'a', 'TS', 'HD', '1', '1', '1', '1', '1', '1', null, null);
-INSERT INTO `tiket` VALUES ('12', 'Implementasi algoritma kriptografi AES dan OTP untuk membangkitkan kode otentikasi pada aktivasi member baru yang dikirim melalui SMS', '2015-09-01 11:32:38', '2015-10-15 10:46:42', '2015-10-15 10:47:05', '23', 'tidak bisa membuka file', 'HD', 'TS', '55', '1', '6', '1', '3', '1', '18', '2');
-INSERT INTO `tiket` VALUES ('13', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-15 10:46:44', '2015-10-14 08:09:29', '18', 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '6', '1', '2', '1', null, '2');
-INSERT INTO `tiket` VALUES ('14', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-15 10:46:48', '2015-10-14 08:38:26', '290', 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '6', '1', '2', '1', null, '2');
-INSERT INTO `tiket` VALUES ('15', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-15 10:46:45', '2015-10-14 08:45:34', '650', 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '6', '1', '2', '1', '1', '0');
-INSERT INTO `tiket` VALUES ('16', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-15 10:46:50', '2015-10-14 08:45:36', '518', 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '6', '1', '2', '1', '1', '0');
-INSERT INTO `tiket` VALUES ('17', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-15 10:46:58', '0000-00-00 00:00:00', null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '6', '1', '2', '1', '1', null);
-INSERT INTO `tiket` VALUES ('18', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:37:08', '2015-10-14 08:45:38', '510', 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '6', '1', '1', '1', '18', '0');
-INSERT INTO `tiket` VALUES ('19', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:09:11', '2015-10-14 08:09:29', '18', 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '6', '1', '1', '1', null, '2');
-INSERT INTO `tiket` VALUES ('20', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:33:36', '2015-10-14 08:38:26', '290', 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '6', '1', '1', '1', null, '2');
-INSERT INTO `tiket` VALUES ('21', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:34:44', '2015-10-14 08:45:34', '650', 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '6', '1', '1', '1', '1', '0');
-INSERT INTO `tiket` VALUES ('22', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:36:58', '2015-10-14 08:45:36', '518', 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '6', '1', '1', '1', '1', '0');
-INSERT INTO `tiket` VALUES ('23', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 11:17:36', '0000-00-00 00:00:00', null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '6', '1', '1', '1', '1', null);
-INSERT INTO `tiket` VALUES ('24', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:37:08', '2015-10-14 08:45:38', '510', 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '6', '1', '1', '1', '18', '0');
-INSERT INTO `tiket` VALUES ('25', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:09:11', '2015-10-14 08:09:29', '18', 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '6', '1', '1', '1', null, '2');
-INSERT INTO `tiket` VALUES ('26', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:33:36', '2015-10-14 08:38:26', '290', 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '6', '1', '1', '1', null, '2');
-INSERT INTO `tiket` VALUES ('27', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:34:44', '2015-10-14 08:45:34', '650', 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '6', '1', '1', '1', '1', '0');
-INSERT INTO `tiket` VALUES ('28', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:36:58', '2015-10-14 08:45:36', '518', 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '6', '1', '1', '1', '1', '0');
-INSERT INTO `tiket` VALUES ('29', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 11:17:36', '0000-00-00 00:00:00', null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '6', '1', '1', '1', '1', null);
-INSERT INTO `tiket` VALUES ('30', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:37:08', '2015-10-14 08:45:38', '510', 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '6', '1', '1', '1', '18', '0');
-INSERT INTO `tiket` VALUES ('31', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:09:11', '2015-10-14 08:09:29', '18', 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '6', '1', '1', '1', null, '2');
-INSERT INTO `tiket` VALUES ('32', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:33:36', '2015-10-14 08:38:26', '290', 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '6', '1', '1', '1', null, '2');
-INSERT INTO `tiket` VALUES ('33', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:34:44', '2015-10-14 08:45:34', '650', 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '6', '1', '1', '1', '1', '0');
-INSERT INTO `tiket` VALUES ('34', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:36:58', '2015-10-14 08:45:36', '518', 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '6', '1', '1', '1', '1', '0');
-INSERT INTO `tiket` VALUES ('35', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-13 11:17:36', '0000-00-00 00:00:00', null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '6', '1', '1', '1', '1', null);
-INSERT INTO `tiket` VALUES ('36', 'Hardisk error', '0000-00-00 00:00:00', '2015-10-14 08:37:08', '2015-10-14 08:45:38', '510', 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '6', '1', '1', '1', '18', '0');
+INSERT INTO `tiket` VALUES ('1', 'aaaaa', '2015-09-01 15:38:21', '0000-00-00 00:00:00', null, null, 'a', 'TS', 'HD', '1', '1', '1', '1', '1', '1', null, null);
+INSERT INTO `tiket` VALUES ('12', 'Implementasi algoritma kriptografi AES dan OTP untuk membangkitkan kode otentikasi pada aktivasi member baru yang dikirim melalui SMS', '2015-09-01 15:38:21', '2015-10-15 10:46:42', '2015-10-15 10:47:05', '876', 'tidak bisa membuka file', 'HD', 'TS', '55', '1', '1', '1', '3', '1', '18', '2');
+INSERT INTO `tiket` VALUES ('13', 'Hardisk error', '2015-09-01 15:38:21', '2015-10-15 10:46:44', '2015-10-14 08:09:29', '2323', 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '1', '1', '2', '1', null, '2');
+INSERT INTO `tiket` VALUES ('14', 'Hardisk error', '2015-09-01 15:38:21', '2015-10-15 10:46:48', '2015-10-14 08:38:26', '2321', 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '2', '1', '2', '1', null, '2');
+INSERT INTO `tiket` VALUES ('15', 'Hardisk error', '2015-09-01 15:38:21', '2015-10-15 10:46:45', '2015-10-14 08:45:34', '1122', 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '2', '1', '2', '1', '1', '0');
+INSERT INTO `tiket` VALUES ('16', 'Hardisk error', '2015-09-01 15:38:21', '2015-10-15 10:46:50', '2015-10-14 08:45:36', '3334', 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '2', '1', '2', '1', '1', '0');
+INSERT INTO `tiket` VALUES ('17', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-15 10:46:58', '0000-00-00 00:00:00', '453', 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '2', '1', '2', '1', '1', null);
+INSERT INTO `tiket` VALUES ('18', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:37:08', '2015-10-14 08:45:38', '321', 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '3', '1', '1', '1', '18', '0');
+INSERT INTO `tiket` VALUES ('19', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:09:11', '2015-10-14 08:09:29', '18', 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '3', '1', '1', '1', null, '2');
+INSERT INTO `tiket` VALUES ('20', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-16 08:43:23', '2015-10-14 08:38:26', '654', 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '3', '1', '2', '1', null, '2');
+INSERT INTO `tiket` VALUES ('21', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-16 08:43:28', '2015-10-14 08:45:34', '456', 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '4', '1', '2', '1', '1', '0');
+INSERT INTO `tiket` VALUES ('22', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:36:58', '2015-10-14 08:45:36', '978', 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '4', '2', '1', '1', '1', '0');
+INSERT INTO `tiket` VALUES ('23', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-13 11:17:36', '0000-00-00 00:00:00', '123', 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '4', '2', '1', '1', '1', null);
+INSERT INTO `tiket` VALUES ('24', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:37:08', '2015-10-14 08:45:38', '510', 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '4', '2', '1', '1', '18', '0');
+INSERT INTO `tiket` VALUES ('25', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:09:11', '2015-10-14 08:09:29', '18', 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '4', '2', '1', '1', null, '2');
+INSERT INTO `tiket` VALUES ('26', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:33:36', '2015-10-14 08:38:26', '290', 'tidak bisa membuka file', 'HD', 'TS', '57', '1', '5', '2', '1', '1', null, '2');
+INSERT INTO `tiket` VALUES ('27', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:34:44', '2015-10-14 08:45:34', '650', 'tidak bisa membuka file', 'HD', 'TS', '58', '1', '5', '3', '1', '1', '1', '0');
+INSERT INTO `tiket` VALUES ('28', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:36:58', '2015-10-14 08:45:36', '518', 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '6', '3', '1', '3', '1', '0');
+INSERT INTO `tiket` VALUES ('29', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-13 11:17:36', '0000-00-00 00:00:00', null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '6', '3', '1', '3', '1', null);
+INSERT INTO `tiket` VALUES ('30', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:37:08', '2015-10-14 08:45:38', '510', 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '7', '3', '1', '3', '18', '0');
+INSERT INTO `tiket` VALUES ('31', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:09:11', '2015-10-14 08:09:29', '18', 'tidak bisa membuka file', 'HD', 'TS', '56', '1', '7', '3', '1', '3', null, '2');
+INSERT INTO `tiket` VALUES ('32', 'TIM 1', '2015-10-10 15:38:21', '2015-10-14 08:33:36', '2015-10-14 08:38:26', '290', 'tidak bisa membuka file', 'HD', '1', '57', '1', '8', '2', '1', '2', null, '2');
+INSERT INTO `tiket` VALUES ('33', 'TIM 1', '2015-10-10 15:38:21', '2015-10-14 08:34:44', '2015-10-14 08:45:34', '650', 'tidak bisa membuka file', 'HD', '1', '58', '1', '9', '2', '1', '2', '1', '0');
+INSERT INTO `tiket` VALUES ('34', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:36:58', '2015-10-14 08:45:36', '518', 'tidak bisa membuka file', 'HD', 'TS', '59', '1', '10', '2', '1', '2', '1', '0');
+INSERT INTO `tiket` VALUES ('35', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-13 11:17:36', '0000-00-00 00:00:00', null, 'tidak bisa membuka file', 'HD', 'TS', '60', '1', '10', '1', '1', '2', '1', null);
+INSERT INTO `tiket` VALUES ('36', 'Hardisk error', '2015-10-10 15:38:21', '2015-10-14 08:37:08', '2015-10-14 08:45:38', '510', 'tidak bisa membuka file', 'HD', 'TS', '61', '1', '11', '1', '1', '2', '18', '0');
 
 -- ----------------------------
 -- Table structure for `user`
