@@ -25,8 +25,7 @@
 			<div class="grid simple">
 				<div class="grid-title no-border">
 					<h4><span class="semi-bold">Data Pelapor</span></h4>
-					<div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
-				</div>
+					</div>
 				<div class="grid-body no-border">
 					<div class="form-group">
 						<label class="semi-bold">Nama</label>
@@ -81,8 +80,7 @@
 			<div class="grid simple">
 				<div class="grid-title no-border">
 					<h4><span class="semi-bold">Detail Laporan</span></h4>
-					<div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
-				</div>
+					</div>
 				<div class="grid-body no-border">
 					<div class="form-group">
 						<label class="semi-bold">Judul Tiket</label>
@@ -114,6 +112,16 @@
 								<?php 						
 								}
 								?>
+								
+								<?php 
+								foreach ($team as $row){
+								// echo $row->nip;
+								?>
+									<option value="<?php echo $row->id_team; ?>"><?php echo $row->nama_team; ?></option>
+								<?php 						
+								}
+								?>
+								
 								</select>
 							</div>
 						</div>

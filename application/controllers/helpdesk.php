@@ -71,7 +71,12 @@ class Helpdesk extends CI_Controller {
 			redirect('login/index');
 		}
     }
-	 public function tiket_baru() {
+	 public function tiket_baru($ex=0) {
+			
+		if($ex==1){
+			echo "<script type='text/javascript'>alert('Laporan berhasil ditambahkan!');</script>";
+		}
+			
 		$nip = $this->session->userdata('nip');
         $this->load->model('teknisi_model');
         $tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
@@ -80,6 +85,7 @@ class Helpdesk extends CI_Controller {
 		$this->load->model('helpdesk_model');
 		$x = 7;
         $Teknisi = $this->helpdesk_model->getTeknisi($x)->result();
+        $Team = $this->helpdesk_model->getTeam()->result();
 // kategori
         $kategori = $this->helpdesk_model->getKategori()->result();		
 // level
@@ -96,6 +102,7 @@ class Helpdesk extends CI_Controller {
 			'level_prioritas' => $level_prioritas,
 			'dampak' => $dampak,
 			'kantor' => $kantor,
+			'team' => $Team,
 		);
 		
 		$this->session->set_userdata($data);
@@ -233,8 +240,8 @@ class Helpdesk extends CI_Controller {
 			}
 		}
 		
-		echo "ini-----" . $nama_file;
-		echo "itu-----" . $extension;
+		// echo "ini-----" . $nama_file;
+		// echo "itu-----" . $extension;
 		
 		// data buat attachment
 		$data3 = array(
@@ -244,7 +251,125 @@ class Helpdesk extends CI_Controller {
 		);
 		$this->db->insert('attachment', $data3);
 
-		echo "<script type='text/javascript'>alert('hey berhasil!');</script>";
-		redirect('helpdesk/tiket_baru');
+		redirect('helpdesk/tiket_baru/1');
 	}
+	
+	
+	public function tracking() {	
+	
+		
+		
+		$nip = $this->session->userdata('nip');
+        $this->load->model('teknisi_model');
+        $this->load->model('helpdesk_model');
+        $tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
+
+		//  daftarkan session
+		$data = array(
+			'tugas_baru' => $tugas_baru,
+		);
+		
+		$data = $this->session->userdata();
+			
+		
+		$data1['track']="";
+		
+		// $this->load->view('tampil_tugas_baru', $teknisi);
+		if($data['logged'] == TRUE && $data["level"]==6){
+			if(isset($_POST["id_tiket"])){
+				// ambil data tiket
+				$id_tiket = $_POST['id_tiket'];
+				$get_data_tiket = $this->helpdesk_model->getTiket($id_tiket)->row();
+				
+				$id_tiket = $get_data_tiket->id_tiket;
+				$judul_tiket = $get_data_tiket->judul_tiket;
+				$nama = $get_data_tiket->nama_customer;
+				$tgl = $get_data_tiket->tgl_awal_tiket;
+				$status = $get_data_tiket->nama_status;
+			
+				// tabel data tiket
+				$data1['track'] = '
+					<div class="row-fluid">
+				<div class="span12">
+					<div class="grid simple ">
+						<div class="grid-title">
+							<h4><span class="semi-bold">Hasil Tracking</span></h4>
+						</div>
+						<div class="grid-body ">
+							<table class="table" id="example3" >
+								<tbody>
+									<tr class="odd gradeA">
+										<th class="col-md-3">ID TIKET</th>
+										<td><b> : </b></td>
+										<td>'. $id_tiket .'</td>
+									</tr>
+										<tr class="even gradeA">
+										<th class="col-md-3">JUDUL TIKET</th>
+										<td><b> : </b></td>
+										<td>'. $judul_tiket .'</td>
+									</tr>
+										<tr class="odd gradeA">
+										<th class="col-md-3">NAMA PELAPOR</th>
+										<td><b> : </b></td>
+										<td>'. $nama .'</td>
+									</tr>
+										<tr class="odd gradeA">
+										<th class="col-md-3">TANGGAL LAPOR</th>
+										<td><b> : </b></td>
+										<td>'. date('d-m-Y at H:i',strtotime(date($tgl))) .'</td>
+									</tr>
+										<tr class="odd gradeA">
+										<th class="col-md-3">STATUS</th>
+										<td><b> : </b></td>
+										<td>'. $status .'</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+				';
+			}
+			$this->load->view('menu/header',$data);
+			$this->load->view('menu/helpdesk/tracking',$data1);
+			$this->load->view('menu/footer');
+			$this->load->view('menu/helpdesk/plugin');
+			
+		}
+		else{
+			redirect('login/index');
+		}
+		
+    }
+	
+	public function tugas_baru() {	
+		$nip = $this->session->userdata('nip');
+        $this->load->model('teknisi_model');
+        $this->load->model('helpdesk_model');
+        $tugas_baru = $this->teknisi_model->tugas_baru($nip)->result();
+
+		//  daftarkan session
+		$data = array(
+			'tugas_baru' => $tugas_baru,
+		);
+		
+		$data = $this->session->userdata();
+			
+		
+		$data1['track']="";
+		
+		// $this->load->view('tampil_tugas_baru', $teknisi);
+		if($data['logged'] == TRUE && $data["level"]==6){
+			$this->load->view('menu/header',$data);
+			$this->load->view('menu/helpdesk/tugas_baru',$data1);
+			$this->load->view('menu/footer');
+			$this->load->view('menu/helpdesk/plugin');
+			
+		}
+		else{
+			redirect('login/index');
+		}
+		
+    }
 }

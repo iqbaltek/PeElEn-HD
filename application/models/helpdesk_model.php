@@ -24,6 +24,12 @@ class Helpdesk_model extends CI_Model {
         return $this->db->get();
     }
 	
+	function getTeam() {
+        $this->db->select('*');
+        $this->db->from('team');
+        return $this->db->get();
+    }
+	
     function getData($id_tiket) {
         $this->db->select('*');
         $this->db->from('tiket');
@@ -85,6 +91,15 @@ class Helpdesk_model extends CI_Model {
 		$this->db->where('id_tiket', $id);
 		$this->db->update('tiket', $data);
 	}
+	
+	function getTiket($id) {
+        $this->db->select('*');
+		$this->db->join('customer','tiket.customer=customer.id_customer');
+        $this->db->join('kode_status','tiket.status=kode_status.id_status');
+		$this->db->where('id_tiket', $id);
+        $this->db->from('tiket');
+        return $this->db->get	();
+    }
 }
  
 /* End of file teknisi_model.php */
