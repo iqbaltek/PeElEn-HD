@@ -12,19 +12,7 @@
       </div>
 	   <!-- BEGIN DASHBOARD TILES -->
 	  <div class="row">	 
-		<?php 
-	// var_dump($level);
-		// echo "<pre>";
-		// print_r($this->session->all_userdata());
-		// echo "</pre>";
-	// echo $tugas_baru->result_id;
-		// foreach ($tugas_baru as $row)
-		// {
-		   // echo $row->id_tiket;
-		// }
-		// echo "</pre>";
-?>
-
+	
 <div class="row-fluid">
         <div class="span12">
           <div class="grid simple ">

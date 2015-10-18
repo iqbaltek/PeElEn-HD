@@ -33,7 +33,7 @@
 <script src="<?php echo base_url();?>assets/menu/js/highcharts.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/menu/js/modules/exporting.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/menu/js/demo.js" type="text/javascript"></script>
-<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="<?php echo base_url();?>assets/menu/plugins/highchart/highchart-more.js"></script>
 <!-- END CORE TEMPLATE JS -->
 
 </body>

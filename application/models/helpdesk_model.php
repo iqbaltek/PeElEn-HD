@@ -98,8 +98,12 @@ class Helpdesk_model extends CI_Model {
         $this->db->join('kode_status','tiket.status=kode_status.id_status');
 		$this->db->where('id_tiket', $id);
         $this->db->from('tiket');
-        return $this->db->get	();
+        return $this->db->get();
     }
+	
+	function tiket_baru($data){
+		$this->db->insert('tiket',$data); 
+	}
 	
 	//untuk mengambil data tugas baru
     function tugas_baru() {
@@ -114,6 +118,35 @@ class Helpdesk_model extends CI_Model {
         $this->db->order_by('level_prioritas', 'asc');
         $this->db->order_by('tgl_awal_tiket', 'asc');
 		$this->db->where('status', '1');
+        return $this->db->get();
+    }
+	
+	//untuk mengambil data tugas yang belum selesai atau proses
+    function tugas_belum_selesai() {
+        $this->db->select('*');
+        $this->db->from('tiket');
+        $this->db->join('level_prioritas','tiket.level_prioritas=level_prioritas.id_level');
+        $this->db->join('dampak','tiket.dampak=dampak.id_dampak');
+        $this->db->join('kantor','tiket.kantor=kantor.id_kantor');
+        $this->db->join('kategori','tiket.kategori=kategori.id_kategori');
+        $this->db->join('pegawai','tiket.staf_teknisi=pegawai.nip');
+        $this->db->order_by('dampak', 'asc');
+        $this->db->order_by('level_prioritas', 'asc');
+        $this->db->order_by('tgl_awal_tiket', 'asc');
+		$this->db->where('status', '2');
+        return $this->db->get();
+    }
+	
+    function knowledge_base() {
+        $this->db->select('*');
+        $this->db->from('solusi');
+        return $this->db->get();
+    }
+	
+    function data_solusi($id_solusi) {
+        $this->db->select('*');
+        $this->db->from('solusi');
+		$this->db->where('id_solusi', $id_solusi);
         return $this->db->get();
     }
 	

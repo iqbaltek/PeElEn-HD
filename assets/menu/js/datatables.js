@@ -325,7 +325,7 @@ function fnFormatDetails ( oTable, nTr )
 		dataType: 'html',
 		//nanti harus di ganti sesuai lokasi hosting
 		url: siteURL,
-		data: {'id_tiket':aData[1]},
+		data: {'id':aData[1]},
 		async: false,
 		success: function(msg){
 			sOut = msg;

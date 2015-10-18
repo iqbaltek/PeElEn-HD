@@ -34,19 +34,19 @@
                   </tr>
                 </thead>
                 <tbody>
-				<?php foreach($tugas_new as $row) { ?>
+				<?php foreach($tugas_belum_selesai as $row) { ?>
                   <tr class="odd gradeX" >
                     <td><?php echo $row->id_tiket; ?></td>
                     <td><?php echo $row->judul_tiket; ?></td>
                     <td><?php echo $row->nama_pegawai; ?></td>
                     <td><?php echo $row->nama_kategori; ?></td>
                     <td><?php echo $row->nama_kantor; ?></td>
-                    <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->tgl_awal_tiket))); ?></td>
+                    <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->date_open))); ?></td>
                     <td><?php 
-						$tgl_tiket = strtotime($row->tgl_awal_tiket);
+						$date_open = strtotime($row->date_open);
 						$tgl_sekarang = strtotime(date("Y-m-d H:i:s", strtotime('+5 hours')));
 						
-						$durasi = $tgl_sekarang - $tgl_tiket;
+						$durasi = $tgl_sekarang - $date_open;
 						
 						$second = 1;
 						$minute = 60*$second;

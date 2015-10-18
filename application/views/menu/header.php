@@ -120,7 +120,7 @@
 					<li class=""> <a href="<?php echo base_url('helpdesk/tracking')?>"> <i class="fa fa-search"></i> <span class="title">Tracking Tiket</span></a> </li>
 					<li class=""> <a href="<?php echo base_url('helpdesk/knowledge_base')?>" target="_blank"> <i class="fa fa-lightbulb-o"></i> <span class="title">Knowledge Base</span></a> </li>
 					<li class=""> <a href="<?php echo base_url('helpdesk/tugas_baru')?>"> <i class="fa fa-lightbulb-o"></i> <span class="title">Tugas Baru</span></a> </li>
-					<li class=""> <a href="<?php echo base_url('helpdesk/#')?>"> <i class="fa fa-lightbulb-o"></i> <span class="title">Tugas Belum Dikerjakan</span></a> </li>
+					<li class=""> <a href="<?php echo base_url('helpdesk/tugas_belum_selesai')?>"> <i class="fa fa-lightbulb-o"></i> <span class="title">Tugas Belum Dikerjakan</span></a> </li>
 				</ul>
 			<?php
 			}

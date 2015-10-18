@@ -45,7 +45,7 @@
 						<label class="semi-bold">Email</label>
 						<div class="input-with-icon  right">                                       
 							<i class=""></i>
-							<input type="email" name="email" id="form1CardNumber" class="form-control" required/>
+							<input type="email" name="email" id="form1CardNumber" class="form-control" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -196,7 +196,7 @@
 							<div class="radio radio-success">
 								<input id="yes" type="radio" name="status_tiket" value="1" required />
 								<label for="yes">New</label>
-								<input id="no" type="radio" name="status_tiket" value="2" required />
+								<input id="no" type="radio" name="status_tiket" value="3" required />
 								<label for="no">Close</label>
 							</div>
 						</div>
@@ -207,7 +207,7 @@
 						<div class="col-md-6">
 						<label class="semi-bold">Lampirkan File (max 2mb, <i>file lebih dari satu di rar / zip) </i></label>
 						<div class=" right">                                       
-							<input type="file" name="namafile" required />
+							<input type="file" name="namafile" />
 						</div>
 						</div>
 					</div>	
