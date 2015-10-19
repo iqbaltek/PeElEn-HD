@@ -8674,3 +8674,7 @@ disabled look for disabled choices in the results dropdown
     overflow: scroll;
 }
 /* Retina-ize icons */
+
+#example2 tbody td i{
+	cursor: pointer;
+}

@@ -18,9 +18,11 @@ class Admin_model extends CI_Model {
         return $this->db->get();
     }
 	
-	function update_pegawai($nip,$aktivasi) {
+	function update_pegawai($nip,$aktivasi,$tgl_diedit,$diedit_oleh) {
 		$data = array(
-			   'aktivasi' => $aktivasi
+			   'aktivasi' => $aktivasi,
+			   'tgl_diedit' =>  $tgl_diedit, 
+			   'diedit_oleh' => $diedit_oleh
 			);
 
 		$this->db->where('nip', $nip);

@@ -28,7 +28,8 @@
                     <th>KATEGORI</th>
                     <th>LOKASI</th>
                     <th>TANGGAL SELESAI KERJA</th>
-                    <th>DURASI</th>
+                    <th>DURASI KERJA</th>
+                    <th>DURASI AKHIR</th>
                     <th>PRIORITAS</th>
                     <th>DAMPAK</th>
                     <th>TUTORIAL</th>
@@ -64,6 +65,32 @@
 							echo $ans["second"] . " detik";
 						}
 					?></td>
+					<td><?php 
+						$tgl_tiket = strtotime($row->tgl_awal_tiket);
+						$tgl_sekarang = strtotime(date("Y-m-d H:i:s", strtotime('+5 hours')));
+						
+						$durasi = $tgl_sekarang - $tgl_tiket;
+						
+						$second = 1;
+						$minute = 60*$second;
+						$hour   = 60*$minute;
+						$day    = 24*$hour;
+
+						$ans["day"]    = floor($durasi/$day);
+						$ans["hour"]   = floor(($durasi%$day)/$hour);
+						$ans["minute"] = floor((($durasi%$day)%$hour)/$minute);
+						$ans["second"] = floor(((($durasi%$day)%$hour)%$minute)/$second);
+						if($ans["day"] != 0){
+							echo $ans["day"] . " hari, " . $ans["hour"] . " jam, "  . $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] != 0){
+							echo $ans["hour"] . " jam, "  . $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] == 0 && $ans["minute"] != 0){
+							echo $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] == 0 && $ans["minute"] == 0 && $ans["second"] != 0){
+							echo $ans["second"] . " detik";
+						}
+						
+						?></td>
                     <td class="center"><?php echo $row->nama_level; ?></td>
                     <td class="center"><?php echo $row->nama_dampak; ?></td>
                     <td class="center">

@@ -198,9 +198,7 @@ class Helpdesk extends CI_Controller {
 		//$this->db->insert('tiket', $data);
 		$insert = $this->helpdesk_model->tiket_baru($data);
 		$namafilenew = $this->db->insert_id();
-		if($_POST['namafile'] != NULL){
-			$this->helpdesk_model->update_lampiran($namafilenew,$namafilenew);
-		}
+		
 		// isi date_open dkk jika status 3 / close
 		if($status_tiket == 3){
 			$tgl = $this->helpdesk_model->getTanggal($namafilenew)->result();
@@ -209,64 +207,77 @@ class Helpdesk extends CI_Controller {
 			}
 			$this->helpdesk_model->update_date($namafilenew,$get_tgl);
 		}
+
+		//cek apakah attachment diisi
+		if($_POST['namafile'] != NULL){
+			$this->helpdesk_model->update_lampiran($namafilenew,$namafilenew);
+		}
 		
-		// attackment
-		$nama_file = basename( $_FILES["namafile"]["name"]);
-		$extension = pathinfo($nama_file, PATHINFO_EXTENSION);
-		$folder_name = $namafilenew;
-		$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/";
-		$new_folder=mkdir($target_dir."/".$folder_name, 0777, true);
-		$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/". $folder_name ."/";
-		$target_file = $target_dir . $namafilenew . "." . $extension;
-		$uploadOk = 1;
-		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		
-		// Check if image file is a actual image or fake image
-		
-		if(isset($_POST["submit"])) {
-			$check = getimagesize($_FILES["namafile"]["tmp_name"]);
-			if($check !== false) {
-				echo "File is an image - " . $check["mime"] . ".";
+			// attachment
+			$nama_file = basename( $_FILES["namafile"]["name"]);
+			$extension = pathinfo($nama_file, PATHINFO_EXTENSION);
+			$folder_name = $namafilenew;
+			if($nama_file != NULL){
+				$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/";
+				$new_folder=mkdir($target_dir."/".$folder_name, 0777, true);
+				$target_dir = "C:/xampp/htdocs/PeElEn-HD/file/". $folder_name ."/";
+				$target_file = $target_dir . $namafilenew . "." . $extension;
 				$uploadOk = 1;
-			} else {
-				echo "File is not an image.";
+				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			}
+			// Check if image file is a actual image or fake image
+			
+			if(isset($_POST["submit"])) {
+				$check = getimagesize($_FILES["namafile"]["tmp_name"]);
+				if($check !== false) {
+					echo "File is an image - " . $check["mime"] . ".";
+					$uploadOk = 1;
+				} else {
+					echo "File is not an image.";
+					$uploadOk = 0;
+				}
+			}
+			
+			// Check file size
+			if ($_FILES["namafile"]["size"] > 200000) {
+				echo "Sorry, your file is too large.";
 				$uploadOk = 0;
 			}
-		}
-		
-		// Check file size
-		if ($_FILES["namafile"]["size"] > 200000) {
-			echo "Sorry, your file is too large.";
-			$uploadOk = 0;
-		}
-		
-		
-		// Check if $uploadOk is set to 0 by an error
-		if ($uploadOk == 0) {
-			echo "Sorry, your file was not uploaded.";
-		
-		// if everything is ok, try to upload file
-		
-		} else {
-			if (move_uploaded_file($_FILES["namafile"]["tmp_name"], $target_file)) {
-				// echo "The file ". basename( $_FILES["namafile"]["name"]). " has been uploaded.";
-				
+			
+			
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+				echo "Sorry, your file was not uploaded.";
+			
+			// if everything is ok, try to upload file
+			
 			} else {
-				echo "Sorry, there was an error uploading your file.";
+				if($nama_file != NULL){		
+					if (move_uploaded_file($_FILES["namafile"]["tmp_name"], $target_file)) {
+						// echo "The file ". basename( $_FILES["namafile"]["name"]). " has been uploaded.";
+						
+					} else {
+						echo "Sorry, there was an error uploading your file.";
+					}
+				}
 			}
+		
+			
+			// echo "ini-----" . $nama_file;
+			// echo "itu-----" . $extension;
+		
+		
+			// data buat attachment
+		if($nama_file != NULL){	
+			$data3 = array(
+				'id_tiket' => $namafilenew,
+				'file_name' => $namafilenew.".".$extension,
+				'file_size' => $_FILES["namafile"]["size"],
+			);
+			$this->db->insert('attachment', $data3);
 		}
 		
-		// echo "ini-----" . $nama_file;
-		// echo "itu-----" . $extension;
-		
-		// data buat attachment
-		$data3 = array(
-			'id_tiket' => $namafilenew,
-			'file_name' => $namafilenew.".".$extension,
-			'file_size' => $_FILES["namafile"]["size"],
-		);
-		$this->db->insert('attachment', $data3);
-
 		redirect('helpdesk/tiket_baru/1');
 	}
 	

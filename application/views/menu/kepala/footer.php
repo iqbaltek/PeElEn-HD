@@ -438,25 +438,25 @@ $(function () {
                 to: 1,
                 color: '#55BF3B' // green
             }, {
-                from: 2,
+                from: 1,
                 to: 3,
                 color: '#DDDF0D' // yellow
             }, {
-                from: 4,
+                from: 3,
                 to: 7,
                 color: '#DF5353' // red
             }<?php }?>
 			<?php if($durasi == 2){?>
 			{
                 from: 0,
-                to: 5,
+                to: 6,
                 color: '#55BF3B' // green
             }, {
                 from: 6,
                 to: 8,
                 color: '#DDDF0D' // yellow
             }, {
-                from: 9,
+                from: 8,
                 to: 24,
                 color: '#DF5353' // red
             }<?php }?>

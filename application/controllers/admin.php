@@ -112,16 +112,18 @@ class Admin extends CI_Controller {
 	public function update_pegawai(){
 		
 		$nip = $this->input->post('nip');
-		$aktivasi = $this->input->post('aktivasi');
+		$aktivasi = $this->input->post('aktivasi');		
+		$tgl_diedit = date("Y-m-d H:i:s", strtotime('+5 hours'));
+		$diedit_oleh = $this->session->userdata('nip');;
 		
 		//memanggil model untuk melakukan update pada fungsi update_tiket di model
 		$this->load->model('admin_model');
 		
 		if($aktivasi != '0'){
-			$this->admin_model->update_pegawai($nip,md5($aktivasi));
+			$this->admin_model->update_pegawai($nip,md5($aktivasi), $tgl_diedit, $diedit_oleh);
 		}
 		if($aktivasi == '0'){
-			$this->admin_model->update_pegawai($nip,'0');
+			$this->admin_model->update_pegawai($nip,'0', $tgl_diedit, $diedit_oleh);
 		}
 		
 		//mengecek previlage dari pegawai, 7 untuk teknisi

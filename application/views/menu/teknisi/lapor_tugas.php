@@ -40,6 +40,7 @@
                     <th align="center">KATEGORI</th>
                     <th align="center">LOKASI</th>
                     <th align="center">TANGGAL DIBUAT</th>
+					<th align="center">DURASI</th>
                     <th align="center">TANGGAL MULAI KERJA</th>
                     <th align="center">PRIORITAS</th>
                     <th align="center">DAMPAK</th>
@@ -55,6 +56,32 @@
 					<td align="center"><?php echo $row->nama_kategori; ?></td>
                     <td><?php echo $row->nama_kantor; ?></td>
                     <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->tgl_awal_tiket))); ?></td>
+					<td><?php 
+						$tgl_tiket = strtotime($row->tgl_awal_tiket);
+						$tgl_sekarang = strtotime(date("Y-m-d H:i:s", strtotime('+5 hours')));
+						
+						$durasi = $tgl_sekarang - $tgl_tiket;
+						
+						$second = 1;
+						$minute = 60*$second;
+						$hour   = 60*$minute;
+						$day    = 24*$hour;
+
+						$ans["day"]    = floor($durasi/$day);
+						$ans["hour"]   = floor(($durasi%$day)/$hour);
+						$ans["minute"] = floor((($durasi%$day)%$hour)/$minute);
+						$ans["second"] = floor(((($durasi%$day)%$hour)%$minute)/$second);
+						if($ans["day"] != 0){
+							echo $ans["day"] . " hari, " . $ans["hour"] . " jam, "  . $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] != 0){
+							echo $ans["hour"] . " jam, "  . $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] == 0 && $ans["minute"] != 0){
+							echo $ans["minute"] . " menit, " . $ans["second"] . " detik";
+						}if($ans["day"] == 0 && $ans["hour"] == 0 && $ans["minute"] == 0 && $ans["second"] != 0){
+							echo $ans["second"] . " detik";
+						}
+						
+						?></td>
                     <td><?php echo date('d-m-Y H:i:s',strtotime(date($row->date_open))); ?></td>
                     <td align="center"><?php echo $row->nama_level; ?></td>
                     <td align="center"><?php echo $row->nama_dampak; ?></td>
